@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
-    public float canJumpTime;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +38,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-        if (isGrounded) {
-            canJumpTime = 0.15f;
-        }
-        canJumpTime -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && canJumpTime > 0) {
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space)) {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
@@ -63,16 +58,8 @@ public class PlayerMovement : MonoBehaviour
         // if player stops holding down space they aren't jumping anymore
         if (Input.GetKeyUp(KeyCode.Space)) {
             isJumping = false;
-            canJumpTime = 0;
-            StartCoroutine(gravityChange());
         }
     }
-
-    IEnumerator gravityChange() {
-        rb.gravityScale = 2;
-        yield return new WaitForSeconds(0.5f);
-        rb.gravityScale = 4;
-    } 
 
     
 }
