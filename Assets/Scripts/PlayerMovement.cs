@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if (isGrounded) {
             canJumpTime = 0.15f;
+            rb.gravityScale = 7;
         }
         canJumpTime -= Time.deltaTime;
 
@@ -57,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpTimeCounter -= Time.deltaTime;
             } else {
                 isJumping = false;
+                StartCoroutine(gravityChange());
             }
         }
 
@@ -69,9 +71,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator gravityChange() {
-        rb.gravityScale = 2;
+        rb.gravityScale = 3.5f;
         yield return new WaitForSeconds(0.5f);
-        rb.gravityScale = 4;
+        rb.gravityScale = 7;
     } 
 
 	}
