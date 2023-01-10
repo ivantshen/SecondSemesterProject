@@ -10,14 +10,15 @@ public class PlayerBulletScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right*bulletSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.right*bulletSpeed;
+        
     }
-    private void OnCollisionEnter2D(Collision2D other){
+    private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag=="Player"){
             other.gameObject.GetComponent<HealthP1>().TakeDamage(10);
         }
