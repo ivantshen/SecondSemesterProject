@@ -23,13 +23,6 @@ public class EnemyHealth : MonoBehaviour
             
         }
     }
-
-    public void Update(){
-        if(Input.GetKeyDown(KeyCode.G)){
-            TakeDamage(1);
-        } 
-    }
-
     private void OnCollisionEnter2D(Collision2D other){
 
     }
