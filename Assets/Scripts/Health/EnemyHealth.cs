@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]private float startingHealth;
     public float currentHealth {get; private set;}
+    public GameObject damageText;
 
     private void Awake(){
         currentHealth = startingHealth;

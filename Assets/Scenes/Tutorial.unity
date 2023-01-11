@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 373895917}
   - component: {fileID: 373895918}
+  - component: {fileID: 373895919}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -169,9 +170,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireKey: f
-  attackRate: 0.5
+  attackRate: 0.1
   attack: {fileID: 2515925059783406594, guid: 93cccf5affd328d4e94330cc054712bf, type: 3}
   firePoint: {fileID: 992207765}
+--- !u!114 &373895919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373895916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcc982d701937243ba822ab1728408d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 992207765}
+  slashRate: 0.2
+  attackRange: 2
+  slashDamage: 5
 --- !u!1 &420686842
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +366,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -930,9 +947,9 @@ GameObject:
   - component: {fileID: 1375472452}
   - component: {fileID: 1375472451}
   - component: {fileID: 1375472455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -950,6 +967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 31
+  damageText: {fileID: 0}
 --- !u!114 &1375472452
 MonoBehaviour:
   m_ObjectHideFlags: 0
