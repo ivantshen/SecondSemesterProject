@@ -8,10 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed; // [SerializeField lets you edit in Unity]
     
     // variables to control whether you can perform actions
-    private bool canMove = true;
-    private bool isGrounded = true;
-    private bool canDash = true;
-    private bool isDashing;
+    public bool canMove = true;
+    public bool isGrounded = true;
+    public bool canDash = true;
+    public bool isDashing = false;
 
     // is grounded variables
     public Transform feetPos;
@@ -59,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+        if (isDashing) {
+            isGrounded = false;
+        }
+        //isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if (isGrounded) {
             canJumpTime = 0.15f;
             canDash = true;
@@ -90,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // dash
-        if (Input.GetKeyDown(KeyCode.X) && canDash) {
+        if (Input.GetKeyDown(KeyCode.S) && canDash) {
             canMove = false;
             isGrounded = false;
             isDashing = true;
@@ -104,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if (Input.GetKey(KeyCode.UpArrow)) {
-                vertInput = 1;
+                vertInput = 0.9f;
             } else if (Input.GetKey(KeyCode.DownArrow)) {
                 vertInput = -1;
             } else {
@@ -125,9 +129,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         
-        if(isGrounded) {
-            canDash = true;
-        }
+        
     }
 
     IEnumerator gravityChange() {

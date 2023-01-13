@@ -267,8 +267,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420686842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5288, y: -1.8348, z: 0}
-  m_LocalScale: {x: 22.013067, y: 0.65216786, z: 1}
+  m_LocalPosition: {x: -5.5323, y: -1.8348, z: 0}
+  m_LocalScale: {x: 65.48071, y: 0.65216786, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -478,14 +478,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 9
+  canMove: 1
+  isGrounded: 1
+  canDash: 1
+  isDashing: 0
   feetPos: {fileID: 755135923}
   checkRadius: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  jumpForce: 9
   jumpTime: 0.4
   canJumpTime: 0
+  dashVelocity: 14
+  dashTime: 0.25
 --- !u!61 &560554778
 BoxCollider2D:
   m_ObjectHideFlags: 0
