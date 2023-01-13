@@ -9,6 +9,6 @@ public class EnemyHealth : ParentHealth
 
     
     private void OnCollisionEnter2D(Collision2D other){
-
+        
     }
 }
