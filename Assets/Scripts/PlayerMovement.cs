@@ -7,27 +7,47 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb; 
     [SerializeField] private float speed; // [SerializeField lets you edit in Unity]
     
-    private bool isGrounded;
-    public float jumpForce;
+    // variables to control whether you can perform actions
+    private bool canMove = true;
+    private bool isGrounded = true;
+    private bool canDash = true;
+    private bool isDashing;
+
+    // is grounded variables
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatIsGround;
+
+    // jump variables
+    public float jumpForce;
     private float jumpTimeCounter;
     public float jumpTime;
     private bool isJumping;
     public float canJumpTime;
+    
+    // dash variables
+    [SerializeField] private float dashVelocity = 14f;
+    [SerializeField] private float dashTime = 0.5f;
+    private Vector2 dashDirection;
+    private float horzInput;
+    private float vertInput;
+    
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // GetComponent looks for the component in the inspector
-        isGrounded = true;
         
     }
 
     void FixedUpdate() {
         // Vector2 for 2D movement; Input.GetAxis("Horizontal") gives -1 or 1 
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y); 
+        if (canMove) {
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y); 
+        }
+        
         if (Input.GetAxis("Horizontal") > 0) {
             transform.eulerAngles = new Vector3(0, 0, 0);
         } else if (Input.GetAxis("Horizontal") < 0) {
@@ -41,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if (isGrounded) {
             canJumpTime = 0.15f;
-            rb.gravityScale = 7;
+            canDash = true;
         }
         canJumpTime -= Time.deltaTime;
 
@@ -58,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
                 jumpTimeCounter -= Time.deltaTime;
             } else {
                 isJumping = false;
-                StartCoroutine(gravityChange());
             }
         }
 
@@ -68,6 +87,47 @@ public class PlayerMovement : MonoBehaviour
             canJumpTime = 0;
             StartCoroutine(gravityChange());
         }
+
+
+        // dash
+        if (Input.GetKeyDown(KeyCode.X) && canDash) {
+            canMove = false;
+            isGrounded = false;
+            isDashing = true;
+            canDash = false;
+            if (Input.GetKey(KeyCode.LeftArrow)) {
+                horzInput = -1;
+            } else if (Input.GetKey(KeyCode.RightArrow)) {
+                horzInput = 1;
+            } else {
+                horzInput = 0;
+            }
+
+            if (Input.GetKey(KeyCode.UpArrow)) {
+                vertInput = 1;
+            } else if (Input.GetKey(KeyCode.DownArrow)) {
+                vertInput = -1;
+            } else {
+                vertInput = 0;
+            }
+            
+            //dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            dashDirection = new Vector2(horzInput, vertInput);
+            if(dashDirection == Vector2.zero) {
+                dashDirection = transform.right;
+            }
+            StartCoroutine(stopDash());
+        }
+
+        if (isDashing) {
+            rb.gravityScale = 0;
+            rb.velocity = dashDirection.normalized * dashVelocity;
+            return;
+        }
+        
+        if(isGrounded) {
+            canDash = true;
+        }
     }
 
     IEnumerator gravityChange() {
@@ -76,5 +136,14 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 7;
     } 
 
-	}
+    IEnumerator stopDash() {
+        yield return new WaitForSeconds(dashTime);
+        isDashing = false;
+        canDash = false;
+        canMove = true;
+        isGrounded = true;
+        rb.gravityScale = 7;
+    }
+
+}
 
