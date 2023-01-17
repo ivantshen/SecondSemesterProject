@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class WeaponSlashingScript : MonoBehaviour
 {
     //public Animation anim;
+    public GameObject hitEffect;
     public Transform firePoint;
     public float slashRate;
     private float timeBetweenAttacks;
@@ -42,6 +44,8 @@ public class WeaponSlashingScript : MonoBehaviour
                 foreach (Collider2D enemy in enemiesToDmg)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage);
+                    GameObject newVFX = Instantiate(hitEffect,enemy.transform.position,enemy.transform.rotation) as GameObject;
+                    Destroy(newVFX,2);
                 }
                 timeBetweenAttacks = slashRate;
                 /*
