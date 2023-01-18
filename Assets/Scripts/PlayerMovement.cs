@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb; 
+    private TrailRenderer dashTrail;
+    
     [SerializeField] private float speed; // [SerializeField lets you edit in Unity]
     
     // variables to control whether you can perform actions
-    public bool canMove = true;
-    public bool isGrounded = true;
-    public bool canDash = true;
-    public bool isDashing = false;
+    private bool canMove = true;
+    private bool isGrounded = true;
+    private bool canDash = true;
+    private bool isDashing = false;
 
     // is grounded variables
     public Transform feetPos;
@@ -24,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTime;
     private bool isJumping;
     public float canJumpTime;
+
+    public float jumpBufferTime = 0.1f;
+    private float jumpBufferCounter;
     
     // dash variables
     [SerializeField] private float dashVelocity = 14f;
@@ -39,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // GetComponent looks for the component in the inspector
+        dashTrail = GetComponent<TrailRenderer>();
+        dashTrail.emitting = false;
         
     }
 
@@ -66,20 +73,30 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded) {
             canJumpTime = 0.15f;
             canDash = true;
+        } else {
+            canJumpTime -= Time.deltaTime;
         }
-        canJumpTime -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && canJumpTime > 0) {
-            isJumping = true;
-            jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * jumpForce;
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            jumpBufferCounter = jumpBufferTime;
+        } else {
+            jumpBufferCounter -= Time.deltaTime;
         }
+        
+
+        if (jumpBufferCounter > 0f && canJumpTime > 0) {
+            isJumping = true;
+            jumpBufferCounter = 0f;
+            jumpTimeCounter = jumpTime;
+            rb.velocity = Vector2.up * jumpForce;        
+        } 
 
         if (Input.GetKey(KeyCode.Space) && isJumping == true) {
             rb.velocity = Vector2.up * jumpForce;
-            if (jumpTimeCounter > 0) {
+            if (jumpTimeCounter > 0f) {
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
+
             } else {
                 isJumping = false;
             }
@@ -99,6 +116,8 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
             isDashing = true;
             canDash = false;
+            dashTrail.emitting = true;
+
             if (Input.GetKey(KeyCode.LeftArrow)) {
                 horzInput = -1;
             } else if (Input.GetKey(KeyCode.RightArrow)) {
@@ -145,6 +164,8 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
         isGrounded = true;
         rb.gravityScale = 7;
+        yield return new WaitForSeconds(0.1f);
+        dashTrail.emitting = false;
     }
 
 }
