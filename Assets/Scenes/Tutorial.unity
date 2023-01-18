@@ -480,10 +480,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  canMove: 1
-  isGrounded: 1
-  canDash: 1
-  isDashing: 0
   feetPos: {fileID: 755135923}
   checkRadius: 0.3
   whatIsGround:
@@ -492,6 +488,7 @@ MonoBehaviour:
   jumpForce: 9
   jumpTime: 0.4
   canJumpTime: 0
+  jumpBufferTime: 0.1
   dashVelocity: 14
   dashTime: 0.25
 --- !u!61 &560554778

@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 661229651}
   - component: {fileID: 661229652}
   - component: {fileID: 661229654}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 679644045}
   - component: {fileID: 679644046}
   - component: {fileID: 679644047}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 734753509}
   - component: {fileID: 734753511}
   - component: {fileID: 734753510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 1519419365}
   - component: {fileID: 1519419366}
   - component: {fileID: 1519419367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519419364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 0.6, z: 0.041135713}
+  m_LocalPosition: {x: -2.14, y: 0.6, z: 0.041135713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
