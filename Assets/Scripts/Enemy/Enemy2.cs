@@ -27,9 +27,11 @@ public class Enemy2 : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
+        if(rb.velocity == new Vector2(0f,0f)){
         if(other.tag == "Player"){
             //EnemyTwo.position = new Vector2(-5f, 0);
             rb.velocity = new Vector2(direction, 0f);
+        }
         }
     }
 
