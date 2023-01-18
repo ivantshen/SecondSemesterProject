@@ -44,8 +44,7 @@ public class WeaponSlashingScript : MonoBehaviour
                 foreach (Collider2D enemy in enemiesToDmg)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage);
-                    GameObject newVFX = Instantiate(hitEffect,enemy.transform.position,enemy.transform.rotation) as GameObject;
-                    Destroy(newVFX,2);
+                    StartCoroutine(delayedHitEffect(0.05f,enemy));
                 }
                 timeBetweenAttacks = slashRate;
                 /*
@@ -57,6 +56,13 @@ public class WeaponSlashingScript : MonoBehaviour
             }
         }else{
             timeBetweenAttacks-= Time.deltaTime;
+        }
+    }
+    IEnumerator delayedHitEffect(float delay, Collider2D enemy){
+        yield return new WaitForSeconds(delay);
+        if(enemy){
+        GameObject newVFX = Instantiate(hitEffect,enemy.ClosestPoint(transform.position),enemy.transform.rotation) as GameObject;
+        Destroy(newVFX,2);    
         }
     }
     void OnDrawGizmosSelected() {
