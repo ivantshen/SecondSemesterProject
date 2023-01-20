@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea9b82ee1065e540b07fd6964999b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
+  distance: 2
 --- !u!61 &481825784
 BoxCollider2D:
   m_ObjectHideFlags: 0
