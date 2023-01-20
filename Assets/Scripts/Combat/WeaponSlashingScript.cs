@@ -15,6 +15,8 @@ public class WeaponSlashingScript : MonoBehaviour
     private bool resetPosition;
     private LayerMask targetLayer;
     private bool autoFiring = false;
+    public GameObject slash;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,8 @@ public class WeaponSlashingScript : MonoBehaviour
             }
             */
             if(Input.GetKey(KeyCode.Mouse0)||autoFiring){
+                GameObject newSlash = Instantiate(slash,firePoint.position,player.rotation,null);
+                Destroy(newSlash,0.4f);
                 Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
                 foreach (Collider2D enemy in enemiesToDmg)
                 {
