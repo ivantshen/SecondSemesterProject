@@ -111,31 +111,32 @@ public class PlayerMovement : MonoBehaviour
 
 
         // dash
-        if (Input.GetKeyDown(KeyCode.S) && canDash) {
+        if (Input.GetKeyDown(KeyCode.X) && canDash) {
             canMove = false;
             isGrounded = false;
             isDashing = true;
             canDash = false;
             dashTrail.emitting = true;
 
-            if (Input.GetKey(KeyCode.LeftArrow)) {
-                horzInput = -1;
-            } else if (Input.GetKey(KeyCode.RightArrow)) {
-                horzInput = 1;
-            } else {
-                horzInput = 0;
-            }
+            // if (Input.GetKey(KeyCode.LeftArrow)) {
+            //     horzInput = -1;
+            // } else if (Input.GetKey(KeyCode.RightArrow)) {
+            //     horzInput = 1;
+            // } else {
+            //     horzInput = 0;
+            // }
 
-            if (Input.GetKey(KeyCode.UpArrow)) {
-                vertInput = 0.9f;
-            } else if (Input.GetKey(KeyCode.DownArrow)) {
-                vertInput = -1;
-            } else {
-                vertInput = 0;
-            }
+            // if (Input.GetKey(KeyCode.UpArrow)) {
+            //     vertInput = 0.9f;
+            // } else if (Input.GetKey(KeyCode.DownArrow)) {
+            //     vertInput = -1;
+            // } else {
+            //     vertInput = 0;
+            // }
             
-            //dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            dashDirection = new Vector2(horzInput, vertInput);
+            // dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+            
             if(dashDirection == Vector2.zero) {
                 dashDirection = transform.right;
             }
@@ -144,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isDashing) {
             rb.gravityScale = 0;
-            rb.velocity = dashDirection.normalized * dashVelocity;
+            rb.velocity = dashDirection * dashVelocity;
             return;
         }
         
