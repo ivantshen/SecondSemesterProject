@@ -5,8 +5,7 @@ using UnityEngine;
 public class Enemy2 : MonoBehaviour
 {
     public GameObject player;
-    public float speed;
-    public Vector3 moveOffset;
+    
     public Transform EnemyTwo;
     public Rigidbody2D rb;
     public float direction;
