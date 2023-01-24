@@ -15,6 +15,8 @@ public class WeaponSlashingScript : MonoBehaviour
     private bool resetPosition;
     private LayerMask targetLayer;
     private bool autoFiring = false;
+    public GameObject slash;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +42,11 @@ public class WeaponSlashingScript : MonoBehaviour
             }
             */
             if(Input.GetKey(KeyCode.Mouse0)||autoFiring){
+                GameObject newSlash = Instantiate(slash,firePoint.position,player.rotation,null);
+                Destroy(newSlash,0.25f);
                 Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
                 foreach (Collider2D enemy in enemiesToDmg)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage);
                     StartCoroutine(delayedHitEffect(0.05f,enemy));
                 }
                 timeBetweenAttacks = slashRate;
@@ -62,7 +65,8 @@ public class WeaponSlashingScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if(enemy){
         GameObject newVFX = Instantiate(hitEffect,enemy.ClosestPoint(transform.position),enemy.transform.rotation) as GameObject;
-        Destroy(newVFX,2);    
+        Destroy(newVFX,2);
+        enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage);    
         }
     }
     void OnDrawGizmosSelected() {
