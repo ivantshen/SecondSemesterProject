@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy3 : MonoBehaviour
 {
-     public float distance=10;
+     public int TeleportTime;
      private bool test = true;
  
     // Start is called before the first frame update
@@ -14,7 +14,7 @@ public class Enemy3 : MonoBehaviour
     }
 
     private IEnumerator Move(){
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(TeleportTime);
         Teleport();
         test = true;
     }
