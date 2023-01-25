@@ -135,11 +135,27 @@ public class PlayerMovement : MonoBehaviour
             // }
             
             // dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+            horzInput = Input.GetAxis("Horizontal");
+            vertInput = Input.GetAxis("Vertical");
+            if (horzInput > 0) {
+                horzInput = 1;
+            } else if (horzInput < 0) {
+                horzInput = -1;
+            }
+            if (vertInput > 0) {
+                vertInput = 1;
+            } else if (vertInput < 0) {
+                vertInput = -1;
+            }
+            
+            dashDirection = new Vector2(horzInput, vertInput).normalized;
             
             if(dashDirection == Vector2.zero) {
                 dashDirection = transform.right;
             }
+            Debug.Log(horzInput);
+            Debug.Log(vertInput);
+
             StartCoroutine(stopDash());
         }
 
