@@ -153,8 +153,6 @@ public class PlayerMovement : MonoBehaviour
             if(dashDirection == Vector2.zero) {
                 dashDirection = transform.right;
             }
-            Debug.Log(horzInput);
-            Debug.Log(vertInput);
 
             StartCoroutine(stopDash());
         }
@@ -167,6 +165,14 @@ public class PlayerMovement : MonoBehaviour
         
         
     }
+
+    // method to freeze player position 
+    public void FreezePosition() {
+        StartCoroutine(freezeMe());
+    }
+
+
+    // IEnumerators
 
     IEnumerator gravityChange() {
         rb.gravityScale = 3.5f;
@@ -183,6 +189,13 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 7;
         yield return new WaitForSeconds(0.1f);
         dashTrail.emitting = false;
+    }
+
+    IEnumerator freezeMe() {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        yield return new WaitForSeconds(5f);
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
 }
