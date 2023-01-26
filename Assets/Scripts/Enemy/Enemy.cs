@@ -34,10 +34,9 @@ public class Enemy : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f,0f,0f);
         }
     }
-    private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log("It works?");
-        if(other.tag == "Player"){
-             other.gameObject.GetComponent<ParentHealth>().TakeDamage(10);
+    private void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag == "Player"){
+             other.gameObject.GetComponent<HealthP1>().TakeDamage(20);
         }
      }
 }

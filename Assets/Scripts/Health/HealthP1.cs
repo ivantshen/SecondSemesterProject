@@ -11,12 +11,10 @@ public class HealthP1 : ParentHealth
             TakeDamage(1);
         }
     }
+
     
-     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.layer==6){
-            TakeDamage(5);
-        }
-     }
+    
+     
 
     
 }
