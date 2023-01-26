@@ -172,7 +172,7 @@ MonoBehaviour:
   firePoint: {fileID: 992207765}
   slashRate: 0.6
   attackRange: 2
-  slashDamage: 5
+  slashDamage: 2
   slash:
   - {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
   - {fileID: 7244730657643320325, guid: cec7bfa78d154fd40adc99be05de793e, type: 3}

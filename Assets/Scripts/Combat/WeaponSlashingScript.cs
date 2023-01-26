@@ -65,6 +65,9 @@ public class WeaponSlashingScript : MonoBehaviour
         foreach (Collider2D enemy in enemiesToDmg)
         {
         StartCoroutine(delayedHitEffect(0.05f,enemy));
+        if(slashNum ==2){
+        StartCoroutine(delayedHitEffect(0.25f,enemy));
+        }
         }
         if(slashNum<numAttacks-1){
         slashNum++;    
