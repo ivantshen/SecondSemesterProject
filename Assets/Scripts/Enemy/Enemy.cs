@@ -9,15 +9,11 @@ public class Enemy : MonoBehaviour
     public float speed;
 
     private float distance;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        if(player){
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -34,9 +30,13 @@ public class Enemy : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f,0f,0f);
         }
     }
+    }
     private void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.tag == "Player"){
-             other.gameObject.GetComponent<HealthP1>().TakeDamage(20);
+            if(other.gameObject){
+            other.gameObject.GetComponent<HealthP1>().TakeDamage(20);    
+            }
+             
         }
      }
 }
