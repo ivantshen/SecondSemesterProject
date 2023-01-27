@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcc982d701937243ba822ab1728408d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireKey: f
   hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
   firePoint: {fileID: 992207765}
   slashRate: 0.6

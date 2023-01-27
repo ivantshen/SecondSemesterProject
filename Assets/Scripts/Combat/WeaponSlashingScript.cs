@@ -6,6 +6,7 @@ using UnityEngine.VFX;
 public class WeaponSlashingScript : MonoBehaviour
 {
     //public Animation anim;
+    public string fireKey;
     public GameObject hitEffect;
     public Transform firePoint;
     public float slashRate;
@@ -45,7 +46,7 @@ public class WeaponSlashingScript : MonoBehaviour
               anim.Play("idle",PlayMode.StopAll);  
             }
             */
-            if(Input.GetKeyDown("f")){
+            if(Input.GetKeyDown(fireKey)){
                 slashAttack(slashNum);
                 /*
                 if(anim){

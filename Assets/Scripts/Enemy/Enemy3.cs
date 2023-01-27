@@ -6,12 +6,6 @@ public class Enemy3 : MonoBehaviour
 {
      public int TeleportTime;
      private bool test = true;
- 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private IEnumerator Move(){
         yield return new WaitForSeconds(TeleportTime);

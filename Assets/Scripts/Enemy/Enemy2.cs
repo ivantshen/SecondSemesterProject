@@ -12,19 +12,6 @@ public class Enemy2 : MonoBehaviour
 
     private float distance;
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerStay2D(Collider2D other){
         if(rb.velocity == new Vector2(0f,0f)){
         if(other.tag == "Player"){
