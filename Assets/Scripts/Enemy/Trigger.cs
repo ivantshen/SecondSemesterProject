@@ -18,7 +18,9 @@ public class Trigger : MonoBehaviour
         
     }
     void OnTriggerStay2D(Collider2D other){
+        if(other.tag == "Player"){
         
         other.GetComponent<Rigidbody2D>().AddForce(Vector2.right * airForce * Time.deltaTime);
+        }
     }
 }
