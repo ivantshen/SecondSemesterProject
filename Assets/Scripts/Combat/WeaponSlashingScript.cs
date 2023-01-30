@@ -7,6 +7,7 @@ public class WeaponSlashingScript : MonoBehaviour
 {
     //public Animation anim;
     public string fireKey;
+    public float knockbackForce;
     public GameObject hitEffect;
     public Transform firePoint;
     public float slashRate;
@@ -83,6 +84,7 @@ public class WeaponSlashingScript : MonoBehaviour
         if(enemy){
         GameObject newVFX = Instantiate(hitEffect,enemy.ClosestPoint(transform.position),enemy.transform.rotation) as GameObject;
         Destroy(newVFX,2);
+        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.transform.position-transform.position).normalized);
         enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage);    
         }
     }
