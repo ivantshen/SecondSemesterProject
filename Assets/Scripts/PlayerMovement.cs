@@ -171,8 +171,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // method to freeze player position 
-    public void FreezePosition() {
-        StartCoroutine(freezeMe());
+    public void FreezePosition(float freezeTime) {
+        StartCoroutine(freezeMe(freezeTime));
     }
 
 
@@ -195,9 +195,9 @@ public class PlayerMovement : MonoBehaviour
         dashTrail.emitting = false;
     }
 
-    IEnumerator freezeMe() {
+    IEnumerator freezeMe(float time) {
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(time);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
