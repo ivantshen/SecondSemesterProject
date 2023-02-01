@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     // variables to control whether you can perform actions
     private bool canMove = true;
     private bool isGrounded = true;
-    private bool canDash = true;
+    private bool unlockedDash = false;
+    private bool canDash = false;
     private bool isDashing = false;
 
     // is grounded variables
@@ -72,7 +73,10 @@ public class PlayerMovement : MonoBehaviour
         //isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if (isGrounded) {
             canJumpTime = 0.15f;
-            canDash = true;
+            if (unlockedDash) {
+                canDash = true;
+            }
+            
         } else {
             canJumpTime -= Time.deltaTime;
         }
