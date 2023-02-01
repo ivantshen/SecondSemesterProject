@@ -13,7 +13,12 @@ public class WeaponManager : MonoBehaviour
         weapon.GetComponent<Collider2D>().enabled = false;
         weapon.transform.SetParent(transform);
         weapon.transform.localPosition = new Vector3(0,0,0);
-        weapon.transform.rotation = Quaternion.identity;
+        if(transform.rotation==Quaternion.identity){
+        weapon.transform.rotation = Quaternion.identity;    
+        }else{
+        weapon.transform.rotation = Quaternion.Euler(0,180,0);
+        }
+        
         activateScripts(weapon);
         equipped = weapon;
     }
