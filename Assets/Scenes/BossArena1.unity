@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 1273643580}
   - component: {fileID: 1273643583}
   - component: {fileID: 1273643584}
+  - component: {fileID: 1273643585}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -1535,6 +1536,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1273643585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273643578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b320e48a142f64ba3da0ffad91f631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
+  damageText: {fileID: 0}
 --- !u!1 &1400109485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,8 +2452,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117165398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.73, y: 1.14, z: 0}
-  m_LocalScale: {x: 5.2200665, y: 0.5020707, z: 1}
+  m_LocalPosition: {x: -64.65, y: -0.27, z: 0}
+  m_LocalScale: {x: 5.2200665, y: 3.269836, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

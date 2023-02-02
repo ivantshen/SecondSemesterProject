@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private bool unlockedDash = false;
     private bool canDash = false;
     private bool isDashing = false;
-    private bool canInput = true;
 
     // is grounded variables
     public Transform feetPos;
