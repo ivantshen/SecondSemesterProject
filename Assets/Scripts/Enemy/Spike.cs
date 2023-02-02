@@ -10,6 +10,9 @@ public class Spike : MonoBehaviour
             other.gameObject.GetComponent<HealthP1>().TakeDamage(5);    
             }
              
+             
         }
      }
+
+     
 }
