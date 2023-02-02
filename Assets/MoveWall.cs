@@ -27,7 +27,7 @@ public class MoveWall : MonoBehaviour
             rb.gravityScale = 10;
             boss.SendMessage("BossTransformation");
             Destroy(cd); // turn off the collider
-            player.SendMessage("FreezePosition");
+            player.SendMessage("FreezePosition", 5f);
         }
         
     }

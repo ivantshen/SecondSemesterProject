@@ -175,6 +175,10 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(freezeMe(freezeTime));
     }
 
+    public void FreezeInputs(float freezeTime) {
+        StartCoroutine(freezeMyInputs(freezeTime));
+    }
+
 
     // IEnumerators
 
@@ -200,6 +204,12 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    IEnumerator freezeMyInputs(float time) {
+        horzInput = 0;
+        vertInput = 0;
+        yield return new WaitForSeconds(time);
     }
 
 }
