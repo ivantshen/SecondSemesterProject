@@ -61,6 +61,7 @@ public class WeaponSlashingScript : MonoBehaviour
         }
     }
     private void slashAttack(int index){
+        player.SendMessage("FreezePosition",0.05f);
         GameObject newSlash = Instantiate(slash[index],firePoint.position,player.rotation,null);
         Destroy(newSlash,0.25f);
         Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
