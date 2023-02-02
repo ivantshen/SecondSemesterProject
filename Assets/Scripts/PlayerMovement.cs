@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool unlockedDash = false;
     private bool canDash = false;
     private bool isDashing = false;
+    private bool canInput = true;
 
     // is grounded variables
     public Transform feetPos;
@@ -56,11 +57,14 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y); 
         }
         
-        if (Input.GetAxis("Horizontal") > 0) {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        } else if (Input.GetAxis("Horizontal") < 0) {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+        if (canMove) {
+            if (Input.GetAxis("Horizontal") > 0) {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            } else if (Input.GetAxis("Horizontal") < 0) {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
+        
     }
 
     // Update is called once per frame
@@ -207,9 +211,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator freezeMyInputs(float time) {
-        horzInput = 0;
-        vertInput = 0;
+        canMove = false;
         yield return new WaitForSeconds(time);
+        canMove = true;
     }
 
 }
