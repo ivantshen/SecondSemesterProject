@@ -788,7 +788,6 @@ GameObject:
   m_Component:
   - component: {fileID: 544748222}
   - component: {fileID: 544748224}
-  - component: {fileID: 544748223}
   m_Layer: 0
   m_Name: Right Collider
   m_TagString: Untagged
@@ -811,22 +810,6 @@ Transform:
   m_Father: {fileID: 1032570605}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &544748223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544748221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  EnemyTwo: {fileID: 1032570605}
-  rb: {fileID: 1032570609}
-  direction: 10
 --- !u!61 &544748224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1404,7 +1387,6 @@ GameObject:
   m_Component:
   - component: {fileID: 662219200}
   - component: {fileID: 662219202}
-  - component: {fileID: 662219201}
   m_Layer: 0
   m_Name: Left Collider
   m_TagString: Untagged
@@ -1427,22 +1409,6 @@ Transform:
   m_Father: {fileID: 1032570605}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &662219201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662219199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  EnemyTwo: {fileID: 1032570605}
-  rb: {fileID: 1032570609}
-  direction: -10
 --- !u!61 &662219202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1622,6 +1588,7 @@ GameObject:
   - component: {fileID: 1032570607}
   - component: {fileID: 1032570606}
   - component: {fileID: 1032570611}
+  - component: {fileID: 1032570612}
   m_Layer: 6
   m_Name: EnemyTwo
   m_TagString: Untagged
@@ -1775,6 +1742,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1032570612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032570603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  EnemyTwo: {fileID: 1032570605}
+  rb: {fileID: 1032570609}
+  force: 10
+  timeBetweenDash: 2
+  colliderList:
+  - {fileID: 544748224}
+  - {fileID: 662219202}
 --- !u!1 &1079930409
 GameObject:
   m_ObjectHideFlags: 0
