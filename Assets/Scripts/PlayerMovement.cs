@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool unlockedDash = false;
     private bool canDash = false;
     private bool isDashing = false;
+    private bool canInput = true;
 
     // is grounded variables
     public Transform feetPos;
@@ -56,11 +57,14 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y); 
         }
         
-        if (Input.GetAxis("Horizontal") > 0) {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        } else if (Input.GetAxis("Horizontal") < 0) {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+        if (canMove) {
+            if (Input.GetAxis("Horizontal") > 0) {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            } else if (Input.GetAxis("Horizontal") < 0) {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
+        
     }
 
     // Update is called once per frame
@@ -175,6 +179,10 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(freezeMe(freezeTime));
     }
 
+    public void FreezeInputs(float freezeTime) {
+        StartCoroutine(freezeMyInputs(freezeTime));
+    }
+
 
     // IEnumerators
 
@@ -200,6 +208,12 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    IEnumerator freezeMyInputs(float time) {
+        canMove = false;
+        yield return new WaitForSeconds(time);
+        canMove = true;
     }
 
 }
