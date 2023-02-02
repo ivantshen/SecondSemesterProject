@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 373895919}
   - component: {fileID: 373895921}
   - component: {fileID: 373895920}
+  - component: {fileID: 373895922}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Weapon
@@ -405,6 +406,7 @@ MonoBehaviour:
   - {fileID: 7244730657643320325, guid: cec7bfa78d154fd40adc99be05de793e, type: 3}
   - {fileID: 1621385963438294746, guid: 4ac1ba3290b83974ba4ee04d6645e547, type: 3}
   player: {fileID: 560554775}
+  freezeAmt: 0.2
 --- !u!50 &373895920
 Rigidbody2D:
   serializedVersion: 4
@@ -455,6 +457,23 @@ PolygonCollider2D:
       - {x: 0.22293448, y: -0.3872332}
       - {x: 0.44897747, y: -0.47448874}
       - {x: 1.059068, y: 0.8142788}
+--- !u!114 &373895922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373895916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef0fd9de3681074c95f17c3e5ae4ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xPos: -0.39
+  yPos: 0.218
+  zPos: 0
+  zRot: -25
+  spriteToManipulate: {fileID: 652668568}
 --- !u!1 &420686842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipDropKey: e
+  switchKey: t
+  switchCooldown: 3
 --- !u!1 &642397170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1326,7 @@ GameObject:
   - component: {fileID: 652668570}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: WeaponSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
