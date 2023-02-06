@@ -25,46 +25,48 @@ public class WeaponManager : MonoBehaviour
         }
     }
     private void switchWeapon (){
-            GameObject temp = equipped;
-            if(stored&&!equipped){
-            equipWeapon(stored);
-            equipped.SendMessage("ChangeOrientation");    
-            stored = null;
-            Debug.Log("stored&&!equipped");
-            }
-            if(equipped&&!stored){
-            storeWeapon(temp);    
-            equipped = null;
-            Debug.Log("equipped&&!stored");
-            }
-            if(equipped&&stored){
-            equipWeapon(stored);
-            equipped.SendMessage("ChangeOrientation");    
-            storeWeapon(temp); 
-            Debug.Log("SWITCH");
-            }
-            
+            GameObject tempEquipped = equipped;
+            GameObject tempStored = stored;
+            equipWeapon(tempStored);
+            storeWeapon(tempEquipped);
     }
     public void storeWeapon (GameObject weapon){
-        weapon.SendMessage("ChangeOrientation");
-        activateScripts(weapon,false);
         stored = weapon;
+        if(weapon){
+        if(transform.rotation==Quaternion.identity){
+        stored.transform.rotation = Quaternion.identity;    
+        }else{
+        stored.transform.rotation = Quaternion.Euler(0,180,0);
+        }
+        activateScripts(stored,false);
+        stored.SendMessage("SetOrientationStored");    
+        }
     }
-    public void equipWeapon (GameObject weapon){
+    public void initialPickUp(GameObject weapon){
         if(weapon.GetComponent<Rigidbody2D>()){
         Destroy(weapon.GetComponent<Rigidbody2D>());    
         }
         weapon.GetComponent<Collider2D>().enabled = false;
         weapon.transform.SetParent(transform);
         weapon.transform.localPosition = new Vector3(0,0,0);
-        if(transform.rotation==Quaternion.identity){
-        weapon.transform.rotation = Quaternion.identity;    
-        }else{
-        weapon.transform.rotation = Quaternion.Euler(0,180,0);
+        if(!equipped){
+            equipWeapon(weapon);
+        }else if(!stored){
+            storeWeapon(weapon);
         }
-
-        activateScripts(weapon,true);
+    }
+    public void equipWeapon (GameObject weapon){
         equipped = weapon;
+        if(equipped){
+        if(transform.rotation==Quaternion.identity){
+        equipped.transform.rotation = Quaternion.identity;    
+        }else{
+        equipped.transform.rotation = Quaternion.Euler(0,180,0);
+        }
+        activateScripts(equipped,true);
+        equipped.SendMessage("SetOrientationOriginal");     
+        }
+        
     }
     private static void activateScripts(GameObject weapon, bool TF){
         if(weapon.GetComponent<MonoBehaviour>()!=null){
@@ -73,7 +75,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other){
         if(Input.GetKey(equipDropKey)&&other.tag=="Weapon"){
-            equipWeapon(other.gameObject);
+            initialPickUp(other.gameObject);
         }
     }
 }
