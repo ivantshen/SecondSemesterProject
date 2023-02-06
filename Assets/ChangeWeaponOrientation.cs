@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class ChangeWeaponOrientation : MonoBehaviour
 {
-    public float xPos;
-    public float yPos;
-    public float zPos;
-    public float zRot;
+    public float storedXPos;
+    public float storedYPos;
+    public float storedZPos;
+    public float storedZRot;
     public Transform spriteToManipulate;
-    private bool changed = false;
 
-    private Vector3 originalPos;
-    private float originZRot;
-    void Start(){
-    originalPos = spriteToManipulate.position;
-    originZRot = spriteToManipulate.rotation.z;
+    public Vector3 originalPos;
+    public float originZRot;
+    public void SetOrientationStored(){
+            spriteToManipulate.localPosition = new Vector3(storedXPos,storedYPos,storedZPos);
+            if(transform.rotation==Quaternion.identity){
+            spriteToManipulate.rotation = Quaternion.Euler(0,0,storedZRot);
+            }else{
+            spriteToManipulate.rotation = Quaternion.Euler(0,180,storedZRot);
+            }
+            
     }
-    public void ChangeOrientation(){
-        if(changed == false){
-            spriteToManipulate.localPosition = new Vector3(xPos,yPos,zPos);
-            spriteToManipulate.rotation = Quaternion.Euler(0,0,zRot);
-        }else{
-            spriteToManipulate.localPosition = originalPos;
+    public void SetOrientationOriginal(){
+        spriteToManipulate.localPosition = originalPos;
+        if(transform.rotation==Quaternion.identity){
             spriteToManipulate.rotation = Quaternion.Euler(0,0,originZRot);
-        }
-        changed = !changed;
+            }else{
+            spriteToManipulate.rotation = Quaternion.Euler(0,180,originZRot);
     }
+}
 }
