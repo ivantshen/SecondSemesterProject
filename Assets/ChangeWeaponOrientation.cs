@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class ChangeWeaponOrientation : MonoBehaviour
 {
-    public float storedXPos;
-    public float storedYPos;
-    public float storedZPos;
-    public float storedZRot;
     public Transform spriteToManipulate;
-
+    public SpriteRenderer sprite;
+    public Vector3 storedPos;
+    public float storedZRot;
+    public int storedSortingOrder;
     public Vector3 originalPos;
     public float originZRot;
+    public int originSortingOrder;
     public void SetOrientationStored(){
-            spriteToManipulate.localPosition = new Vector3(storedXPos,storedYPos,storedZPos);
+            spriteToManipulate.localPosition = storedPos;
+            sprite.sortingOrder = storedSortingOrder;
             if(transform.rotation==Quaternion.identity){
             spriteToManipulate.rotation = Quaternion.Euler(0,0,storedZRot);
             }else{
@@ -23,6 +24,7 @@ public class ChangeWeaponOrientation : MonoBehaviour
     }
     public void SetOrientationOriginal(){
         spriteToManipulate.localPosition = originalPos;
+        sprite.sortingOrder = originSortingOrder;
         if(transform.rotation==Quaternion.identity){
             spriteToManipulate.rotation = Quaternion.Euler(0,0,originZRot);
             }else{
