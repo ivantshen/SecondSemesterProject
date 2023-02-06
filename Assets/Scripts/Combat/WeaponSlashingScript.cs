@@ -20,6 +20,7 @@ public class WeaponSlashingScript : MonoBehaviour
     public Transform player;
     private int slashNum = 0;
     private int numAttacks = 3;
+    public float freezeAmt = 0.2f;
     private float comboResetTime = 2f;
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class WeaponSlashingScript : MonoBehaviour
         }
     }
     private void slashAttack(int index){
-        player.SendMessage("FreezePosition",0.05f);
+        player.SendMessage("FreezeInputs",freezeAmt);
         GameObject newSlash = Instantiate(slash[index],firePoint.position,player.rotation,null);
         Destroy(newSlash,0.25f);
         Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
