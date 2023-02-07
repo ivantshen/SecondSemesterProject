@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Copy.unity
+    guid: 2e5c6ef04655d7145898dc8154eed525
+  - enabled: 1
+    path: Assets/Scenes/BossArena1.unity
+    guid: 646e54afebdce8b479657022b6f6e6a7
+  - enabled: 1
+    path: Assets/Scenes/Forest1.unity
+    guid: d9df28964f503e84994ee626eba393b5
   m_configObjects: {}

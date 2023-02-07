@@ -12,9 +12,13 @@ public class PlayerMovement : MonoBehaviour
     // variables to control whether you can perform actions
     private bool canMove = true;
     private bool isGrounded = true;
-    private bool unlockedDash = false;
+    public bool unlockedDash = false;
     private bool canDash = false;
     private bool isDashing = false;
+
+
+    // general variables
+    private float playerGravity = 7.0f;
 
     // is grounded variables
     public Transform feetPos;
@@ -38,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     private float horzInput;
     private float vertInput;
     
+    // ladder climb variables
+    private float vertical;
+    private float fallSpeed = 8f;
+    private bool onLadder;
+    private bool isClimbing;
     
 
 
@@ -62,6 +71,18 @@ public class PlayerMovement : MonoBehaviour
             } else if (Input.GetAxis("Horizontal") < 0) {
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
+        }
+
+        if (isClimbing) {
+            rb.gravityScale = 0f;
+            if (vertical > 0f) {
+                rb.velocity = new Vector2(rb.velocity.x, vertical * fallSpeed);
+            } else {
+                rb.velocity = new Vector2(rb.velocity.x, -fallSpeed/2);
+            }
+            
+        } else {
+            rb.gravityScale = playerGravity;
         }
         
     }
@@ -125,23 +146,6 @@ public class PlayerMovement : MonoBehaviour
             canDash = false;
             dashTrail.emitting = true;
 
-            // if (Input.GetKey(KeyCode.LeftArrow)) {
-            //     horzInput = -1;
-            // } else if (Input.GetKey(KeyCode.RightArrow)) {
-            //     horzInput = 1;
-            // } else {
-            //     horzInput = 0;
-            // }
-
-            // if (Input.GetKey(KeyCode.UpArrow)) {
-            //     vertInput = 0.9f;
-            // } else if (Input.GetKey(KeyCode.DownArrow)) {
-            //     vertInput = -1;
-            // } else {
-            //     vertInput = 0;
-            // }
-            
-            // dashDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             horzInput = Input.GetAxis("Horizontal");
             vertInput = Input.GetAxis("Vertical");
             if (horzInput > 0) {
@@ -170,7 +174,12 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         
-        
+        // ladder
+        vertical = Input.GetAxis("Vertical");
+
+        if (onLadder && Mathf.Abs(vertical) > 0f) {
+            isClimbing = true;
+        }
     }
 
     // method to freeze player position 
@@ -183,12 +192,26 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    // ladder functions
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Ladder")) {
+            onLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Ladder")) {
+            onLadder = false;
+            isClimbing = false;
+        }
+    }
+
     // IEnumerators
 
     IEnumerator gravityChange() {
-        rb.gravityScale = 3.5f;
+        rb.gravityScale = playerGravity / 2;
         yield return new WaitForSeconds(0.5f);
-        rb.gravityScale = 7;
+        rb.gravityScale = playerGravity;
     } 
 
     IEnumerator stopDash() {
@@ -197,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         canDash = false;
         canMove = true;
         isGrounded = true;
-        rb.gravityScale = 7;
+        rb.gravityScale = playerGravity;
         yield return new WaitForSeconds(0.1f);
         dashTrail.emitting = false;
     }
