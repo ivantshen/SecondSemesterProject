@@ -8,6 +8,7 @@ public class Spike : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             if(other.gameObject){
             other.gameObject.GetComponent<HealthP1>().TakeDamage(5);    
+            other.gameObject.GetComponent<KnockbackManager>().knockback(10,other.gameObject.transform.position-transform.position);
             }
              
              

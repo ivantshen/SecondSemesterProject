@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 43639356}
   - component: {fileID: 43639355}
   - component: {fileID: 43639354}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon (1)
-  m_TagString: Weapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,10 +159,10 @@ MonoBehaviour:
   sprite: {fileID: 2001935815}
   storedPos: {x: -0.25, y: -0.44, z: 0}
   storedZRot: -70
-  storedSortingOrder: 1
+  storedSortingOrder: 2
   originalPos: {x: 0.639, y: 0.218, z: 0}
   originZRot: -25
-  originSortingOrder: -1
+  originSortingOrder: 0
 --- !u!50 &43639355
 Rigidbody2D:
   serializedVersion: 4
@@ -842,9 +842,9 @@ GameObject:
   - component: {fileID: 373895921}
   - component: {fileID: 373895920}
   - component: {fileID: 373895922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
-  m_TagString: Weapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -957,10 +957,10 @@ MonoBehaviour:
   sprite: {fileID: 652668570}
   storedPos: {x: -0.25, y: -0.44, z: 0}
   storedZRot: -70
-  storedSortingOrder: 1
+  storedSortingOrder: 2
   originalPos: {x: 0.639, y: 0.218, z: 0}
   originZRot: -25
-  originSortingOrder: -1
+  originSortingOrder: 0
 --- !u!1 &420686842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 560554778}
   - component: {fileID: 560554780}
   - component: {fileID: 560554782}
-  - component: {fileID: 560554781}
+  - component: {fileID: 560554783}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47775a54a44bf254bb2676fdc33a8a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iFrameTime: 2
+  iFrameTime: 0.5
   startingHealth: 100
 --- !u!114 &560554777
 MonoBehaviour:
@@ -1603,22 +1603,6 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!58 &560554781
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560554773}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
 --- !u!114 &560554782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,6 +1618,21 @@ MonoBehaviour:
   equipDropKey: e
   switchKey: t
   switchCooldown: 3
+  pickupRange: 2
+--- !u!114 &560554783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560554773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7e7242d55d1a54199a1f2086887109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackeable: 1
+  knockbackScale: 1
 --- !u!1 &634516966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,7 +3957,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4944,7 +4943,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5359,7 +5358,7 @@ GameObject:
   - component: {fileID: 1849889037}
   m_Layer: 0
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5518,7 +5517,7 @@ GameObject:
   - component: {fileID: 1931671108}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

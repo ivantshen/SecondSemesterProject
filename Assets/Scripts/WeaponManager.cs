@@ -7,11 +7,15 @@ public class WeaponManager : MonoBehaviour
     public string equipDropKey;
     public string switchKey;
     public float switchCooldown;
+    public float pickupRange;
     private bool allowSwitch = true;
     private float switchTimer;
+    private LayerMask weaponLayer;
     private GameObject equipped = null;
     private GameObject stored = null;
-
+    void Start(){
+        weaponLayer = LayerMask.GetMask("Weapon");
+    }
     void Update(){
         if(switchTimer>0){
             switchTimer-=Time.deltaTime;
@@ -22,6 +26,12 @@ public class WeaponManager : MonoBehaviour
             allowSwitch = false;
             switchWeapon();
             switchTimer = switchCooldown;
+        }
+        if(Input.GetKeyDown(equipDropKey)){
+        Collider2D[] weaponsToPickUp = Physics2D.OverlapCircleAll(transform.position,pickupRange,weaponLayer);
+         foreach(Collider2D weapon in weaponsToPickUp){
+             initialPickUp(weapon.gameObject);
+         }    
         }
     }
     private void switchWeapon (){
@@ -53,6 +63,8 @@ public class WeaponManager : MonoBehaviour
             equipWeapon(weapon);
         }else if(!stored){
             storeWeapon(weapon);
+        }else{
+            //put in inventory
         }
     }
     public void equipWeapon (GameObject weapon){
@@ -73,9 +85,8 @@ public class WeaponManager : MonoBehaviour
             weapon.GetComponent<MonoBehaviour>().enabled = TF;
         }
     }
-    private void OnTriggerStay2D(Collider2D other){
-        if(Input.GetKey(equipDropKey)&&other.tag=="Weapon"){
-            initialPickUp(other.gameObject);
-        }
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position,pickupRange);
     }
 }

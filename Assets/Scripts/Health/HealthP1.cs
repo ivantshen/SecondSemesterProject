@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthP1 : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class HealthP1 : MonoBehaviour
 
     private void Awake(){
         currentHealth = startingHealth;
+        Physics2D.IgnoreLayerCollision(0,6,false);
     }
 
     public void TakeDamage(float _damage){
@@ -21,6 +23,8 @@ public class HealthP1 : MonoBehaviour
             StartCoroutine(Invulnerability());
             if(currentHealth <=0){
                 Destroy(gameObject);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Physics2D.IgnoreLayerCollision(0,6,false);
             }
         }
         else{
@@ -34,11 +38,19 @@ public class HealthP1 : MonoBehaviour
         Physics2D.IgnoreLayerCollision(0,6,false);
     }
 
-    public void Update(){
-        if(Input.GetKeyDown(KeyCode.E)){
-            TakeDamage(1);
+    private void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag == "Spike"){
+            
+            if(other.gameObject){
+              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+              
+            }
+             
+             
         }
-    }
+     }
+
+    
 
     
     
