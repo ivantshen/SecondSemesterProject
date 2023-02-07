@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47775a54a44bf254bb2676fdc33a8a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iFrameTime: 0.5
+  iFrameTime: 2
   startingHealth: 100
 --- !u!114 &560554777
 MonoBehaviour:
@@ -5517,7 +5517,7 @@ GameObject:
   - component: {fileID: 1931671108}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Spike
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

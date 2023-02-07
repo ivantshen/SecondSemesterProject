@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class HealthP1 : MonoBehaviour
 {
    
+    private bool allowDmg = true;
     [SerializeField] private float iFrameTime;
 
     public float startingHealth;
@@ -17,7 +18,8 @@ public class HealthP1 : MonoBehaviour
     }
 
     public void TakeDamage(float _damage){
-        
+
+        if(allowDmg){
         if (currentHealth > 0){
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             StartCoroutine(Invulnerability());
@@ -27,15 +29,18 @@ public class HealthP1 : MonoBehaviour
                 Physics2D.IgnoreLayerCollision(0,6,false);
             }
         }
-        else{
-            
         }
+        
+        
     }
 
-    private IEnumerator Invulnerability(){
-        Physics2D.IgnoreLayerCollision(0,6,true);
+   private IEnumerator Invulnerability(){
+        //Physics2D.IgnoreLayerCollision(0,6,true);
+        //yield return new WaitForSeconds(iFrameTime);
+        //Physics2D.IgnoreLayerCollision(0,6,false);
+        allowDmg = false;
         yield return new WaitForSeconds(iFrameTime);
-        Physics2D.IgnoreLayerCollision(0,6,false);
+        allowDmg = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other){
