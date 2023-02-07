@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         }
     }
     }
-    private void OnCollisionEnter2D(Collision2D other){
+    private void OnCollisionStay2D(Collision2D other){
         if(other.gameObject.tag == "Player"){
             if(other.gameObject){
             other.gameObject.GetComponent<HealthP1>().TakeDamage(20);    
