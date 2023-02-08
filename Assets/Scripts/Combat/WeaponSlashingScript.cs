@@ -22,6 +22,7 @@ public class WeaponSlashingScript : MonoBehaviour
     private int numAttacks = 3;
     public float freezeAmt = 0.2f;
     private float comboResetTime = 2f;
+    private ComboManager cm;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,16 +63,16 @@ public class WeaponSlashingScript : MonoBehaviour
         }
     }
     private void slashAttack(int index){
+        if(cm==null){
+            cm = transform.parent.GetComponent<ComboManager>();
+        }
         player.SendMessage("FreezeInputs",freezeAmt);
         GameObject newSlash = Instantiate(slash[index],firePoint.position,player.rotation,null);
         Destroy(newSlash,0.25f);
-        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
-        foreach (Collider2D enemy in enemiesToDmg)
-        {
-        StartCoroutine(delayedHitEffect(0.05f,enemy));
+        
+        StartCoroutine(delayedSlash(0.05f));
         if(slashNum ==2){
-        StartCoroutine(delayedHitEffect(0.25f,enemy));
-        }
+        StartCoroutine(delayedSlash(0.25f));
         }
         if(slashNum<numAttacks-1){
         slashNum++;    
@@ -81,14 +82,20 @@ public class WeaponSlashingScript : MonoBehaviour
         timeBetweenAttacks = slashRate*((-slashNum*0.25f)+1);
         comboResetTime = slashRate*1.2f;
     }
-    IEnumerator delayedHitEffect(float delay, Collider2D enemy){
+    IEnumerator delayedSlash(float delay){
+        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
         yield return new WaitForSeconds(delay);
+        foreach (Collider2D enemy in enemiesToDmg)
+        {
         if(enemy){
         GameObject newVFX = Instantiate(hitEffect,enemy.ClosestPoint(transform.position),enemy.transform.rotation) as GameObject;
         Destroy(newVFX,2);
         enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.transform.position-transform.position).normalized);
-        enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage);    
+        enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage*cm.getComboDamageMultiplier());
+        cm.increaseHitcount(1);
         }
+        }
+        
     }
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
