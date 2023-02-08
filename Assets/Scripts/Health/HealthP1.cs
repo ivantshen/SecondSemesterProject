@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class HealthP1 : MonoBehaviour
 {
    
-    [SerializeField] private float iFrameTime;
+     [SerializeField] private float iFrameTime;
 
     public float startingHealth;
     public float currentHealth {get; private set;}
@@ -49,7 +49,6 @@ public class HealthP1 : MonoBehaviour
              
         }
      }
-
     
 
     
