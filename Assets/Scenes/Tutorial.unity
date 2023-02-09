@@ -357,16 +357,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireKey: f
-  knockbackForce: 1500
+  knockbackForce: 200
   hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
   firePoint: {fileID: 791441066}
-  slashRate: 0.6
   attackRange: 2
-  slashDamage: 10
   slash:
-  - {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
-  - {fileID: 7244730657643320325, guid: cec7bfa78d154fd40adc99be05de793e, type: 3}
   - {fileID: 1621385963438294746, guid: 4ac1ba3290b83974ba4ee04d6645e547, type: 3}
+  slashRate:
+  - 0.25
+  hitsPerSlash: 05000000
+  damagePerSlash: 01000000
+  delayBetweenSlash:
+  - 0.05
+  timeToComboReset: 0.5
   player: {fileID: 560554775}
   freezeAmt: 0.2
 --- !u!4 &43639358
@@ -1071,13 +1074,22 @@ MonoBehaviour:
   knockbackForce: 110
   hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
   firePoint: {fileID: 992207765}
-  slashRate: 0.6
   attackRange: 2
-  slashDamage: 10
   slash:
   - {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
   - {fileID: 7244730657643320325, guid: cec7bfa78d154fd40adc99be05de793e, type: 3}
   - {fileID: 1621385963438294746, guid: 4ac1ba3290b83974ba4ee04d6645e547, type: 3}
+  slashRate:
+  - 0.5
+  - 0.5
+  - 0.4
+  hitsPerSlash: 010000000100000002000000
+  damagePerSlash: 030000000500000004000000
+  delayBetweenSlash:
+  - 0.05
+  - 0.05
+  - 0.05
+  timeToComboReset: 0.75
   player: {fileID: 560554775}
   freezeAmt: 0.2
 --- !u!50 &373895920

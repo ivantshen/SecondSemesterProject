@@ -10,16 +10,18 @@ public class WeaponSlashingScript : MonoBehaviour
     public float knockbackForce;
     public GameObject hitEffect;
     public Transform firePoint;
-    public float slashRate;
     private float timeBetweenAttacks;
     public float attackRange;
-    public int slashDamage;
     private bool resetPosition;
     private LayerMask targetLayer;
     public GameObject[] slash;
+    public float[] slashRate;
+    public int[] hitsPerSlash;
+    public int[] damagePerSlash;
+    public float[] delayBetweenSlash;
+    public float timeToComboReset;
     public Transform player;
     private int slashNum = 0;
-    private int numAttacks = 3;
     public float freezeAmt = 0.2f;
     private float comboResetTime = 2f;
     private ComboManager cm;
@@ -50,7 +52,7 @@ public class WeaponSlashingScript : MonoBehaviour
             }
             */
             if(Input.GetKeyDown(fireKey)){
-                slashAttack(slashNum);
+                slashAttack();
                 /*
                 if(anim){
                   anim.Play("slash", PlayMode.StopAll);  
@@ -62,27 +64,25 @@ public class WeaponSlashingScript : MonoBehaviour
             timeBetweenAttacks-= Time.deltaTime;
         }
     }
-    private void slashAttack(int index){
+    private void slashAttack(){
         if(cm==null){
             cm = transform.parent.GetComponent<ComboManager>();
         }
         player.SendMessage("FreezeInputs",freezeAmt);
-        GameObject newSlash = Instantiate(slash[index],firePoint.position,player.rotation,null);
+        GameObject newSlash = Instantiate(slash[slashNum],firePoint.position,player.rotation,null);
         Destroy(newSlash,0.25f);
-        
-        StartCoroutine(delayedSlash(0.05f));
-        if(slashNum ==2){
-        StartCoroutine(delayedSlash(0.25f));
+        for(int i=0;i<hitsPerSlash[slashNum];i++){
+        StartCoroutine(delayedSlash(delayBetweenSlash[slashNum]*(i+1),damagePerSlash[slashNum]));    
         }
-        if(slashNum<numAttacks-1){
+        if(slashNum<slash.Length-1){
         slashNum++;    
         }else{
         slashNum = 0;
         }
-        timeBetweenAttacks = slashRate*((-slashNum*0.25f)+1);
-        comboResetTime = slashRate*1.2f;
+        timeBetweenAttacks = slashRate[slashNum];
+        comboResetTime = timeToComboReset;
     }
-    IEnumerator delayedSlash(float delay){
+    IEnumerator delayedSlash(float delay,int slashDamage){
         Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
         yield return new WaitForSeconds(delay);
         foreach (Collider2D enemy in enemiesToDmg)
