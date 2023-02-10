@@ -83,8 +83,8 @@ public class WeaponSlashingScript : MonoBehaviour
         comboResetTime = timeToComboReset;
     }
     IEnumerator delayedSlash(float delay,int slashDamage){
-        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
         yield return new WaitForSeconds(delay);
+        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
         foreach (Collider2D enemy in enemiesToDmg)
         {
         if(enemy){
