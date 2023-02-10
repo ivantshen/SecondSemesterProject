@@ -4117,8 +4117,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 40
-  m_LinearDrag: 0
+  m_Mass: 35
+  m_LinearDrag: 10
   m_AngularDrag: 0.007
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -4205,7 +4205,7 @@ MonoBehaviour:
   player: {fileID: 0}
   EnemyTwo: {fileID: 1032570605}
   rb: {fileID: 1032570609}
-  force: 10
+  force: 50
   timeBetweenDash: 2
   colliderList:
   - {fileID: 544748224}
