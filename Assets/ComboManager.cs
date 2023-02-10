@@ -8,17 +8,17 @@ public class ComboManager : MonoBehaviour
     private float comboResetTime;
     public ComboDisplay comboDisplay;
     private float comboDamageMultiplier;
-    private int comboLevel;
-    private int hitCount;
+    private int comboLevel =0;
+    private int hitCount =0;
 
     void Update(){
         if(comboResetTime>0){
             comboResetTime-=Time.deltaTime;
         }else if(hitCount>0){
-            comboLevel = 0;
+            comboLevel = 1;
             hitCount = 0;
             comboDamageMultiplier = 1;
-            comboDisplay.setComboText("");
+            comboDisplay.resetComboText();
         }
     }
     public float getComboDamageMultiplier(){
@@ -27,7 +27,7 @@ public class ComboManager : MonoBehaviour
     public void increaseHitcount(int num){
         comboResetTime = comboTimeLimit;
         hitCount+= num;
-        comboDisplay.setComboText(hitCount.ToString());
+        
         if(hitCount>=125){
             comboLevel = 7; //SSS
             comboDamageMultiplier = 2.5f;
@@ -50,5 +50,6 @@ public class ComboManager : MonoBehaviour
             comboLevel = 1;//D
             comboDamageMultiplier = 1;
         }
+        comboDisplay.setComboText(hitCount.ToString(),comboLevel,comboDamageMultiplier);
     }
 }
