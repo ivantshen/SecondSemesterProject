@@ -35,6 +35,14 @@ public class HealthP1 : MonoBehaviour
         }
     }
 
+    //testing
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.B)){
+        Debug.Log("It works?");
+        XPManager.instance.AddXP(20);
+        }
+    }
+
     private IEnumerator Invulnerability(){
         //Physics2D.IgnoreLayerCollision(0,6,true);
         allowDmg = false;
