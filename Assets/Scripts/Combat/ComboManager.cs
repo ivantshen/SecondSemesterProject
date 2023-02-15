@@ -30,25 +30,25 @@ public class ComboManager : MonoBehaviour
         
         if(hitCount>125){
             comboLevel = 7; //SSS
-            comboDamageMultiplier = 3.375f + (0.025f*((hitCount-125)/2));
+            comboDamageMultiplier = 4.50f;//75f + (0.025f*((hitCount-125)/2));
         }else if(hitCount>75){
             comboLevel = 6; //SS
-            comboDamageMultiplier = 2.25f + (0.0225f*(hitCount-75));
+            comboDamageMultiplier = 3.50f;//f //+ (0.0225f*(hitCount-75));
         }else if(hitCount>50){
             comboLevel = 5; //S
-            comboDamageMultiplier = 1.75f + (0.02f*(hitCount-50));
+            comboDamageMultiplier = 2.50f;//f //+ (0.02f*(hitCount-50));
         }else if(hitCount>30){
             comboLevel = 4; //A
-            comboDamageMultiplier = 1.4f + (0.0175f*(hitCount-30));
+            comboDamageMultiplier = 2.0f;//f //+ (0.0175f*(hitCount-30));
         }else if(hitCount>15){
             comboLevel = 3; //B
-             comboDamageMultiplier = 1.175f + (0.015f*(hitCount-15));
+             comboDamageMultiplier = 1.60f;//575f //+ (0.015f*(hitCount-15));
         }else if(hitCount>5){
             comboLevel = 2;//C
-            comboDamageMultiplier = 1.05f +(0.0125f*(hitCount-5));
+            comboDamageMultiplier = 1.25f;//f //+(0.0125f*(hitCount-5));
         }else{
             comboLevel = 1;//D
-            comboDamageMultiplier = 1 + (0.01f*hitCount);
+            comboDamageMultiplier = 1; //+ (0.01f*hitCount);
         }
         comboDisplay.setComboText(hitCount.ToString(),comboLevel,Mathf.Round(comboDamageMultiplier*100.0f)*0.01f);
     }
