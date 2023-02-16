@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private float speed; // [SerializeField lets you edit in Unity]
     
+    // keys to perform actions
+    public string jumpKey;
+    public string dashKey;
+
     // variables to control whether you can perform actions
     private bool canMove = true;
     private bool isGrounded = true;
@@ -43,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
     private float vertInput;
     
     // ladder climb variables
-    private float vertical;
     private float fallSpeed = 8f;
     private bool onLadder;
     private bool isClimbing;
@@ -75,8 +78,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (isClimbing) {
             rb.gravityScale = 0f;
-            if (vertical > 0f) {
-                rb.velocity = new Vector2(rb.velocity.x, vertical * fallSpeed);
+            if (vertInput > 0f) {
+                rb.velocity = new Vector2(rb.velocity.x, vertInput * fallSpeed);
             } else {
                 rb.velocity = new Vector2(rb.velocity.x, -fallSpeed/2);
             }
@@ -139,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // dash
-        if (Input.GetKeyDown(KeyCode.X) && canDash) {
+        if (Input.GetKeyDown(dashKey) && canDash) {
             canMove = false;
             isGrounded = false;
             isDashing = true;
@@ -174,10 +177,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         
-        // ladder
-        vertical = Input.GetAxis("Vertical");
+        // laddet
 
-        if (onLadder && Mathf.Abs(vertical) > 0f) {
+        if (onLadder && Mathf.Abs(vertInput) > 0f) {
             isClimbing = true;
         }
     }
