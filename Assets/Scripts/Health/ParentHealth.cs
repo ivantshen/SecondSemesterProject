@@ -6,6 +6,7 @@ public class ParentHealth : MonoBehaviour
 {
     public float startingHealth;
     public float currentHealth {get; private set;}
+    public int monAmt;
 
     private void Awake(){
         currentHealth = startingHealth;
@@ -17,6 +18,8 @@ public class ParentHealth : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             if(currentHealth <=0){
                 Destroy(gameObject);
+                
+                XPManager.instance.AddXP(monAmt);
             }
         }
         else{
