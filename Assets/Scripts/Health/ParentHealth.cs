@@ -18,8 +18,9 @@ public class ParentHealth : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             if(currentHealth <=0){
                 Destroy(gameObject);
-                
-                XPManager.instance.AddXP(monAmt);
+                CurrencyManager.keyy.AddXP(monAmt);
+
+                //XPManager.instance.AddXP(monAmt);
             }
         }
         else{
