@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // variables to control whether you can perform actions
     private bool canMove = true;
     private bool isGrounded = true;
-    public bool unlockedDash = false;
+    public bool unlockedDash = true;
     private bool canDash = false;
     private bool isDashing = false;
 
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             canJumpTime -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetButtonDown("Jump")) {
             jumpBufferCounter = jumpBufferTime;
         } else {
             jumpBufferCounter -= Time.deltaTime;
@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;        
         } 
 
-        if (Input.GetKey(KeyCode.Space) && isJumping == true) {
+        if (Input.GetButton("Jump") && isJumping == true) {
             rb.velocity = Vector2.up * jumpForce;
             if (jumpTimeCounter > 0f) {
                 rb.velocity = Vector2.up * jumpForce;
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // if player stops holding down space they aren't jumping anymore
-        if (Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetButtonUp("Jump")) {
             isJumping = false;
             canJumpTime = 0;
             StartCoroutine(gravityChange());
