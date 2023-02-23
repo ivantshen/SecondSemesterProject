@@ -17,8 +17,10 @@ public class InventoryManager : MonoBehaviour
         equipmentSlots = GameObject.FindWithTag("EquipmentSlots").transform.GetComponentsInChildren<GameObject>();
         storedEquipment = new GameObject[equipmentSlots.Length];
         for(int i=0;i<equipmentSlots.Length;i++){
-            for(int k=0;i<inventorySlots.Length;i++){
-                
+            for(int k=0;k<inventorySlots.Length;k++){
+                if (equipmentSlots[i]==inventorySlots[k]){
+                    equipmentSlotIndexes[i] = k;
+                }
             }
         }
     }
