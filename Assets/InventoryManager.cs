@@ -6,10 +6,23 @@ public class InventoryManager : MonoBehaviour
 {
     private GameObject[] storedItems;
     private GameObject[] inventorySlots;
+    private GameObject[] equipmentSlots;
+    private int[] equipmentSlotIndexes;
+    private GameObject[] storedEquipment;
+    private string[] equipmentSlotType = {"Head","Chest","Leg","Weapon","Weapon","Charm"};
     void Start()
     {
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
-       storedItems = new GameObject[GameObject.FindGameObjectsWithTag("InventorySlot").Length];
+        storedItems = new GameObject[inventorySlots.Length];
+        equipmentSlots = GameObject.FindWithTag("EquipmentSlots").transform.GetComponentsInChildren<GameObject>();
+        storedEquipment = new GameObject[equipmentSlots.Length];
+        for(int i=0;i<equipmentSlots.Length;i++){
+            for(int k=0;k<inventorySlots.Length;k++){
+                if (equipmentSlots[i]==inventorySlots[k]){
+                    equipmentSlotIndexes[i] = k;
+                }
+            }
+        }
     }
     public void storeItem(int index, GameObject item, int previousItemIndex){
         if(!storedItems[index]){
