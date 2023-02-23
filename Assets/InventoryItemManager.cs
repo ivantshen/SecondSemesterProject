@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
+    public string type;
     private bool mouseDown = false;
     private GameObject[] inventorySlots;
     private int itemSlotIndex = -1;
@@ -16,9 +17,12 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
         GameObject[] storedItems = inventory.getStoredItems();
         for(int i= 0;i<storedItems.Length;i++){
             if(storedItems[i]==null){
-                inventory.storeItem(i,gameObject,itemSlotIndex);
+                bool pass = inventory.storeItem(i,gameObject,itemSlotIndex);
                 itemSlotIndex = i;
-                return;
+                if(pass){
+                 return;   
+                }
+                
             }
         }
     }
@@ -61,5 +65,8 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
             }
         }
         return closest;
+    }
+    public string GetEquipType(){
+        return type;
     }
 }
