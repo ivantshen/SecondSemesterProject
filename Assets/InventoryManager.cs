@@ -59,6 +59,7 @@ public class InventoryManager : MonoBehaviour
                 storedItems[previousItemIndex].transform.position = inventorySlots[previousItemIndex].transform.position;
                 storedItems[index].transform.position = inventorySlots[index].transform.position;  
             }    
+            return true;
             }else{
             return false;    
             }
@@ -68,7 +69,6 @@ public class InventoryManager : MonoBehaviour
             storedItems[previousItemIndex] = null;    
             }
             storedItems[index] = item;
-            return true;
         }else{
             GameObject tempStored = storedItems[index];
             storedItems[index] = item;
