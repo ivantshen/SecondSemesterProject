@@ -10,7 +10,8 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     private GameObject[] inventorySlots;
     private int itemSlotIndex = -1;
     private InventoryManager inventory;
-
+    public bool inUse = false;
+    public WeaponManager wepManage;
     void Start(){
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventory = GameObject.FindWithTag("InventorySystem").GetComponent<InventoryManager>();
@@ -34,17 +35,18 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     public void OnPointerDown(PointerEventData eventData){
             mouseDown = true;
     }
+    public void setItemIndex(int index){
+        itemSlotIndex = index;
+    }
     public void OnPointerUp(PointerEventData eventData){
             mouseDown = false;
             Transform closestSlot = getClosestSlot().transform;
-            if(Vector3.Distance(closestSlot.position,transform.position)<20){
-                int k = getClosestSlotIndex();
-                if(inventory.storeItem(k,gameObject,itemSlotIndex)){
-                itemSlotIndex = k;    
-                }else{
+            int k = getClosestSlotIndex();
+            if(Vector3.Distance(closestSlot.position,transform.position)<30){
+                inventory.storeItem(k,gameObject,itemSlotIndex);
+            }else{
                     transform.position = inventorySlots[itemSlotIndex].transform.position;
                 }
-            }
     }
     private GameObject getClosestSlot(){
         float minDistance = 20000;
@@ -72,5 +74,9 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     }
     public string GetEquipType(){
         return type;
+    }
+    public void convertToGameObject(){
+        this.transform.SetParent(null, false);
+        wepManage.initialPickUp(this.gameObject);
     }
 }

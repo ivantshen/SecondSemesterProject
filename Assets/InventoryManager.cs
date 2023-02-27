@@ -58,9 +58,13 @@ public class InventoryManager : MonoBehaviour
                 storedItems[previousItemIndex]  = tempStored;
                 storedItems[previousItemIndex].transform.position = inventorySlots[previousItemIndex].transform.position;
                 storedItems[index].transform.position = inventorySlots[index].transform.position;  
-            }    
+                storedItems[previousItemIndex].GetComponent<InventoryItemManager>().setItemIndex(previousItemIndex);
+            }
+            item.GetComponent<InventoryItemManager>().setItemIndex(index);
+            item.GetComponent<InventoryItemManager>().convertToGameObject();
             return true;
             }else{
+                item.transform.position = inventorySlots[previousItemIndex].transform.position;
             return false;    
             }
         }else{
@@ -74,7 +78,9 @@ public class InventoryManager : MonoBehaviour
             storedItems[index] = item;
             storedItems[previousItemIndex]  = tempStored;
             storedItems[previousItemIndex].transform.position = inventorySlots[previousItemIndex].transform.position;
+            storedItems[previousItemIndex].GetComponent<InventoryItemManager>().setItemIndex(previousItemIndex);
         }
+        item.GetComponent<InventoryItemManager>().setItemIndex(index);
         storedItems[index].transform.position = inventorySlots[index].transform.position;  
         return true;  
         }
