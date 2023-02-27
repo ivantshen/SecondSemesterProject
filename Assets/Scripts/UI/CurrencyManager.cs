@@ -25,6 +25,14 @@ public class CurrencyManager : MonoBehaviour
 
     }
 
+    public int getMon(){
+        return currency;
+    }
+
+    public void setMon(int monAmt){
+        currency = monAmt;
+    }
+
 
     public void AddXP(int monAmt){
         currency += monAmt;
