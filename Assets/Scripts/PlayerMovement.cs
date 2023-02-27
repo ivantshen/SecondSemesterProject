@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb; 
+    public Rigidbody2D rb; 
+    // public Transform groundCheck;
+    // public LayerMask groundLayer;
     private TrailRenderer dashTrail;
     
+
+    private float horzInput;
+    private float vertInput;
+    private bool isFacingRight = true;
     [SerializeField] private float speed; // [SerializeField lets you edit in Unity]
     
     // keys to perform actions
-    public string jumpKey;
+    //public string jumpKey;
     public string dashKey;
 
     // variables to control whether you can perform actions
@@ -43,8 +50,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashVelocity = 14f;
     [SerializeField] private float dashTime = 0.5f;
     private Vector2 dashDirection;
-    private float horzInput;
-    private float vertInput;
+    
     
     // ladder climb variables
     private float fallSpeed = 8f;
@@ -59,22 +65,15 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // GetComponent looks for the component in the inspector
         dashTrail = GetComponent<TrailRenderer>();
         dashTrail.emitting = false;
+
         
     }
 
     void FixedUpdate() {
         // Vector2 for 2D movement; Input.GetAxis("Horizontal") gives -1 or 1 
-        if (canMove) {
-            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y); 
-        }
         
-        if (canMove) {
-            if (Input.GetAxis("Horizontal") > 0) {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            } else if (Input.GetAxis("Horizontal") < 0) {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-        }
+        
+    
 
         if (isClimbing) {
             rb.gravityScale = 0f;
@@ -93,6 +92,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       if (canMove) {
+            rb.velocity = new Vector2(horzInput * speed, rb.velocity.y); 
+
+            if (!isFacingRight && horzInput > 0f) {
+                Flip();
+            } else if (isFacingRight && horzInput < 0f) {
+                Flip();
+            }
+        }
+
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if (isDashing) {
             isGrounded = false;
@@ -108,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
             canJumpTime -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump")) {
+        if (playerInput.actions["Jump"].triggered) {
             jumpBufferCounter = jumpBufferTime;
         } else {
             jumpBufferCounter -= Time.deltaTime;
@@ -132,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = false;
             }
         }
+        //playerInput.actions["Jump"].triggered
 
         // if player stops holding down space they aren't jumping anymore
         if (Input.GetButtonUp("Jump")) {
@@ -142,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // dash
-        if (Input.GetKeyDown(dashKey) && canDash) {
+        if (playerInput.actions["Dash"].triggered && canDash) {
             canMove = false;
             isGrounded = false;
             isDashing = true;
@@ -182,6 +192,27 @@ public class PlayerMovement : MonoBehaviour
         if (onLadder && Mathf.Abs(vertInput) > 0f) {
             isClimbing = true;
         }
+    }
+    
+    private void Flip() {
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
+    }
+
+    public void Jump(InputAction.CallbackContext context) {
+        if (context.perform && isGrounded) {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+
+        if (context.canceled && rb.velocity.y > 0f) {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+    }
+
+    public void Move(InputAction.CallbackContext context) {
+        horzInput = context.ReadValue<Vector2>().x;
     }
 
     // method to freeze player position 
