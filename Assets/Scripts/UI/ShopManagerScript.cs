@@ -7,7 +7,7 @@ using TMPro;
 
 public class ShopManagerScript : MonoBehaviour
 {
-    public int[,] shopItems = new int[5,5];
+    public int[,] shopItems = new int[6,5];
     public int coins;
     public TextMeshProUGUI CoinsTXT;
 
@@ -35,12 +35,20 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[3,2] = 0;
         shopItems[3,3] = 0;
         shopItems[3,4] = 0;
+
+        //Amount allowed
+        shopItems[4,1] = 4;
+        shopItems[4,2] = 3;
+        shopItems[4,3] = 2;
+        shopItems[4,4] = 1;
     }
 
     public void Buy(){
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
-
-        if(coins >= shopItems[2, ButtonRef.GetComponent<buttonInfo>().ItemID]){
+        coins = CurrencyManager.keyy.getMon();
+        //shows if u have enough money and the item is still in stock
+        if(coins >= shopItems[2, ButtonRef.GetComponent<buttonInfo>().ItemID] && shopItems[4, ButtonRef.GetComponent<buttonInfo>().ItemID] != 0){
+            
 
             coins -= shopItems[2, ButtonRef.GetComponent<buttonInfo>().ItemID];
 
@@ -50,9 +58,10 @@ public class ShopManagerScript : MonoBehaviour
             CurrencyManager.keyy.setMon(coins);
             ButtonRef.GetComponent<buttonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttonInfo>().ItemID].ToString();
             Debug.Log("Works?");
-                    }
+            shopItems[4, ButtonRef.GetComponent<buttonInfo>().ItemID]--;
+            }
         else{
-            Debug.Log("Doesn't work");
+            Debug.Log("Doesn't work" + coins);
         }
 
 
