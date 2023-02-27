@@ -1196,6 +1196,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1150438687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4771599244920977338, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
+  m_PrefabInstance: {fileID: 2004034743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1241480965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2415,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4771599244993913118, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
   m_PrefabInstance: {fileID: 2004034743}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2140727053
+--- !u!50 &2140727060 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4771599244993913119, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
+  m_PrefabInstance: {fileID: 2004034743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2140727061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140727042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356bf8c4c7dd3654b96bb8e8dae4eec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2140727060}
+  groundCheck: {fileID: 1150438687}
+  groundlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  canMove: 1
+  isGrounded: 1
+  unlockedDash: 1
+  canDash: 1
+  isDashing: 0
+  jumpForce: 16
+  jumpBufferTime: 0.1
+  dashVelocity: 14
+  dashTime: 0.5
+--- !u!114 &2140727062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2422,7 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 389c67d30dd93e146aa726b6f21ccf12, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 43359dbb297e35f4298bdef5db37b43d, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -2437,10 +2473,10 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 3639675de7243014ba7b3473533f27f6, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2140727061}
+        m_TargetAssemblyTypeName: NewPlayerMovement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2449,18 +2485,90 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0341fccd-9baf-4186-b91e-1b49be74714a
-    m_ActionName: Main/Jump[/Keyboard/space]
+    m_ActionId: 32baad86-ae9a-4e11-ac13-cc06575f91f9
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: f1ee2f00-2240-4203-a03e-8d9fd70910de
-    m_ActionName: Main/Dash[/Keyboard/x]
+    m_ActionId: c4533fb9-e076-4b0b-b0cd-bf414ee85798
+    m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 1d63073a-ddca-4796-8129-29f24ab60630
-    m_ActionName: Main/Left[/Keyboard/leftArrow]
+    m_ActionId: fe112fa5-6208-40b8-9964-02bf8c5229a8
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2140727061}
+        m_TargetAssemblyTypeName: NewPlayerMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0456e11e-229c-406b-aebd-f718b15f5eb8
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52e8425f-2af4-4d99-8477-f83015745b8a
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 612e53fd-07bf-4baa-8fc7-3932fd75278f
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aa42cb29-eb79-410c-98a4-e843f3ebff60
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 59be760c-5b62-4fc2-9881-d462cf2eb789
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: da1450af-c1f5-40e1-87b8-5d5615ff847a
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb040f91-199e-450f-b912-dbb297cd7aa2
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ebb0b089-7be6-4b27-8ddd-22f973bc427a
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 19f1092f-2782-4125-aaed-51ce29fb9d30
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2333ecd-5112-48fc-bca8-3067e95f1e30
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f064c8ad-3f55-4a47-b08c-d208983e372a
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2140727061}
+        m_TargetAssemblyTypeName: NewPlayerMovement, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b2844e3-17e1-437d-a647-1741077b91ce
+    m_ActionName: Player/Dash[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Main
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
