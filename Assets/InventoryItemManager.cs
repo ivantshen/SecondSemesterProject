@@ -18,8 +18,8 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
         for(int i= 0;i<storedItems.Length;i++){
             if(storedItems[i]==null){
                 bool pass = inventory.storeItem(i,gameObject,itemSlotIndex);
-                itemSlotIndex = i;
                 if(pass){
+                itemSlotIndex = i;
                  return;   
                 }
                 
@@ -38,8 +38,12 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
             mouseDown = false;
             Transform closestSlot = getClosestSlot().transform;
             if(Vector3.Distance(closestSlot.position,transform.position)<20){
-                inventory.storeItem(getClosestSlotIndex(),gameObject,itemSlotIndex);
-                itemSlotIndex = getClosestSlotIndex();
+                int k = getClosestSlotIndex();
+                if(inventory.storeItem(k,gameObject,itemSlotIndex)){
+                itemSlotIndex = k;    
+                }else{
+                    transform.position = inventorySlots[itemSlotIndex].transform.position;
+                }
             }
     }
     private GameObject getClosestSlot(){
