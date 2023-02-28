@@ -53,6 +53,21 @@ public class NewPlayerMovement : MonoBehaviour
         dashTrail.emitting = false;
     }
 
+    // fixed update
+    void FixedUpdate() {
+        if (isClimbing) {
+            rb.gravityScale = 0f;
+            if (vertInput > 0f) {
+                rb.velocity = new Vector2(rb.velocity.x, vertInput * fallSpeed);
+            } else {
+                rb.velocity = new Vector2(rb.velocity.x, -fallSpeed/2);
+            }
+            
+        } else {
+            rb.gravityScale = playerGravity;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -86,6 +101,11 @@ public class NewPlayerMovement : MonoBehaviour
             rb.gravityScale = 0;
             rb.velocity = dashDirection * dashVelocity;
             return;
+        }
+
+        // ladder
+        if (onLadder && Mathf.Abs(vertInput) > 0f) {
+            isClimbing = true;
         }
 
     }
@@ -153,6 +173,24 @@ public class NewPlayerMovement : MonoBehaviour
         }
 
         
+    }
+
+    public void FreezeInputs(float freezeTime) {
+        StartCoroutine(freezeMyInputs(freezeTime));
+    }
+
+    // ladder functions
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Ladder")) {
+            onLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Ladder")) {
+            onLadder = false;
+            isClimbing = false;
+        }
     }
 
     // IEnumerators
