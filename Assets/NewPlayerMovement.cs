@@ -13,7 +13,7 @@ public class NewPlayerMovement : MonoBehaviour
     private float horzInput;
     private float vertInput;
     private float speed = 8f;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     // variables to control whether you can perform actions
     [SerializeField] private bool canMove = true;
@@ -65,6 +65,13 @@ public class NewPlayerMovement : MonoBehaviour
             
         } else {
             rb.gravityScale = playerGravity;
+        }
+        
+        // flipppp
+        if (Input.GetAxis("Horizontal") > 0) {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        } else if (Input.GetAxis("Horizontal") < 0) {
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
 
@@ -143,7 +150,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context) {
         if (context.performed && canDash) {
-            
+            rb.gravityScale = 0;
             canMove = false;
             canDash = false;
             isGrounded = false;
@@ -163,10 +170,15 @@ public class NewPlayerMovement : MonoBehaviour
             }
             
             dashDirection = new Vector2(horzInput, vertInput).normalized;
-            Debug.Log("dashed");
+            Debug.Log(horzInput + vertInput);
             
             if(dashDirection == Vector2.zero) {
-                dashDirection = transform.right;
+                if (isFacingRight) {
+                    dashDirection = transform.right;
+                } else {
+                    dashDirection = -transform.right;
+                }
+                
             }
 
             StartCoroutine(stopDash());
