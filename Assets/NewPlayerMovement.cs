@@ -26,7 +26,7 @@ public class NewPlayerMovement : MonoBehaviour
     private float playerGravity = 7.0f;
 
     // jump variables
-    [SerializeField] private float jumpForce = 30f;
+    [SerializeField] private float jumpForce = 20f;
     private float jumpTimeCounter;
     private float jumpTime;
     private bool isJumping;
@@ -36,8 +36,8 @@ public class NewPlayerMovement : MonoBehaviour
     private float jumpBufferCounter;
 
     // dash variables
-    [SerializeField] private float dashVelocity = 14f;
-    [SerializeField] private float dashTime = 0.5f;
+    [SerializeField] private float dashVelocity = 20f;
+    [SerializeField] private float dashTime = 0.25f;
     private Vector2 dashDirection;
 
     // ladder climb variables
@@ -56,7 +56,10 @@ public class NewPlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(horzInput * speed, rb.velocity.y);
+        if (canMove) {
+            rb.velocity = new Vector2(horzInput * speed, rb.velocity.y);
+        }
+        
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
 
         // flip the player direction
@@ -78,6 +81,8 @@ public class NewPlayerMovement : MonoBehaviour
 
         // dash
         if (isDashing) {
+            canDash = false;
+            isGrounded = false;
             rb.gravityScale = 0;
             rb.velocity = dashDirection * dashVelocity;
             return;
@@ -118,11 +123,12 @@ public class NewPlayerMovement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context) {
         if (context.performed && canDash) {
-            Debug.Log("dashed");
+            
             canMove = false;
+            canDash = false;
             isGrounded = false;
             isDashing = true;
-            canDash = false;
+            
             dashTrail.emitting = true;
  
             if (horzInput > 0) {
@@ -137,6 +143,7 @@ public class NewPlayerMovement : MonoBehaviour
             }
             
             dashDirection = new Vector2(horzInput, vertInput).normalized;
+            Debug.Log("dashed");
             
             if(dashDirection == Vector2.zero) {
                 dashDirection = transform.right;
