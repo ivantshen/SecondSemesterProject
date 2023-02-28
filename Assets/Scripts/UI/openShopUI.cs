@@ -29,10 +29,10 @@ public class openShopUI : MonoBehaviour
     }
 
 
-    //void Update()
+   // void Update()
    // {
         //if(Input.GetKeyDown("g")){
-         //   openAndClose();
+       //    openAndClose();
       //  }
  //   }
 }

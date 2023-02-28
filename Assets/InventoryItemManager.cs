@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
     public string type;
+    public GameObject attachedObject;
     private bool mouseDown = false;
     private GameObject[] inventorySlots;
     private int itemSlotIndex = -1;
     private InventoryManager inventory;
     public bool inUse = false;
     public WeaponManager wepManage;
+    private GameObject instantiatedObject;
     void Start(){
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventory = GameObject.FindWithTag("InventorySystem").GetComponent<InventoryManager>();
@@ -43,6 +45,11 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
             Transform closestSlot = getClosestSlot().transform;
             int k = getClosestSlotIndex();
             if(Vector3.Distance(closestSlot.position,transform.position)<30){
+                if(inUse){
+                    inUse = false;
+                    Destroy(instantiatedObject);
+                    instantiatedObject = null;
+                }
                 inventory.storeItem(k,gameObject,itemSlotIndex);
             }else{
                     transform.position = inventorySlots[itemSlotIndex].transform.position;
@@ -76,7 +83,12 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
         return type;
     }
     public void convertToGameObject(){
-        this.transform.SetParent(null, false);
-        wepManage.initialPickUp(this.gameObject);
+        if(!inUse){
+        instantiatedObject = Instantiate(attachedObject,transform.position,Quaternion.identity,null);
+        if(type =="Weapon"){
+         wepManage.initialPickUp(instantiatedObject);      
+        }
+        inUse = true; 
+        }
     }
 }
