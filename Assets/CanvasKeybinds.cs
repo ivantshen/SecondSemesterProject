@@ -14,4 +14,7 @@ public class CanvasKeybinds : MonoBehaviour
             inventoryClosed = !inventoryClosed;
         }
     }
+    public GameObject getInventoryGameObject(){
+        return inventory;
+    }
 }

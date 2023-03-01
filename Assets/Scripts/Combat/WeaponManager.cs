@@ -13,8 +13,11 @@ public class WeaponManager : MonoBehaviour
     private LayerMask weaponLayer;
     private GameObject equipped = null;
     private GameObject stored = null;
+    private GameObject inventory;
+    public GameObject inventoryItemTemplate;
     void Start(){
         weaponLayer = LayerMask.GetMask("Weapon");
+        inventory = GameObject.FindWithTag("Canvas").GetComponent<CanvasKeybinds>().getInventoryGameObject();
     }
     void Update(){
         if(switchTimer>0){
@@ -30,7 +33,7 @@ public class WeaponManager : MonoBehaviour
         if(Input.GetKeyDown(equipDropKey)){
         Collider2D[] weaponsToPickUp = Physics2D.OverlapCircleAll(transform.position,pickupRange,weaponLayer);
          foreach(Collider2D weapon in weaponsToPickUp){
-             initialPickUp(weapon.gameObject);
+             putInInventory(weapon.gameObject);
          }    
         }
     }
@@ -53,6 +56,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
     public void initialPickUp(GameObject weapon){
+        if(!equipped||!stored){
         if(weapon.GetComponent<Rigidbody2D>()){
         Destroy(weapon.GetComponent<Rigidbody2D>());    
         }
@@ -63,9 +67,18 @@ public class WeaponManager : MonoBehaviour
             equipWeapon(weapon);
         }else if(!stored){
             storeWeapon(weapon);
-        }else{
-            //put in inventory
+        }    
         }
+    }
+    public void putInInventory(GameObject weapon){
+        if(!inventory.GetComponent<InventoryManager>().getFullStatus()){
+            GameObject inventoryItem = Instantiate(inventoryItemTemplate,transform.position,Quaternion.identity,inventory.transform);
+            InventoryItemManager itemManager =inventoryItem.GetComponent<InventoryItemManager>();
+            itemManager.setType("Weapon");
+            itemManager.setAttachedObject(weapon);
+            itemManager.randomizeColor();
+            weapon.SetActive(false);  
+            }
     }
     public void equipWeapon (GameObject weapon){
         equipped = weapon;

@@ -12,6 +12,7 @@ TagManager:
   - InventorySystem
   - EquipmentSlots
   - Event
+  - Canvas
   layers:
   - Default
   - TransparentFX

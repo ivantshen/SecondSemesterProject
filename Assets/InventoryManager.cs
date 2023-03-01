@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     private GameObject[] equipmentSlots;
     private int[] equipmentSlotIndexes;
     private GameObject[] storedEquipment;
+    private bool full = false;
     private string[] equipmentSlotType = {"Head","Chest","Leg","Weapon","Weapon","Charm"};
     void Start()
     {
@@ -31,9 +32,13 @@ public class InventoryManager : MonoBehaviour
     }
     public bool storeItem(int index, GameObject item, int previousItemIndex){
         bool accessingEquipment = false;
+        bool movingFromEquipment = false;
         for(int i=0;i<equipmentSlotIndexes.Length;i++){
             if(index == equipmentSlotIndexes[i]){
                 accessingEquipment = true;
+            }
+            if(previousItemIndex == equipmentSlotIndexes[i]){
+                movingFromEquipment = true;
             }
         }
         if(accessingEquipment){
@@ -59,16 +64,46 @@ public class InventoryManager : MonoBehaviour
                 storedItems[previousItemIndex].transform.position = inventorySlots[previousItemIndex].transform.position;
                 storedItems[index].transform.position = inventorySlots[index].transform.position;  
                 storedItems[previousItemIndex].GetComponent<InventoryItemManager>().setItemIndex(previousItemIndex);
+                if(movingFromEquipment){
+                 StartCoroutine(storedItems[previousItemIndex].GetComponent<InventoryItemManager>().convertToGameObject());   
+                }
             }
             item.GetComponent<InventoryItemManager>().setItemIndex(index);
-            item.GetComponent<InventoryItemManager>().convertToGameObject();
+            StartCoroutine(item.GetComponent<InventoryItemManager>().convertToGameObject());
+            checkIfFull();
             return true;
             }else{
                 item.transform.position = inventorySlots[previousItemIndex].transform.position;
             return false;    
             }
         }else{
-        if(!storedItems[index]){
+            if(movingFromEquipment&&storedItems[index]){
+                bool passCheck = false;
+                for(int i=0;i<equipmentSlots.Length;i++){
+                if(equipmentSlots[i]==inventorySlots[previousItemIndex]){
+                    if(equipmentSlotType[i]==storedItems[index].GetComponent<InventoryItemManager>().GetEquipType()){
+                        passCheck = true;
+                    }
+                }
+            }
+            if(passCheck){
+            GameObject tempStored = storedItems[index];
+            storedItems[index] = item;
+            storedItems[previousItemIndex]  = tempStored;
+            storedItems[previousItemIndex].transform.position = inventorySlots[previousItemIndex].transform.position;
+            storedItems[previousItemIndex].GetComponent<InventoryItemManager>().setItemIndex(previousItemIndex);
+            StartCoroutine(storedItems[previousItemIndex].GetComponent<InventoryItemManager>().convertToGameObject());
+            item.GetComponent<InventoryItemManager>().setItemIndex(index);
+        storedItems[index].transform.position = inventorySlots[index].transform.position;  
+        checkIfFull();
+                return true;
+            }else{
+                StartCoroutine(item.GetComponent<InventoryItemManager>().convertToGameObject());
+                item.transform.position = inventorySlots[previousItemIndex].transform.position;
+                return false;
+            }
+            }else {
+            if(!storedItems[index]){
             if(previousItemIndex>-1){
             storedItems[previousItemIndex] = null;    
             }
@@ -82,9 +117,22 @@ public class InventoryManager : MonoBehaviour
         }
         item.GetComponent<InventoryItemManager>().setItemIndex(index);
         storedItems[index].transform.position = inventorySlots[index].transform.position;  
-        return true;  
+        checkIfFull();
+        return true;      
+            }
         }
-
+    }
+    private void checkIfFull(){
+    bool check = true;
+        for(int i=0;i<storedItems.Length;i++){
+            if(!storedItems[i]){
+                check = false;
+            }
+        }
+        full = check;
+    }
+    public bool getFullStatus(){
+        return full;
     }
     public GameObject[] getStoredItems(){
         return storedItems;

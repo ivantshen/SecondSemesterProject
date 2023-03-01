@@ -34,6 +34,7 @@ public class WeaponSlashingScript : MonoBehaviour
             state.speed = 1.75F;
         }
         */
+        player = GameObject.FindWithTag("Player").transform;
         targetLayer = LayerMask.GetMask("Enemies");
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
@@ -11,12 +12,14 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     private GameObject[] inventorySlots;
     private int itemSlotIndex = -1;
     private InventoryManager inventory;
-    public bool inUse = false;
-    public WeaponManager wepManage;
+    private bool inUse = false;
+    private WeaponManager wepManage;
     private GameObject instantiatedObject;
     void Start(){
+        this.gameObject.GetComponent<Image>().color = Random.ColorHSV();
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventory = GameObject.FindWithTag("InventorySystem").GetComponent<InventoryManager>();
+        wepManage = GameObject.FindWithTag("Player").GetComponent<WeaponManager>();
         GameObject[] storedItems = inventory.getStoredItems();
         for(int i= 0;i<storedItems.Length;i++){
             if(storedItems[i]==null){
@@ -34,11 +37,24 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
             transform.position = Input.mousePosition;
         }
     }
+    public void randomizeColor(){
+        this.gameObject.GetComponent<Image>().color = Random.ColorHSV();
+    }
     public void OnPointerDown(PointerEventData eventData){
             mouseDown = true;
     }
     public void setItemIndex(int index){
         itemSlotIndex = index;
+        if(inUse){
+        inUse = false;
+        Destroy(instantiatedObject);
+        }
+    }
+    public void setType(string type){
+        this.type = type;
+    }
+    public void setAttachedObject(GameObject attachedObject){
+        this.attachedObject = attachedObject;
     }
     public void OnPointerUp(PointerEventData eventData){
             mouseDown = false;
@@ -82,9 +98,16 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     public string GetEquipType(){
         return type;
     }
-    public void convertToGameObject(){
+    public GameObject getGameObject(){
+        return attachedObject;
+    }
+    public IEnumerator convertToGameObject(){
+        yield return new WaitForSeconds(0.05f);
         if(!inUse){
         instantiatedObject = Instantiate(attachedObject,transform.position,Quaternion.identity,null);
+        if(!instantiatedObject.activeSelf){
+            instantiatedObject.gameObject.SetActive(true);
+        }
         if(type =="Weapon"){
          wepManage.initialPickUp(instantiatedObject);      
         }
