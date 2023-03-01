@@ -27,12 +27,11 @@ public class NewPlayerMovement : MonoBehaviour
 
     // jump variables
     [SerializeField] private float jumpForce = 20f;
-    private float jumpTimeCounter;
-    private float jumpTime;
-    private bool isJumping;
-    private float canJumpTime;
+    public bool jumpPressed;
+    private float coyoteTime = 0.15f;
+    private float coyoteTimeCounter;
 
-    public float jumpBufferTime = 0.1f;
+    public float jumpBufferTime = 1f;
     private float jumpBufferCounter;
 
     // dash variables
@@ -87,13 +86,14 @@ public class NewPlayerMovement : MonoBehaviour
 
         // is grounded checks
         if (isGrounded) {
-            canJumpTime = 0.15f;
+            coyoteTimeCounter = coyoteTime;
             if (unlockedDash) {
                 canDash = true;
             }
         } else {
-            canJumpTime -= Time.deltaTime;
+            coyoteTimeCounter -= Time.deltaTime;
         }
+
 
         // dash
         if (isDashing) {
@@ -111,21 +111,25 @@ public class NewPlayerMovement : MonoBehaviour
 
     }
 
-    public bool isGroundedCheck() {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
-        
-    }
-
-
     // jump function
     public void Jump(InputAction.CallbackContext context) {
-        if (context.performed && isGroundedCheck()) {
+        // if (context.performed) {
+        //     jumpBufferCounter = jumpBufferTime;
+        // } else {
+        //     jumpBufferCounter -= Time.deltaTime;
+        // }
+
+        if (context.performed && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpBufferCounter = 0f;
         }
 
         if (context.canceled && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            coyoteTimeCounter = 0f;
         }
+
+        
     }
 
 
