@@ -84,12 +84,6 @@ public class NewPlayerMovement : MonoBehaviour
         
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
 
-        // flip the player direction
-        if (!isFacingRight && horzInput > 0f) {
-            Flip();
-        } else if (isFacingRight && horzInput < 0f) {
-            Flip();
-        }
 
         // is grounded checks
         if (isGrounded) {
@@ -120,13 +114,6 @@ public class NewPlayerMovement : MonoBehaviour
     public bool isGroundedCheck() {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
         
-    }
-
-    private void Flip() {
-        isFacingRight = !isFacingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1f;
-        transform.localScale = localScale;
     }
 
 
