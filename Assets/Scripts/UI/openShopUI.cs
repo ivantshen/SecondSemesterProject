@@ -19,20 +19,20 @@ public class openShopUI : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other){
+    //private void OnTriggerStay2D(Collider2D other){
         
-        if(other.tag == "Player" && Input.GetKeyDown("g")){
-            openAndClose();
-            Debug.Log("works");
+        //if(other.tag == "Player" && Input.GetKeyDown("g")){
+          //  openAndClose();
+          //  Debug.Log("works");
+        //}
+        
+   // }
+
+
+    void Update()
+    {
+        if(Input.GetKeyDown("g")){
+           openAndClose();
         }
-        
     }
-
-
-   // void Update()
-   // {
-        //if(Input.GetKeyDown("g")){
-       //    openAndClose();
-      //  }
- //   }
 }
