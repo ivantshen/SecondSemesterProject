@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     
     public Transform EnemyTwo;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public float force;
     public float timeBetweenDash;
     private float distance;
@@ -15,7 +15,10 @@ public class Enemy2 : MonoBehaviour
     private float dashCooldown;
 
     public Collider2D[] colliderList; 
-
+    void Start(){
+        player = GameObject.FindWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+    }
     
 
     void Update(){
@@ -25,21 +28,22 @@ public class Enemy2 : MonoBehaviour
         else{
             canDash = true;
         }
-    }
-    
-    private void OnTriggerStay2D(Collider2D other){
-        
-        if(other.tag == "Player" && canDash){
-            //EnemyTwo.position = new Vector2(-5f, 0);
-            
-            rb.velocity = (other.transform.position - transform.position).normalized * force;
+        if(Vector2.Distance(player.transform.position,transform.position)<5&&canDash){
+            rb.velocity = (player.transform.position - transform.position).normalized * force;
             rb.velocity = new Vector2(rb.velocity.x,0f);
             canDash = false;
             dashCooldown = timeBetweenDash;
         }
-        
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag == "Player"){
+             if(other.gameObject){
+             other.gameObject.GetComponent<HealthP1>().TakeDamage(10);     
+             }
+             
+        }
+     }
 
    
 }

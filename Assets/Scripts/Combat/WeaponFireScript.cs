@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponFireScript : MonoBehaviour
 {
-    public string fireKey;
-    public float attackRate = 0.5f;
+    public float attackRate = 0.2f;
     public GameObject attack;
     public Transform firePoint;
     private bool canAttack = true;
@@ -19,10 +19,12 @@ public class WeaponFireScript : MonoBehaviour
         }else{
             canAttack = true;
         }
-        if(canAttack&&Input.GetKeyDown(fireKey)){
+    }
+    public void fire(InputAction.CallbackContext context){
+        if(canAttack){
             Instantiate(attack,firePoint.position,firePoint.rotation);
             attackCooldown+= attackRate;
-            canAttack = false;
+            canAttack = false;   
         }
     }
 }

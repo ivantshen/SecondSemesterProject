@@ -94,9 +94,13 @@ public class WeaponManager : MonoBehaviour
         
     }
     private static void activateScripts(GameObject weapon, bool TF){
-        if(weapon.GetComponent<MonoBehaviour>()!=null){
-            weapon.GetComponent<MonoBehaviour>().enabled = TF;
+        MonoBehaviour[] scripts = weapon.GetComponentsInChildren<MonoBehaviour>();
+        foreach(MonoBehaviour s in scripts){
+        if(s!=null){
+            s.enabled = TF;
+        }    
         }
+        
     }
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.blue;
