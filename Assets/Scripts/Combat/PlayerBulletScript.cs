@@ -9,6 +9,7 @@ public class PlayerBulletScript : MonoBehaviour
     public float bulletDamage = 10f;
     public float bulletDeathTime = 5f;
     public bool multiTarget = false;
+    public bool wallClipping = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +29,13 @@ public class PlayerBulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.layer==6){
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);
-        }
-        if(other.gameObject.tag!="Player"&&!multiTarget){
-            Destroy(gameObject);  
-        }else if(multiTarget){
-            bulletDeathTime/=1.0f;
+            if(multiTarget){
+            bulletDeathTime/=1.25f;
+            }else{
+            Destroy(gameObject); 
+            }
+        }else if(other.gameObject.tag!="Player"&&!wallClipping&&other.gameObject.layer!=7){
+             Destroy(gameObject);
         }
     }
 }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.InputSystem;
 
 public class WeaponSlashingScript : MonoBehaviour
 {
     //public Animation anim;
-    public string fireKey;
+    //public string fireKey;
     public float knockbackForce;
     public GameObject hitEffect;
     public Transform firePoint;
@@ -46,26 +47,12 @@ public class WeaponSlashingScript : MonoBehaviour
         }else{
             slashNum = 0;
         }
-        if(timeBetweenAttacks<=0){
-            /*
-            if(anim){
-              anim.Play("idle",PlayMode.StopAll);  
-            }
-            */
-            if(Input.GetKeyDown(fireKey)){
-                slashAttack();
-                /*
-                if(anim){
-                  anim.Play("slash", PlayMode.StopAll);  
-                }
-                */
-                
-            }
-        }else{
-            timeBetweenAttacks-= Time.deltaTime;
+        if(timeBetweenAttacks>0){
+           timeBetweenAttacks-= Time.deltaTime;
         }
     }
-    private void slashAttack(){
+    public void slashAttack(InputAction.CallbackContext context){
+        if(timeBetweenAttacks<=0){
         if(cm==null){
             cm = transform.parent.GetComponent<ComboManager>();
         }
@@ -81,7 +68,8 @@ public class WeaponSlashingScript : MonoBehaviour
         slashNum = 0;
         }
         timeBetweenAttacks = slashRate[slashNum];
-        comboResetTime = timeToComboReset;
+        comboResetTime = timeToComboReset;    
+        }
     }
     IEnumerator delayedSlash(float delay,int slashDamage){
         yield return new WaitForSeconds(delay);
