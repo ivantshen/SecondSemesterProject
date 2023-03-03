@@ -258,7 +258,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -454,6 +454,7 @@ MonoBehaviour:
   switchKey: t
   switchCooldown: 3
   pickupRange: 2
+  inventoryItemTemplate: {fileID: 0}
 --- !u!114 &4771599244993913110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,14 +500,17 @@ MonoBehaviour:
   groundlayer:
     serializedVersion: 2
     m_Bits: 256
+  isFacingRight: 1
   canMove: 1
   isGrounded: 1
   unlockedDash: 1
   canDash: 1
   isDashing: 0
+  inAir: 0
   jumpForce: 20
+  jumpPressed: 0
   jumpBufferTime: 0.1
-  dashVelocity: 14
+  dashVelocity: 20
   dashTime: 0.25
 --- !u!114 &2140727062
 MonoBehaviour:

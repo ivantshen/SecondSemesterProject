@@ -12,7 +12,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     private float horzInput;
     private float vertInput;
-    private float speed = 8f;
+    private float speed = 10f;
     public bool isFacingRight = true;
 
     // variables to control whether you can perform actions
@@ -21,6 +21,7 @@ public class NewPlayerMovement : MonoBehaviour
     [SerializeField] public bool unlockedDash = true;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing = false;
+    [SerializeField] private bool inAir = false;
 
     // general variables
     private float playerGravity = 7.0f;
@@ -67,11 +68,24 @@ public class NewPlayerMovement : MonoBehaviour
         }
         
         // flipppp
-        if (Input.GetAxis("Horizontal") > 0) {
+        if (horzInput > 0) {
             transform.eulerAngles = new Vector3(0, 0, 0);
-        } else if (Input.GetAxis("Horizontal") < 0) {
+            isFacingRight = true;
+        } else if (horzInput < 0) {
             transform.eulerAngles = new Vector3(0, 180, 0);
+            isFacingRight = false;
         }
+
+        // halve gravity but it works for like 1 frame for some reason lol 
+        if (inAir) {
+            if (rb.velocity.y <= 0f) {
+                StartCoroutine(gravityChange());
+                inAir = false;
+            }
+            
+        }
+        
+        
     }
 
     // Update is called once per frame
@@ -104,10 +118,14 @@ public class NewPlayerMovement : MonoBehaviour
             return;
         }
 
+        
+
         // ladder
         if (onLadder && Mathf.Abs(vertInput) > 0f) {
             isClimbing = true;
         }
+
+        
 
     }
 
@@ -122,12 +140,17 @@ public class NewPlayerMovement : MonoBehaviour
         if (context.performed && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpBufferCounter = 0f;
+            inAir = true;
         }
 
         if (context.canceled && rb.velocity.y > 0f) {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.8f);
             coyoteTimeCounter = 0f;
         }
+        
+        
+
+
 
         
     }
@@ -161,14 +184,9 @@ public class NewPlayerMovement : MonoBehaviour
             }
             
             dashDirection = new Vector2(horzInput, vertInput).normalized;
-            Debug.Log(horzInput + vertInput);
             
             if(dashDirection == Vector2.zero) {
-                if (isFacingRight) {
-                    dashDirection = transform.right;
-                } else {
-                    dashDirection = -transform.right;
-                }
+                dashDirection = transform.right;
                 
             }
 
@@ -199,8 +217,8 @@ public class NewPlayerMovement : MonoBehaviour
     // IEnumerators
 
     IEnumerator gravityChange() {
-        rb.gravityScale = playerGravity / 2;
-        yield return new WaitForSeconds(0.5f);
+        rb.gravityScale = playerGravity / 2f;
+        yield return new WaitForSeconds(20f);
         rb.gravityScale = playerGravity;
     } 
 
