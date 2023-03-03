@@ -10,6 +10,11 @@ public class NewPlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundlayer;
 
+    // i love input system
+    private PlayerInput playerInput;
+    private Vector2 inputMovement;
+
+
     private float horzInput;
     private float vertInput;
     private float speed = 10f;
@@ -51,6 +56,8 @@ public class NewPlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // GetComponent looks for the component in the inspector
         dashTrail = GetComponent<TrailRenderer>();
         dashTrail.emitting = false;
+
+        playerInput = GetComponent<PlayerInput>();
     }
 
     // fixed update
@@ -91,6 +98,8 @@ public class NewPlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var finalMovement = inputMovement;
+
         if (canMove) {
             rb.velocity = new Vector2(horzInput * speed, rb.velocity.y);
         }
@@ -107,6 +116,7 @@ public class NewPlayerMovement : MonoBehaviour
         } else {
             coyoteTimeCounter -= Time.deltaTime;
         }
+
 
 
         // dash
@@ -137,7 +147,7 @@ public class NewPlayerMovement : MonoBehaviour
         //     jumpBufferCounter -= Time.deltaTime;
         // }
 
-        if (context.performed && coyoteTimeCounter > 0f) {
+        if (context.performed > 0f && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpBufferCounter = 0f;
             inAir = true;
