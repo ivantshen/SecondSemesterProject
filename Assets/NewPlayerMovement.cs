@@ -11,8 +11,10 @@ public class NewPlayerMovement : MonoBehaviour
     public LayerMask groundlayer;
 
     // i love input system
-    private PlayerInput playerInput;
-    // private Vector2 inputMovement;
+    [SerializeField] private PlayerInput playerInput = null;
+    [SerializeField] private CharacterController controller = null;
+    private Vector3 inputMovement;
+    public PlayerInput PlayerInput => playerInput;
 
 
     private float horzInput;
@@ -98,7 +100,9 @@ public class NewPlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // var finalMovement = inputMovement;
+        // finalMovement *= speed * Time.deltaTime;
+        // controller.Move(finalMovement);
 
         if (canMove) {
             rb.velocity = new Vector2(horzInput * speed, rb.velocity.y);
@@ -170,6 +174,7 @@ public class NewPlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context) {
         horzInput = context.ReadValue<Vector2>().x;
         vertInput = context.ReadValue<Vector2>().y;
+        inputMovement = new Vector2(horzInput, 0);
     }
 
     public void Dash(InputAction.CallbackContext context) {
