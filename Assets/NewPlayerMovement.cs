@@ -12,7 +12,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     // i love input system
     private PlayerInput playerInput;
-    private Vector2 inputMovement;
+    // private Vector2 inputMovement;
 
 
     private float horzInput;
@@ -57,7 +57,7 @@ public class NewPlayerMovement : MonoBehaviour
         dashTrail = GetComponent<TrailRenderer>();
         dashTrail.emitting = false;
 
-        playerInput = GetComponent<PlayerInput>();
+        // playerInput = GetComponent<PlayerInput>();
     }
 
     // fixed update
@@ -98,7 +98,7 @@ public class NewPlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var finalMovement = inputMovement;
+        
 
         if (canMove) {
             rb.velocity = new Vector2(horzInput * speed, rb.velocity.y);
@@ -147,7 +147,7 @@ public class NewPlayerMovement : MonoBehaviour
         //     jumpBufferCounter -= Time.deltaTime;
         // }
 
-        if (context.performed > 0f && coyoteTimeCounter > 0f) {
+        if (context.performed && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpBufferCounter = 0f;
             inAir = true;
