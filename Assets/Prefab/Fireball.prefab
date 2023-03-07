@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 128529585990153014}
   - component: {fileID: 8105774901608533788}
   - component: {fileID: 7146337819597402290}
-  - component: {fileID: 1665580967726297888}
-  - component: {fileID: 1857608139466853825}
+  - component: {fileID: 3696000330298904359}
+  - component: {fileID: 8114556113092931520}
   m_Layer: 8
   m_Name: Fireball
   m_TagString: Untagged
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8113208, g: 0.3511429, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -140,10 +140,10 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!2083052967 &1665580967726297888
+--- !u!2083052967 &3696000330298904359
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,13 +159,22 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 2.5
+        m_Name: FlameSize
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: -10, y: -0.1, z: 0}
+        m_Name: FlameVelocity2
+        m_Overridden: 1
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 5.2668996, y: 0.5515078, z: 0, w: 1}
+        m_Name: Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -180,7 +189,7 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &1857608139466853825
+--- !u!73398921 &8114556113092931520
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
