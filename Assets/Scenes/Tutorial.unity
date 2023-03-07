@@ -2038,6 +2038,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f064c8ad-3f55-4a47-b08c-d208983e372a
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f445c08-d886-4307-b17b-faf1cab8cd8f
+    m_ActionName: Menu/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -9234,6 +9238,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2140727061, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
+      propertyPath: jumpForce
+      value: 22.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4771599244993913104, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
       propertyPath: dashKey
       value: x

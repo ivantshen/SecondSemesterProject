@@ -24,7 +24,7 @@ public class BulletExplosion : MonoBehaviour
         foreach (Collider2D enemy in enemiesToDmg)
         {
         if(enemy){
-        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(transform.position)).normalized);
+        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(transform.position)-(Vector2)transform.position).normalized);
         enemy.GetComponent<EnemyHealth>().TakeDamage(explosionDamage*cm.getComboDamageMultiplier());
         cm.increaseHitcount(1);
         }
