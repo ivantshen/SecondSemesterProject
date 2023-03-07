@@ -6,6 +6,8 @@ public class Enemy3 : MonoBehaviour
 {
      public int TeleportTime;
      private bool test = true;
+     float disX = 0;
+    float disY = 0;
 
     private IEnumerator Move(){
         yield return new WaitForSeconds(TeleportTime);
@@ -14,11 +16,18 @@ public class Enemy3 : MonoBehaviour
     }
 
     void Teleport(){
-    float disX = Random.Range(-10f,10f);
-    float disY = Random.Range(-5f,5f);
+        RandomNum();
+        //while(disX >=9 || disX <=-9 || disY >=-3 || disX <= -7){
+           // RandomNum();
+       // }
     //if(Input.GetKeyDown(KeyCode.U)){
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x + disX, -30, 10),Mathf.Clamp(transform.position.y + disY, 0, 5));
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x + disX, -9, 9),Mathf.Clamp(transform.position.y + disY, -1, 4));
      //}
+    }
+
+    void RandomNum(){
+        float disX = Random.Range(-9f,9f);
+        float disY = Random.Range(-7f,-3f);
     }
 
     // Update is called once per frame
