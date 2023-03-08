@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponManager : MonoBehaviour
 {
-    public string equipDropKey;
-    public string switchKey;
     public float switchCooldown;
     public float pickupRange;
     private bool allowSwitch = true;
@@ -26,23 +25,23 @@ public class WeaponManager : MonoBehaviour
         }else{
             allowSwitch = true;
         }
-        if(Input.GetKeyDown(switchKey)&&allowSwitch){
-            allowSwitch = false;
-            switchWeapon();
-            switchTimer = switchCooldown;
-        }
-        if(Input.GetKeyDown(equipDropKey)){
-        Collider2D[] weaponsToPickUp = Physics2D.OverlapCircleAll(transform.position,pickupRange,weaponLayer);
-         foreach(Collider2D weapon in weaponsToPickUp){
-             putInInventory(weapon.gameObject);
-         }    
-        }
     }
-    private void switchWeapon (){
+    public void pickUp(InputAction.CallbackContext context){
+        Collider2D[] weaponsToPickUp = Physics2D.OverlapCircleAll(transform.position,pickupRange,weaponLayer);
+        foreach(Collider2D weapon in weaponsToPickUp){
+        putInInventory(weapon.gameObject);
+        } 
+    }
+    public void switchWeapon(InputAction.CallbackContext context){
+        if(allowSwitch){
+            allowSwitch = false;
             GameObject tempEquipped = equipped;
             GameObject tempStored = stored;
             equipWeapon(tempStored);
-            storeWeapon(tempEquipped);
+            storeWeapon(tempEquipped);   
+            switchTimer = switchCooldown;
+        }
+            
     }
     public void storeWeapon (GameObject weapon){
         stored = weapon;
@@ -52,7 +51,7 @@ public class WeaponManager : MonoBehaviour
         }else{
         stored.transform.rotation = Quaternion.Euler(0,180,0);
         }
-        activateScripts(stored,false);
+        activateWeapon(stored,false);
         stored.SendMessage("SetOrientationStored");    
         }
     }
@@ -89,18 +88,19 @@ public class WeaponManager : MonoBehaviour
         }else{
         equipped.transform.rotation = Quaternion.Euler(0,180,0);
         }
-        activateScripts(equipped,true);
+        activateWeapon(equipped,true);
         equipped.SendMessage("SetOrientationOriginal");     
         }
         
     }
-    private static void activateScripts(GameObject weapon, bool TF){
+    private static void activateWeapon(GameObject weapon, bool TF){
         MonoBehaviour[] scripts = weapon.GetComponentsInChildren<MonoBehaviour>();
         foreach(MonoBehaviour s in scripts){
         if(s!=null){
             s.enabled = TF;
         }    
         }
+        weapon.GetComponent<PlayerInput>().enabled = true;
         
     }
     void OnDrawGizmosSelected() {

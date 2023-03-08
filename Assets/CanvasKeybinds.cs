@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CanvasKeybinds : MonoBehaviour
 {
-    public string inventoryKeybind;
-    public GameObject inventory;
+    [SerializeField] private GameObject inventory;
     private bool inventoryClosed = false; 
-    void Update()
-    {
-        if(Input.GetKeyDown(inventoryKeybind)){
-            inventory.SetActive(inventoryClosed);
-            inventoryClosed = !inventoryClosed;
-        }
+    public void openInventory(InputAction.CallbackContext context){
+        inventory.SetActive(inventoryClosed);
+        inventoryClosed = !inventoryClosed;
     }
     public GameObject getInventoryGameObject(){
         return inventory;

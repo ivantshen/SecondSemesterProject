@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class WeaponFireScript : MonoBehaviour
 {
-    public float attackRate = 0.2f;
-    public GameObject attack;
-    public Transform firePoint;
+    [SerializeField] private float attackRate = 0.2f;
+    [SerializeField] private GameObject attack;
+    [SerializeField] private Transform firePoint;
     private bool canAttack = true;
     private float attackCooldown = 0.0f;
 
@@ -21,10 +21,16 @@ public class WeaponFireScript : MonoBehaviour
         }
     }
     public void fire(InputAction.CallbackContext context){
-        if(canAttack){
+        if(context.performed&&canAttack) {
             Instantiate(attack,firePoint.position,firePoint.rotation);
             attackCooldown+= attackRate;
             canAttack = false;   
-        }
+        } 
+    }
+    public void setAttack(GameObject attack){
+        this.attack = attack;
+    }
+    public void setFireRate(float attackRate){
+        this.attackRate = attackRate;
     }
 }
