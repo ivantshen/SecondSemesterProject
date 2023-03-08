@@ -11,6 +11,7 @@ public class ShopManagerScript : MonoBehaviour
     public int coins;
     public TextMeshProUGUI CoinsTXT;
     [SerializeField] private GameObject prefab1;
+    [SerializeField] private GameObject prefab2;
     //[SerializeField] private Vector2 spawnPosition;
     //[SerializeField] private bool random;
     [SerializeField] private float xPos;
@@ -71,6 +72,9 @@ public class ShopManagerScript : MonoBehaviour
                OnSpawnPrefab(1);
 
             }
+            else if(shopItems[1, ButtonRef.GetComponent<buttonInfo>().ItemID] == 1){
+                OnSpawnPrefab(2);
+            }
             }
         else{
             Debug.Log("Doesn't work" + coins);
@@ -86,6 +90,10 @@ public class ShopManagerScript : MonoBehaviour
     public void OnSpawnPrefab(int ID){
         if(ID == 1){
         Instantiate(prefab1, new Vector2(xPos,yPos), Quaternion.identity);
+        }
+        else if(ID == 2){
+        Instantiate(prefab2, new Vector2(xPos,yPos), Quaternion.identity);
+
         }
     }
 }
