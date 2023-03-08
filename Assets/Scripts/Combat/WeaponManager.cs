@@ -100,7 +100,10 @@ public class WeaponManager : MonoBehaviour
             s.enabled = TF;
         }    
         }
-        weapon.GetComponent<PlayerInput>().enabled = true;
+        if(weapon.GetComponent<PlayerInput>()){
+        weapon.GetComponent<PlayerInput>().enabled = TF;    
+        }
+        
         
     }
     void OnDrawGizmosSelected() {

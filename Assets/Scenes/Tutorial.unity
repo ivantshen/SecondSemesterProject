@@ -9252,6 +9252,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedWepTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1770267574100016029, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: spellCooldown.Array.data[0]
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770267574100016029, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: spellCooldown.Array.data[1]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770267574100016029, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: spellCooldown.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
 --- !u!1001 &4771599244468093449
