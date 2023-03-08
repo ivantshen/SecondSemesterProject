@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 400681958021486923}
   - component: {fileID: 8436169248078771825}
   - component: {fileID: 8436169248078771824}
+  - component: {fileID: 1770267574100016029}
   m_Layer: 7
   m_Name: RangedWepTest
   m_TagString: Untagged
@@ -143,7 +144,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400681958021486933}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400681958021486933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -324,6 +325,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1f445c08-d886-4307-b17b-faf1cab8cd8f
     m_ActionName: Menu/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e9483db-63b4-48d5-935e-7dfdce698c45
+    m_ActionName: Player/Pick Up[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4670dddf-ec33-4b3e-8575-516842d515c7
+    m_ActionName: Player/Open Shop[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1326536c-50e0-4323-bf3c-bd2d4013629d
+    m_ActionName: Player/Switch Weapon[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1770267574100016029}
+        m_TargetAssemblyTypeName: SpellSwap, Assembly-CSharp
+        m_MethodName: swapSpell
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3663d414-d379-4910-9f24-124edd325062
+    m_ActionName: Player/Activate Weapon Effect[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -344,3 +373,23 @@ MonoBehaviour:
   attackRate: 0.5
   attack: {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
   firePoint: {fileID: 400681957264820268}
+--- !u!114 &1770267574100016029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400681958021486933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a226e1de16d557a45a08673a63dd8570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells:
+  - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
+  - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
+  - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
+  spellCooldown:
+  - 0.01
+  - 1.25
+  - 3
