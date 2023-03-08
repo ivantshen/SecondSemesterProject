@@ -10,9 +10,13 @@ public class PlayerBulletScript : MonoBehaviour
     public float bulletDeathTime = 5f;
     public bool multiTarget = false;
     public bool wallClipping = false;
+    private Transform player;
+    private ComboManager cm;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
+        cm = player.gameObject.GetComponent<ComboManager>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right*bulletSpeed;
     }
@@ -28,7 +32,8 @@ public class PlayerBulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.layer==6){
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage*cm.getComboDamageMultiplier());
+            cm.increaseHitcount(1);
             if(multiTarget){
             bulletDeathTime/=1.25f;
             }else{

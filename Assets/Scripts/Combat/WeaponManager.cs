@@ -16,6 +16,7 @@ public class WeaponManager : MonoBehaviour
     private GameObject inventory;
     public GameObject inventoryItemTemplate;
     void Start(){
+        Physics2D.IgnoreLayerCollision(3,3,true);
         weaponLayer = LayerMask.GetMask("Weapon");
         inventory = GameObject.FindWithTag("Canvas").GetComponent<CanvasKeybinds>().getInventoryGameObject();
     }
