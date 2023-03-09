@@ -14,7 +14,7 @@ public class SpellSwap : MonoBehaviour
         wp = GetComponent<WeaponFireScript>();
         wp.setAttack(spells[spellIndex]);
         wp.setFireRate(spellCooldown[spellIndex]);
-        
+        wp.setFreezeTime(spellCooldown[spellIndex]*0.8f);
     }
     public void swapSpell(InputAction.CallbackContext context){
         if(context.performed){
@@ -25,6 +25,7 @@ public class SpellSwap : MonoBehaviour
         }
         wp.setAttack(spells[spellIndex]);
         wp.setFireRate(spellCooldown[spellIndex]);    
+        wp.setFreezeTime(spellCooldown[spellIndex]*0.8f);
         }
         
     }

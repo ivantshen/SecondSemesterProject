@@ -19,6 +19,7 @@ public class BulletExplosion : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other){
+        if(other.tag!="Player"){
         Instantiate(explosion,transform.position,Quaternion.identity,null);
         Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(transform.position,explosionRadius,targetLayer);
         foreach (Collider2D enemy in enemiesToDmg)
@@ -29,6 +30,7 @@ public class BulletExplosion : MonoBehaviour
         cm.increaseHitcount(1);
         }
     }
+    }   
     }
     
     void OnDrawGizmosSelected() {

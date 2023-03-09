@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     private GameObject[] storedEquipment;
     private bool full = false;
     private string[] equipmentSlotType = {"Head","Chest","Leg","Weapon","Weapon","Charm"};
-    void Start()
+    void Awake()
     {
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         storedItems = new GameObject[inventorySlots.Length];
