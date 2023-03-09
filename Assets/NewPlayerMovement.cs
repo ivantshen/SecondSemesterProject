@@ -249,7 +249,7 @@ public class NewPlayerMovement : MonoBehaviour
     }
 
     public IEnumerator freezeMe(float time) {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionX|RigidbodyConstraints2D.FreezeRotation;
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         yield return new WaitForSeconds(time);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
