@@ -212,7 +212,7 @@ public class NewPlayerMovement : MonoBehaviour
     }
 
     public void FreezeInputs(float freezeTime) {
-        StartCoroutine(freezeMyInputs(freezeTime));
+        StartCoroutine(freezeMe(freezeTime));
     }
 
     // ladder functions
