@@ -248,8 +248,8 @@ public class NewPlayerMovement : MonoBehaviour
         dashTrail.emitting = false;
     }
 
-    IEnumerator freezeMe(float time) {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+    public IEnumerator freezeMe(float time) {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
         yield return new WaitForSeconds(time);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
