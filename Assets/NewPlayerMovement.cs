@@ -215,6 +215,18 @@ public class NewPlayerMovement : MonoBehaviour
         StartCoroutine(freezeMe(freezeTime));
     }
 
+    public void DashRefill() {
+        if (canDash == false) {
+            canDash = true;
+        }
+    }
+
+    public void NotOnDash() {
+        // if (canDash == false) {
+            // lol this is useless GG
+        // }
+    }
+
     // ladder functions
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Ladder")) {
@@ -259,4 +271,6 @@ public class NewPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         canMove = true;
     }
+
+
 }

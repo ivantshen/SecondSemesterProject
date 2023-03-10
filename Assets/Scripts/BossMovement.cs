@@ -6,7 +6,7 @@ public class BossMovement : MonoBehaviour
 {
     private Rigidbody2D rb; 
     private SpriteRenderer sr;
-    [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private float moveSpeed = 10;
     private int currentPhase = 0;
     private bool allowMoves = true;
     public Transform player;
@@ -60,7 +60,7 @@ public class BossMovement : MonoBehaviour
 
     // phase 1 moves
     IEnumerator phase1MoveChain() {
-        int randomMoveNumber = Random.Range(1,1);
+        int randomMoveNumber = Random.Range(2,2);
         if (randomMoveNumber == 1) {
             StartCoroutine(moveAround());
         } else if (randomMoveNumber == 2) {
@@ -83,17 +83,22 @@ public class BossMovement : MonoBehaviour
         rb.AddForce((new Vector2(player.position.x,0) - new Vector2(transform.position.x,0)).normalized * moveSpeed, ForceMode2D.Impulse);
     }
 
+
+    // move 2
     IEnumerator slam() {
         Debug.Log("slam");
         sr.color = new Color(0.5f, 0.5f, 0.5f, 1);
         yield return new WaitForSeconds(0.5f);
         rb.velocity = Vector2.zero;
-        rb.gravityScale = -3;
+        rb.gravityScale = -40;
         yield return new WaitForSeconds(1f);
-        rb.gravityScale = 100;
+        rb.AddForce((new Vector2(player.position.x,0) - new Vector2(transform.position.x,0)).normalized * moveSpeed, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1f);
+        rb.gravityScale = 1000;
         rb.velocity = Vector2.zero;
     }
 
+    // move 3 
     IEnumerator zoteSlam() {
         Debug.Log("zoteSlam");
         sr.color = new Color(1f, 1f, 1f, 1f);
