@@ -6,13 +6,21 @@ public class BossMovement : MonoBehaviour
 {
     private Rigidbody2D rb; 
     private SpriteRenderer sr;
-    [SerializeField] private float moveSpeed = 10;
+    
     private int currentPhase = 0;
     private bool allowMoves = true;
     public Transform player;
+    public Transform center;
     private bool allowCollisionDamage = true;
     private float collisionTimer = 5f;
+
+    // boss variables
     [SerializeField] private float damageAmount;
+    [SerializeField] private float moveSpeed = 1000f;
+
+    // gravity
+    [SerializeField] private float floatGravity = -40f;
+    [SerializeField] private float slamGravity = 1000f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,19 +56,21 @@ public class BossMovement : MonoBehaviour
     // makes him larger at the start
     IEnumerator getHuge() {
         yield return new WaitForSeconds(2f);
-        sr.transform.localScale = new Vector2(1.1f, 1.1f);
+        sr.transform.localScale = new Vector2(1.5f, 1.5f);
         yield return new WaitForSeconds(1f);
-        sr.transform.localScale = new Vector2(2.0f, 2.0f);
+        sr.transform.localScale = new Vector2(2.25f, 2.25f);
         yield return new WaitForSeconds(1f);
         sr.transform.localScale = new Vector2(3.0f, 3.0f);
         yield return new WaitForSeconds(1f);
         rb.gravityScale = 15;
         currentPhase = 1;
+        yield return new WaitForSeconds(0.8f);
     }
 
     // phase 1 moves
     IEnumerator phase1MoveChain() {
-        int randomMoveNumber = Random.Range(2,2);
+        yield return new WaitForSeconds(1.5f);
+        int randomMoveNumber = Random.Range(1,4);
         if (randomMoveNumber == 1) {
             StartCoroutine(moveAround());
         } else if (randomMoveNumber == 2) {
@@ -68,7 +78,7 @@ public class BossMovement : MonoBehaviour
         } else {
             StartCoroutine(zoteSlam());
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         allowMoves = true;
     }
 
@@ -87,32 +97,33 @@ public class BossMovement : MonoBehaviour
     // move 2
     IEnumerator slam() {
         Debug.Log("slam");
+        rb.gravityScale = 100f;
         sr.color = new Color(0.5f, 0.5f, 0.5f, 1);
         yield return new WaitForSeconds(0.5f);
+
         rb.velocity = Vector2.zero;
-        rb.gravityScale = -40;
-        yield return new WaitForSeconds(1f);
-        rb.AddForce((new Vector2(player.position.x,0) - new Vector2(transform.position.x,0)).normalized * moveSpeed, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(1f);
-        rb.gravityScale = 1000;
+        rb.gravityScale = floatGravity;
+        yield return new WaitForSeconds(0.8f);
+        
+        rb.gravityScale = 0f;
+        transform.position = new Vector2(player.position.x, transform.position.y);
+        yield return new WaitForSeconds(0.3f);
+
+        rb.gravityScale = slamGravity;
         rb.velocity = Vector2.zero;
     }
 
     // move 3 
     IEnumerator zoteSlam() {
         Debug.Log("zoteSlam");
-        sr.color = new Color(1f, 1f, 1f, 1f);
-        yield return new WaitForSeconds(0.5f);
-        rb.velocity = Vector2.zero;
-        rb.gravityScale = -3;
-        yield return new WaitForSeconds(0.7f);
+        sr.color = new Color(255, 255, 255, 1);
         rb.gravityScale = 0;
-        rb.velocity = new Vector2(-40, 0);
-        yield return new WaitForSeconds(2f);
-        rb.velocity = new Vector2(40, 0);
-        yield return new WaitForSeconds(2f);
-        rb.gravityScale = 100;
-        rb.velocity = Vector2.zero;
+        transform.position = new Vector2(-13.6f, 13f);
+        yield return new WaitForSeconds(0.3f);
+        sr.transform.localScale = new Vector2(20f, 20f);
+        yield return new WaitForSeconds(1.5f);
+        sr.transform.localScale = new Vector2(3f, 3f);
+
     }
 
     private void OnCollisionStay2D(Collision2D other){
