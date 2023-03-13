@@ -10,6 +10,7 @@ public class PlayerBulletScript : MonoBehaviour
     public float bulletDeathTime = 5f;
     public bool multiTarget = false;
     public bool wallClipping = false;
+    [SerializeField] bool contactDamage = true;
     private Transform player;
     private ComboManager cm;
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class PlayerBulletScript : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D other){
+        if(contactDamage){
         if(other.gameObject.layer==6){
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage*cm.getComboDamageMultiplier());
             cm.increaseHitcount(1);
@@ -41,6 +43,8 @@ public class PlayerBulletScript : MonoBehaviour
             }
         }else if(other.gameObject.tag!="Player"&&!wallClipping&&other.gameObject.layer!=7){
              Destroy(gameObject);
+        }    
         }
+        
     }
 }
