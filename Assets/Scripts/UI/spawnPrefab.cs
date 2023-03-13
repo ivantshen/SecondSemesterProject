@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class spawnPrefab : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject prefab1;
+    [SerializeField] private Vector2 spawnPosition;
+    [SerializeField] private bool random;
+    [SerializeField] private float xPos;
+    [SerializeField] private float yPos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+
+    public void OnSpawnPrefab(){
+        Instantiate(prefab1, new Vector2(xPos,yPos), Quaternion.identity );
+
     }
 }
