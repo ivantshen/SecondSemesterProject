@@ -37,10 +37,10 @@ public class HealthP1 : MonoBehaviour
 
     //testing
     void Update(){
-        if(Input.GetKeyDown(KeyCode.B)){
-        Debug.Log("It works?");
-        XPManager.instance.AddXP(20);
-        }
+       // if(Input.GetKeyDown(KeyCode.B)){
+        //Debug.Log("It works?");
+        //XPManager.instance.AddXP(20);
+       // }
     }
 
     private IEnumerator Invulnerability(){
