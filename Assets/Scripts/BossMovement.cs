@@ -17,6 +17,7 @@ public class BossMovement : MonoBehaviour
     // boss variables
     [SerializeField] private float damageAmount;
     [SerializeField] private float moveSpeed = 1000f;
+    private float originalGravity = 100f;
 
     // gravity
     [SerializeField] private float floatGravity = -40f;
@@ -69,35 +70,37 @@ public class BossMovement : MonoBehaviour
 
     // phase 1 moves
     IEnumerator phase1MoveChain() {
-        yield return new WaitForSeconds(1.5f);
-        int randomMoveNumber = Random.Range(1,4);
-        if (randomMoveNumber == 1) {
+        int randomMoveNumber = Random.Range(1,7);
+        if (randomMoveNumber < 3) {
             StartCoroutine(moveAround());
-        } else if (randomMoveNumber == 2) {
+        } else if (randomMoveNumber < 6) {
             StartCoroutine(slam());
         } else {
             StartCoroutine(zoteSlam());
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         allowMoves = true;
     }
 
     // move 1
     IEnumerator moveAround() {
         Debug.Log("moveAround");
+        rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
-        rb.gravityScale = 100;
+        //rb.gravityScale = 100;
         yield return new WaitForSeconds(0.5f);
 
         //rb.velocity = new Vector2();
         rb.AddForce((new Vector2(player.position.x,0) - new Vector2(transform.position.x,0)).normalized * moveSpeed, ForceMode2D.Impulse);
+        //rb.gravityScale = originalGravity;
+        yield return new WaitForSeconds(0.5f);
     }
 
 
     // move 2
     IEnumerator slam() {
         Debug.Log("slam");
-        rb.gravityScale = 100f;
+        rb.gravityScale = originalGravity;
         sr.color = new Color(0.5f, 0.5f, 0.5f, 1);
         yield return new WaitForSeconds(0.5f);
 
@@ -110,19 +113,26 @@ public class BossMovement : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         rb.gravityScale = slamGravity;
-        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.5f);
+        //rb.velocity = Vector2.zero;
     }
 
     // move 3 
     IEnumerator zoteSlam() {
         Debug.Log("zoteSlam");
+        rb.gravityScale = originalGravity;
         sr.color = new Color(255, 255, 255, 1);
+        yield return new WaitForSeconds(0.5f);
+
+        transform.position = new Vector2(-13.6f, 13f);    
         rb.gravityScale = 0;
-        transform.position = new Vector2(-13.6f, 13f);
+
         yield return new WaitForSeconds(0.3f);
         sr.transform.localScale = new Vector2(20f, 20f);
         yield return new WaitForSeconds(1.5f);
         sr.transform.localScale = new Vector2(3f, 3f);
+
+        yield return new WaitForSeconds(0.5f);
 
     }
 
@@ -136,5 +146,6 @@ public class BossMovement : MonoBehaviour
              
         }
      }
+
 
 }
