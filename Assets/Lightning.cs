@@ -29,4 +29,4 @@ public class Lightning : MonoBehaviour
             Destroy(l,0.3f);
         }
     }
-}
+    }
