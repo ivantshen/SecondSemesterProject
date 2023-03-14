@@ -240,7 +240,7 @@ MonoBehaviour:
   targetRadius: 3
   damage: 10
   lightning: {fileID: 7470675304227921263, guid: 5eff219e86ad1cd4aa3a239f25714c48, type: 3}
-  knockdownForce: 100
+  knockdownForce: 500
 --- !u!58 &7819586595828111938
 CircleCollider2D:
   m_ObjectHideFlags: 0

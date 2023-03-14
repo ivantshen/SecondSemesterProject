@@ -106,6 +106,7 @@ MonoBehaviour:
   bulletDeathTime: 2
   multiTarget: 0
   wallClipping: 0
+  contactDamage: 1
 --- !u!114 &-546880950102501646
 MonoBehaviour:
   m_ObjectHideFlags: 0
