@@ -5485,7 +5485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea9b82ee1065e540b07fd6964999b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeleportTime: 5
+  TeleportTime: 3
   check: {fileID: 845182862}
   attackRate: 0.2
   attack: {fileID: 8215724951910908474, guid: 9d7882f5f54690f4f9112727aa2ea8e2, type: 3}
