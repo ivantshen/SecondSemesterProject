@@ -450,11 +450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28788f22add1b92448c2340bc3e1c026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipDropKey: e
-  switchKey: t
   switchCooldown: 3
   pickupRange: 2
-  inventoryItemTemplate: {fileID: 0}
+  inventoryItemTemplate: {fileID: 1166461231946748352, guid: 1071e4923a1830e46af82018f241f113, type: 3}
 --- !u!114 &4771599244993913110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +498,8 @@ MonoBehaviour:
   groundlayer:
     serializedVersion: 2
     m_Bits: 256
+  playerInput: {fileID: 0}
+  controller: {fileID: 0}
   isFacingRight: 1
   canMove: 1
   isGrounded: 1
@@ -507,7 +507,7 @@ MonoBehaviour:
   canDash: 1
   isDashing: 0
   inAir: 0
-  jumpForce: 20
+  jumpForce: 22.5
   jumpPressed: 0
   jumpBufferTime: 0.1
   dashVelocity: 20
@@ -633,6 +633,46 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6b2844e3-17e1-437d-a647-1741077b91ce
     m_ActionName: Player/Dash[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f445c08-d886-4307-b17b-faf1cab8cd8f
+    m_ActionName: Menu/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4771599244993913111}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: pickUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e9483db-63b4-48d5-935e-7dfdce698c45
+    m_ActionName: Player/Pick Up[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4670dddf-ec33-4b3e-8575-516842d515c7
+    m_ActionName: Player/Open Shop[/Keyboard/b]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4771599244993913111}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: switchWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1326536c-50e0-4323-bf3c-bd2d4013629d
+    m_ActionName: Player/Switch Weapon[/Keyboard/t]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
