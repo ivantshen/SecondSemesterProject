@@ -31,7 +31,9 @@ public class Enemy3 : MonoBehaviour
         yield return new WaitForSeconds(1);
         
         Teleport();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        Fire();
+        yield return new WaitForSeconds(0.5f);
         Fire();
         test = true;
     }
