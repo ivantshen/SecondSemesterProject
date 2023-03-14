@@ -101,10 +101,10 @@ MonoBehaviour:
   - title: Particles
     position:
       serializedVersion: 2
-      x: 2721
+      x: 2861
       y: -256
-      width: 631
-      height: 2013
+      width: 491
+      height: 2171
     contents:
     - model: {fileID: 8926484042661614867}
       id: 0
@@ -1225,7 +1225,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: 8
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -2340,7 +2340,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: 8
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -3964,7 +3964,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.2
+      m_SerializableObject: 0.3
     m_Space: 2147483647
   m_Property:
     name: A
@@ -4473,7 +4473,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614867}
   - {fileID: 8926484042661614721}
   dataType: 0
-  capacity: 32
+  capacity: 64
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -4532,7 +4532,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TArcCircle, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"circle":{"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"radius":0.10000000149011612},"arc":6.28000020980835}'
+      m_SerializableObject: '{"circle":{"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"radius":0.5},"arc":6.28000020980835}'
     m_Space: 0
   m_Property:
     name: arcCircle
@@ -5157,7 +5157,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.3
+      m_SerializableObject: 0.5
     m_Space: 2147483647
   m_Property:
     name: A
@@ -5191,7 +5191,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2
+      m_SerializableObject: 4
     m_Space: 2147483647
   m_Property:
     name: B
@@ -5595,7 +5595,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661614893}
-  m_UIPosition: {x: 2884, y: 633}
+  m_UIPosition: {x: 2891, y: 732}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -5668,7 +5668,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Sphere, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"radius":1.0}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"radius":3.0}'
     m_Space: 0
   m_Property:
     name: Sphere
@@ -7704,7 +7704,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: 8
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -8893,7 +8893,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 30
+      m_SerializableObject: 40
     m_Space: 2147483647
   m_Property:
     name: Count
