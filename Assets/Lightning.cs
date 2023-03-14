@@ -6,8 +6,8 @@ public class Lightning : MonoBehaviour
 {
     [SerializeField] private float targetRadius;
     [SerializeField] private int damage;
-    [SerializeField] int targetLayer = 6;
-    [SerializeField] GameObject lightning;
+    [SerializeField] private GameObject lightning;
+    [SerializeField] private float knockdownForce;
     private Transform player;
     private ComboManager cm;
     private Collider2D thisCollider;
@@ -15,18 +15,28 @@ public class Lightning : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
-        targetLayer = LayerMask.GetMask("Enemies");
         cm = player.gameObject.GetComponent<ComboManager>();
         thisCollider = GetComponent<Collider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.layer==6){
-            float angle = Mathf.Atan2(transform.position.y-other.transform.position.y,transform.position.x-other.transform.position.x);
+            float angle = Mathf.Atan2(other.transform.position.y-transform.position.y,other.transform.position.x-transform.position.x)*Mathf.Rad2Deg;
             GameObject l = Instantiate(lightning,transform.position,Quaternion.Euler(0,0,angle));
-            Destroy(l,0.3f);
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             cm.increaseHitcount(1);
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,-1)*knockdownForce,ForceMode2D.Impulse);
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Destroy(l,0.3f);
+        }
+    }
+    void OnTriggerExit2D(Collider2D other){
+        if(other.gameObject.layer==6){
+            float angle = Mathf.Atan2(other.transform.position.y-transform.position.y,other.transform.position.x-transform.position.x)*Mathf.Rad2Deg;
+            GameObject l = Instantiate(lightning,transform.position,Quaternion.Euler(0,0,angle));
+            cm.increaseHitcount(1);
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,-1)*knockdownForce,ForceMode2D.Impulse);
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Destroy(l,0.3f);
         }
     }
 }
