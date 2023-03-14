@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy3 : Enemy33
+public class Enemy3 : MonoBehaviour
 {
      public int TeleportTime;
      private bool test = true;
     float disX = 0;
     float disY = 0;
-    public CircleCollider2D circle;
+    //public CircleCollider2D circle;
     private GameObject player;
     public GameObject check;
+    private float distance;
 
+    //for attacking/shooting
+    private bool canAttack = true;
+    private float attackCooldown = 0.0f;
+    [SerializeField] private float attackRate = 0.2f;
+    [SerializeField] private GameObject attack;
+    [SerializeField] private Transform firePoint;
     
 
     void Start(){
@@ -24,6 +31,8 @@ public class Enemy3 : Enemy33
         yield return new WaitForSeconds(1);
         
         Teleport();
+        yield return new WaitForSeconds(1);
+        Fire();
         test = true;
     }
 
@@ -31,45 +40,35 @@ public class Enemy3 : Enemy33
         
         
         
-        
 
-        
-
-
-        //if(inPlayer){
-           // Debug.Log("In player");
-            
-       // }
         transform.position = new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3));
      
     }
 
     void Check(){
         RandomNum();
-        //if(disX >=8 || disX <=-8 || disY <=0 || disX >= 3){
-            //RandomNum();
-            //Debug.Log("Ovangay");
-        //}
-        //circle.transform.position = new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3));
-        
-        //Vector2.Distance(player.position,check.position);
-        //if()
-        //Physics2D.OverlapCircleAll(transform.position,pickupRange,weaponLayer);
+        check.transform.position = new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3));
+        if(player){
+        distance = Vector2.Distance(new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3)), player.transform.position);
+        }
+        if(distance < 3){
+            Debug.Log("it doenst work");
+            Check();
+        }
 
+    }
 
-
-
-        //if(inPlayer){
-           // Debug.Log("In player");
-            
-        //}
-        //else{
-            //Debug.Log("Not in player prolly");
-        //}
+    void Fire(){
+        //if(canAttack) {
+            //player.SendMessage("FreezeInputs",freezeAmt);
+            Instantiate(attack,firePoint.position,firePoint.rotation);
+            //attackCooldown+= attackRate;
+            //nAttack = false;   
+       // } 
+       Debug.Log("Fire");
     }
 
     
-
     void RandomNum(){
         disX = Random.Range(-18f,-8f);
         disY = Random.Range(0f,3f);
@@ -91,17 +90,11 @@ public class Enemy3 : Enemy33
             test = false;
             StartCoroutine(Move());
         }
+        if(attackCooldown>0.0f){
+            attackCooldown-=Time.deltaTime;
+        }else{
+            canAttack = true;
+        }
         
-
-
-
-
-
-        //if(Input.GetKeyDown(KeyCode.W)){
-        //transform.position=new Vector2(transform.position.x,transform.position.y+distance); 
-        //}
-        //else if(Input.GetKeyDown(KeyCode.D)){
-        //transform.position=new Vector2(transform.position.x,transform.position.y-distance); 
-        //}
     }
 }
