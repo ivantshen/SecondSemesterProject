@@ -14,7 +14,6 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     private InventoryManager inventory;
     private bool inUse = false;
     private WeaponManager wepManage;
-    private GameObject instantiatedObject;
     void Start(){
         this.gameObject.GetComponent<Image>().color = Random.ColorHSV();
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
@@ -47,7 +46,8 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
         itemSlotIndex = index;
         if(inUse){
         inUse = false;
-        Destroy(instantiatedObject);
+        attachedObject.SetActive(false);
+        wepManage.findAndUnequip(attachedObject);
         }
     }
     public void setType(string type){
@@ -63,8 +63,8 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
             if(Vector3.Distance(closestSlot.position,transform.position)<30){
                 if(inUse){
                     inUse = false;
-                    Destroy(instantiatedObject);
-                    instantiatedObject = null;
+                    attachedObject.SetActive(false);
+                    wepManage.findAndUnequip(attachedObject);
                 }
                 inventory.storeItem(k,gameObject,itemSlotIndex);
             }else{
@@ -104,12 +104,11 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     public IEnumerator convertToGameObject(){
         yield return new WaitForSeconds(0.05f);
         if(!inUse){
-        instantiatedObject = Instantiate(attachedObject,transform.position,Quaternion.identity,null);
-        if(!instantiatedObject.activeSelf){
-            instantiatedObject.gameObject.SetActive(true);
+        if(!attachedObject.activeSelf){
+          attachedObject.gameObject.SetActive(true);
         }
         if(type =="Weapon"){
-         wepManage.initialPickUp(instantiatedObject);      
+         wepManage.initialPickUp(attachedObject); 
         }
         inUse = true; 
         }

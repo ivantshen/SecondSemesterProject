@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a889e2f4d3a5eaf409c2bb68d05c10e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 3
-  bulletDamage: 2
-  bulletDeathTime: 8
+  bulletSpeed: 2
+  bulletDamage: 0
+  bulletDeathTime: 5
   multiTarget: 1
   wallClipping: 0
   contactDamage: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRadius: 3
-  damage: 10
+  damage: 7
   lightning: {fileID: 7470675304227921263, guid: 5eff219e86ad1cd4aa3a239f25714c48, type: 3}
   knockdownForce: 500
 --- !u!58 &7819586595828111938

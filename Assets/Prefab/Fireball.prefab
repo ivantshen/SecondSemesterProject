@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 174569706592894081}
   - component: {fileID: 8405705437526535027}
-  - component: {fileID: 128529585990153014}
   - component: {fileID: -546880950102501646}
+  - component: {fileID: 128529585990153014}
   - component: {fileID: 8105774901608533788}
   - component: {fileID: 7146337819597402290}
   - component: {fileID: 9055794440186455914}
@@ -89,24 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &128529585990153014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215724951910908474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a889e2f4d3a5eaf409c2bb68d05c10e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 7
-  bulletDamage: 5
-  bulletDeathTime: 2
-  multiTarget: 0
-  wallClipping: 0
-  contactDamage: 1
 --- !u!114 &-546880950102501646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +104,25 @@ MonoBehaviour:
   explosion: {fileID: 2713127863684372888, guid: 82b42e5004f47e740a27e833d8a46340, type: 3}
   explosionDamage: 3
   explosionRadius: 1.2
-  knockbackForce: 500
+  knockbackForce: 250
+--- !u!114 &128529585990153014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215724951910908474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a889e2f4d3a5eaf409c2bb68d05c10e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 7
+  bulletDamage: 5
+  bulletDeathTime: 1
+  multiTarget: 0
+  wallClipping: 0
+  contactDamage: 1
 --- !u!50 &8105774901608533788
 Rigidbody2D:
   serializedVersion: 4

@@ -107,6 +107,14 @@ public class WeaponManager : MonoBehaviour
         
         
     }
+    public void findAndUnequip(GameObject weapon){
+        if(weapon==equipped){
+            equipped=null;
+        }
+        if(weapon==stored){
+            stored=null;
+        }
+    }
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position,pickupRange);

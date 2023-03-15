@@ -6861,6 +6861,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400681958021486923, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: storedZRot
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 400681958021486923, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: storedPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400681958021486923, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: storedPos.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400681958021486923, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
+      propertyPath: storedSortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 400681958021486932, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
       propertyPath: m_RootOrder
       value: 15

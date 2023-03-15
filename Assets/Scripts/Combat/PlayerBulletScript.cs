@@ -19,7 +19,10 @@ public class PlayerBulletScript : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         cm = player.gameObject.GetComponent<ComboManager>();
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right*bulletSpeed;
+        if(rb){
+        rb.velocity = transform.right*bulletSpeed;    
+        }
+        
     }
 
     // Update is called once per frame
