@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+  m_Color: {r: 0.2735849, g: 0.0757469, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -373,6 +373,7 @@ MonoBehaviour:
   attackRate: 0.5
   attack: {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
   firePoint: {fileID: 400681957264820268}
+  freezeAmt: 2
 --- !u!114 &1770267574100016029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,9 +388,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spells:
   - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
-  - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
-  - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
+  - {fileID: 6500777779477180727, guid: bee9c07474fd58c4dab62f0c93cd96fc, type: 3}
+  - {fileID: 1733842562804451773, guid: b2056edab3b6b224587603bcfd92a94a, type: 3}
   spellCooldown:
-  - 0.01
-  - 1.25
   - 3
+  - 5
+  - 10
+  playerFreezeTime:
+  - 0.5
+  - 0.75
+  - 1

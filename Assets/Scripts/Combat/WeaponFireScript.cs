@@ -44,4 +44,10 @@ public class WeaponFireScript : MonoBehaviour
     public void setFreezeTime(float freezeAmt){
         this.freezeAmt = freezeAmt;
     }
+    public void setCooldown(float cd){
+        attackCooldown = cd;
+    }
+    public float getCooldown(){
+        return attackCooldown;
+    }
 }
