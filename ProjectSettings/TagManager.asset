@@ -13,6 +13,7 @@ TagManager:
   - EquipmentSlots
   - Event
   - Canvas
+  - Crumble
   layers:
   - Default
   - TransparentFX

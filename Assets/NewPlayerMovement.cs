@@ -163,10 +163,6 @@ public class NewPlayerMovement : MonoBehaviour
         }
         
         
-
-
-
-        
     }
 
 
@@ -202,7 +198,6 @@ public class NewPlayerMovement : MonoBehaviour
             
             if(dashDirection == Vector2.zero) {
                 dashDirection = transform.right;
-                
             }
 
             StartCoroutine(stopDash());
