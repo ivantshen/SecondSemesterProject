@@ -11,6 +11,9 @@ public class SpellSwap : MonoBehaviour
     [SerializeField] private Color[] colors;
     [SerializeField] private SpriteRenderer colorIndicator;
     private float[] stashedCooldowns;
+    private float currentCD =0;
+    [SerializeField] private float swapCD;
+    private bool canSwap = true;
     private int spellIndex = 0;
     private WeaponFireScript wp;
 
@@ -29,9 +32,16 @@ public class SpellSwap : MonoBehaviour
                 stashedCooldowns[i]-=Time.deltaTime;
             }
         }
+        if(currentCD>0){
+            currentCD-=Time.deltaTime;
+        }else{
+            canSwap = true;
+        }
     }
     public void swapSpell(InputAction.CallbackContext context){
-        if(context.performed){
+        if(context.performed&&canSwap){
+            canSwap = false;
+            currentCD = swapCD;
             stashedCooldowns[spellIndex] = wp.getCooldown();
         if(spellIndex<spells.Length-1){
             spellIndex++;
