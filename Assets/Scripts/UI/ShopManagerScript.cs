@@ -47,6 +47,7 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[4,2] = 3;
         shopItems[4,3] = 2;
         shopItems[4,4] = 1;
+        
     }
 
     public void Buy(){
@@ -72,7 +73,7 @@ public class ShopManagerScript : MonoBehaviour
                OnSpawnPrefab(1);
 
             }
-            else if(shopItems[1, ButtonRef.GetComponent<buttonInfo>().ItemID] == 1){
+            else if(shopItems[1, ButtonRef.GetComponent<buttonInfo>().ItemID] == 2){
                 OnSpawnPrefab(2);
             }
             }
