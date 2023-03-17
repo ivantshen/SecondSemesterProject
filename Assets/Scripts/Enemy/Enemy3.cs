@@ -12,6 +12,10 @@ public class Enemy3 : MonoBehaviour
     private GameObject player;
     public GameObject check;
     private float distance;
+    //public float yMin;
+    //public float yMax;
+    //public float xMin;
+    //public float xMax;
 
     //for attacking/shooting
     private bool canAttack = true;
@@ -32,6 +36,10 @@ public class Enemy3 : MonoBehaviour
         
         Teleport();
         yield return new WaitForSeconds(0.5f);
+        Fire();
+        yield return new WaitForSeconds(0.5f);
+        Fire();
+        yield return new WaitForSeconds(1f);
         Fire();
         yield return new WaitForSeconds(0.5f);
         Fire();
