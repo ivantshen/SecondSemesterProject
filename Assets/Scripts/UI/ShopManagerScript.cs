@@ -78,7 +78,7 @@ public class ShopManagerScript : MonoBehaviour
             }
             }
         else{
-            Debug.Log("Doesn't work" + coins);
+            Debug.Log("Doesn't work" + coins + "and" + shopItems[2, ButtonRef.GetComponent<buttonInfo>().ItemID]);
         }
 
 
