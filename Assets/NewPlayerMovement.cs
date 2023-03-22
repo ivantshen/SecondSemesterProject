@@ -10,6 +10,10 @@ public class NewPlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundlayer;
 
+    // audios wow
+    [SerializeField] private AudioSource dashSoundEffect;
+
+
     // i love input system
     [SerializeField] private PlayerInput playerInput = null;
     [SerializeField] private CharacterController controller = null;
@@ -51,6 +55,7 @@ public class NewPlayerMovement : MonoBehaviour
     private float fallSpeed = 8f;
     private bool onLadder;
     private bool isClimbing;
+
 
     // Start is called before the first frame update
     void Start()
@@ -175,6 +180,7 @@ public class NewPlayerMovement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context) {
         if (context.performed && canDash) {
+            dashSoundEffect.Play();
             rb.gravityScale = 0;
             canMove = false;
             canDash = false;
