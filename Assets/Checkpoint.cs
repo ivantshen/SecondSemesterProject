@@ -20,4 +20,17 @@ public class Checkpoint : MonoBehaviour
             unlocked = true;
         }
     }
+    public static GameObject getNearestCheckpoint(){
+        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        GameObject nearest = null;
+        Transform player = PlayerPersistence.Instance.transform;
+        float nearestDistance = float.MaxValue;
+        foreach(GameObject c in checkpoints){
+            if(Vector2.Distance(player.position,c.transform.position)<nearestDistance&&c.GetComponent<Checkpoint>().getUnlockedStatus()){
+                nearestDistance = Vector2.Distance(player.position,c.transform.position);
+                nearest = c;
+            }
+        }
+        return nearest;
+    }
 }

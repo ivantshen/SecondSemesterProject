@@ -41,7 +41,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2713127863684372888}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 0b289980988a7e6468b57d4a7f9533ce, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 4c1b6bf4a1dcaeb439ffffa4696fc1c6, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -55,7 +55,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.18739325, y: 3.4383812, z: 5.1131573, w: 1}
+        m_Name: Color01
+        m_Overridden: 1
+      - m_Value: {x: 0.38445297, y: 1.0514731, z: 5.2450395, w: 0}
+        m_Name: Color02
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:

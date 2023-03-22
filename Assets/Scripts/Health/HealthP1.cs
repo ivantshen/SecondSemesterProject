@@ -26,6 +26,7 @@ public class HealthP1 : MonoBehaviour
             if(currentHealth <=0){
                 currentHealth = startingHealth;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                transform.position = Checkpoint.getNearestCheckpoint().transform.position;
                 //Physics2D.IgnoreLayerCollision(0,6,false);
             }
         }
