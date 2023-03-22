@@ -33,6 +33,20 @@ public class BulletExplosion : MonoBehaviour
     }   
     }
     
+    private void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag!="Player"){
+        Instantiate(explosion,transform.position,Quaternion.identity,null);
+        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(transform.position,explosionRadius,targetLayer);
+        foreach (Collider2D enemy in enemiesToDmg)
+        {
+        if(enemy){
+        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(transform.position)-(Vector2)transform.position).normalized);
+        enemy.GetComponent<EnemyHealth>().TakeDamage(explosionDamage*cm.getComboDamageMultiplier());
+        cm.increaseHitcount(1);
+        }
+    }
+    }   
+    }
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,explosionRadius);

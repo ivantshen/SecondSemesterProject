@@ -24,7 +24,7 @@ public class HealthP1 : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             StartCoroutine(Invulnerability());
             if(currentHealth <=0){
-                Destroy(gameObject);
+                currentHealth = startingHealth;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 //Physics2D.IgnoreLayerCollision(0,6,false);
             }
