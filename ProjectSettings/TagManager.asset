@@ -15,6 +15,7 @@ TagManager:
   - Canvas
   - Crumble
   - ComboUI
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

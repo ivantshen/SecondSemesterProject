@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a889e2f4d3a5eaf409c2bb68d05c10e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 2
+  bulletSpeed: 2.5
   bulletDamage: 0
-  bulletDeathTime: 5
+  bulletDeathTime: 3
   multiTarget: 1
   wallClipping: 0
   contactDamage: 0

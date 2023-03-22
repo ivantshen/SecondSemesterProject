@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
 
     private float distance;
 
+    void Start(){
+        player = GameObject.FindWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {

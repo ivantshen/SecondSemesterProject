@@ -11,7 +11,7 @@ public class CameraFollowsPlayer : MonoBehaviour
         StartCoroutine(delayedCameraAssignment());
     }
     private IEnumerator delayedCameraAssignment(){
-        yield return new WaitForSeconds(0.1f);
-        cam.m_Follow = PlayerPersistence.Instance.transform;    
+        yield return new WaitForSeconds(0.001f);
+        cam.m_Follow = PlayerPersistence.Instance.transform;
     }
 }

@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainManager : MonoBehaviour
+public class CameraPersistence : MonoBehaviour
 {
-    public static MainManager Instance;
+    public static GameObject Instance;
     // Start is called before the first frame update
     void Awake(){
         if(Instance){
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        Instance = this.gameObject;
         DontDestroyOnLoad(gameObject);
     }
 }
