@@ -79,6 +79,7 @@ public class WeaponManager : MonoBehaviour
             itemManager.setAttachedObject(weapon);
             itemManager.randomizeColor();
             weapon.SetActive(false);  
+            weapon.transform.SetParent(transform);
             }
     }
     public void equipWeapon (GameObject weapon){

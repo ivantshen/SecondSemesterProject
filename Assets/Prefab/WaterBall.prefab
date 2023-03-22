@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 0
   bulletDamage: 0
-  bulletDeathTime: 10
+  bulletDeathTime: 5.5
   multiTarget: 1
   wallClipping: 1
   contactDamage: 0

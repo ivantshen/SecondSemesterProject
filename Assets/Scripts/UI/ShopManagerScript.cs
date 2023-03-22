@@ -21,6 +21,7 @@ public class ShopManagerScript : MonoBehaviour
     
     void Start()
     {
+        CoinsTXT = CanvasPersistence.Instance.transform.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>();
         coins = CurrencyManager.keyy.getMon();
         CoinsTXT.text = "Coins:" + coins.ToString();
 

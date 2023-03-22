@@ -34,7 +34,9 @@ public class HealthP1 : MonoBehaviour
         }
         }
     }
-
+    public void resetHealth(){
+        currentHealth = startingHealth;
+    }
     //testing
     void Update(){
        // if(Input.GetKeyDown(KeyCode.B)){

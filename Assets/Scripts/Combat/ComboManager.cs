@@ -6,11 +6,14 @@ public class ComboManager : MonoBehaviour
 {
     public float comboTimeLimit;
     private float comboResetTime;
-    public ComboDisplay comboDisplay;
+    private ComboDisplay comboDisplay;
     private float comboDamageMultiplier;
     private int comboLevel =0;
     private int hitCount =0;
 
+    void Start(){
+        comboDisplay = GameObject.FindWithTag("ComboUI").GetComponent<ComboDisplay>();
+    }
     void Update(){
         if(comboResetTime>0){
             comboResetTime-=Time.deltaTime;

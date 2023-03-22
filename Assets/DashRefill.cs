@@ -9,6 +9,7 @@ public class DashRefill : MonoBehaviour
 
     void Start() {
         cd = GetComponent<CapsuleCollider2D>();
+        player = GameObject.FindWithTag("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
