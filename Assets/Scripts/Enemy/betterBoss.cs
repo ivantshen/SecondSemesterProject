@@ -13,6 +13,7 @@ public class betterBoss : MonoBehaviour
     public Transform center;
     private bool allowCollisionDamage = true;
     private float collisionTimer = 5f;
+    private bool canAttack = true;
 
     // boss variables
     [SerializeField] private float damageAmount;
@@ -24,7 +25,12 @@ public class betterBoss : MonoBehaviour
     [SerializeField] private float slamGravity = 1000f;
 
     private float distance;
+    private float xPos;
+    private float yPos;
+    private bool canDash = false;
 
+    [SerializeField] private GameObject attack;
+    [SerializeField] private Transform firePoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +53,14 @@ public class betterBoss : MonoBehaviour
         if (allowMoves && currentPhase == 1) {
             allowMoves = false;
             StartCoroutine(phase1MoveChain());
+        }
+        if(canDash){
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(xPos,yPos), moveSpeed/20 * Time.deltaTime);
         }
     }
 
@@ -73,14 +87,19 @@ public class betterBoss : MonoBehaviour
     // phase 1 moves
     IEnumerator phase1MoveChain() {
         int randomMoveNumber = Random.Range(1,7);
-        if (randomMoveNumber < 5) {
+        if(canAttack){
+        if (randomMoveNumber < 2) {
             StartCoroutine(diagonalSlam());
+            
         } else if (randomMoveNumber < 6) {
-            StartCoroutine(slam());
+            StartCoroutine(fire());
+            
         } else {
             StartCoroutine(zoteSlam());
+            
         }
-        yield return new WaitForSeconds(1.5f);
+        }
+        yield return new WaitForSeconds(3f);
         allowMoves = true;
     }
 
@@ -99,22 +118,22 @@ public class betterBoss : MonoBehaviour
     } */
     IEnumerator diagonalSlam() {
         Debug.Log("moveAround");
+        canAttack = false;
         rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
         rb.gravityScale = 0;
-        transform.position = new Vector2(-13.6f, 13f);
+        //transform.position = new Vector2(-13.6f, 13f);
             yield return new WaitForSeconds(2f);
 
-        if(Vector2.Distance(player.transform.position,transform.position)<100){
-            
-            rb.velocity = (player.transform.position - transform.position).normalized * moveSpeed/9;
-            rb.velocity = new Vector2(rb.velocity.x,-200f);
-                
-            yield return new WaitForSeconds(4f);
-            rb.velocity = new Vector2(0,0);
-             
-        }
-        yield return new WaitForSeconds(0.5f);
+        canDash = true;
+        xPos = player.position.x;
+        yPos = player.position.y;
+
+       
+        yield return new WaitForSeconds(0.122f);
+        canDash = false;
+        rb.gravityScale = originalGravity;
+        canAttack = true;
     } 
     // 20 2000 -40 1000
 
@@ -123,6 +142,7 @@ public class betterBoss : MonoBehaviour
      IEnumerator slam() {
         Debug.Log("slam");
         rb.gravityScale = originalGravity;
+        canAttack = false;
         sr.color = new Color(0.5f, 0.5f, 0.5f, 1);
         yield return new WaitForSeconds(0.5f);
 
@@ -136,13 +156,34 @@ public class betterBoss : MonoBehaviour
 
         rb.gravityScale = slamGravity;
         yield return new WaitForSeconds(0.5f);
+        canAttack = true;
         //rb.velocity = Vector2.zero;
+    }
+
+    IEnumerator fire() {
+        Debug.Log("fire");
+        rb.gravityScale = originalGravity;
+        canAttack = false;
+        sr.color = new Color(1f, 1f, 1f, 1);
+        rb.gravityScale = 0;
+        transform.position = new Vector2(-13.6f, 13f);
+        yield return new WaitForSeconds(1f);
+        Instantiate(attack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(attack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(attack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(5f);
+        canAttack = true;
+
+        
     }
  
     // move 3 
      IEnumerator zoteSlam() {
         Debug.Log("zoteSlam");
         rb.gravityScale = originalGravity;
+        canAttack = false;
         sr.color = new Color(255, 255, 255, 1);
         yield return new WaitForSeconds(0.5f);
 
@@ -155,7 +196,7 @@ public class betterBoss : MonoBehaviour
         sr.transform.localScale = new Vector2(3f, 3f);
 
         yield return new WaitForSeconds(0.5f);
-
+        canAttack = true;
     } 
 
     private void OnCollisionStay2D(Collision2D other){
