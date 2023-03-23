@@ -92,7 +92,7 @@ public class betterBoss : MonoBehaviour
             StartCoroutine(diagonalSlam());
             
         } else if (randomMoveNumber < 6) {
-            StartCoroutine(fire());
+            StartCoroutine(slam());
             
         } else {
             StartCoroutine(zoteSlam());
@@ -122,7 +122,7 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
         rb.gravityScale = 0;
-        //transform.position = new Vector2(-13.6f, 13f);
+        transform.position = new Vector2(-13.6f, 13f);
             yield return new WaitForSeconds(2f);
 
         canDash = true;
@@ -130,8 +130,9 @@ public class betterBoss : MonoBehaviour
         yPos = player.position.y;
 
        
-        yield return new WaitForSeconds(0.122f);
+        yield return new WaitForSeconds(0.2f);
         canDash = false;
+        yield return new WaitForSeconds(1f);
         rb.gravityScale = originalGravity;
         canAttack = true;
     } 
@@ -151,7 +152,7 @@ public class betterBoss : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         
         rb.gravityScale = 0f;
-        transform.position = new Vector2(player.position.x, transform.position.y);
+        transform.position = new Vector2(player.position.x, 13f);
         yield return new WaitForSeconds(0.3f);
 
         rb.gravityScale = slamGravity;
@@ -170,6 +171,12 @@ public class betterBoss : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(0.5f);
+        Instantiate(attack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(2f);
+        Instantiate(attack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(attack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(0.5f);
         Instantiate(attack,firePoint.position,firePoint.rotation);

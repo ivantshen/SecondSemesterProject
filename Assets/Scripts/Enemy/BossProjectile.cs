@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BossProjectile : MonoBehaviour
 {
-    public float bulletDeathTime = 10f;
+    public float bulletDeathTime;
     [SerializeField] GameObject explosion;
     private Rigidbody2D rb;
-    public float bulletSpeed = 30f;
+    public float bulletSpeed;
         private GameObject player;
 
 
