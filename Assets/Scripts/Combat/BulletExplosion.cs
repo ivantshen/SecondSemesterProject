@@ -8,6 +8,7 @@ public class BulletExplosion : MonoBehaviour
     [SerializeField] int explosionDamage;
     [SerializeField] float explosionRadius;
     [SerializeField] float knockbackForce;
+    [SerializeField] private bool wallClip;
     private LayerMask targetLayer;
     private Transform player;
     private ComboManager cm;
@@ -19,33 +20,22 @@ public class BulletExplosion : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.tag!="Player"){
-        Instantiate(explosion,transform.position,Quaternion.identity,null);
-        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(transform.position,explosionRadius,targetLayer);
-        foreach (Collider2D enemy in enemiesToDmg)
-        {
-        if(enemy){
-        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(transform.position)-(Vector2)transform.position).normalized);
-        enemy.GetComponent<EnemyHealth>().TakeDamage(explosionDamage*cm.getComboDamageMultiplier());
-        cm.increaseHitcount(1);
-        }
-    }
-    }   
-    }
-    
-    private void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.tag!="Player"){
-        Instantiate(explosion,transform.position,Quaternion.identity,null);
-        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(transform.position,explosionRadius,targetLayer);
-        foreach (Collider2D enemy in enemiesToDmg)
-        {
-        if(enemy){
-        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(transform.position)-(Vector2)transform.position).normalized);
-        enemy.GetComponent<EnemyHealth>().TakeDamage(explosionDamage*cm.getComboDamageMultiplier());
-        cm.increaseHitcount(1);
-        }
-    }
-    }   
+            if(other.tag!="Player"){
+                if(other.gameObject.layer ==8&&wallClip){
+                    return;
+                }
+                Vector2 explosionLocation = other.ClosestPoint(transform.position);
+                Instantiate(explosion,explosionLocation,Quaternion.identity,null);
+                Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(explosionLocation,explosionRadius,targetLayer);
+            foreach (Collider2D enemy in enemiesToDmg)
+            {
+                if(enemy){
+                    enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(explosionLocation)-(Vector2)explosionLocation).normalized);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(explosionDamage*cm.getComboDamageMultiplier());
+                    cm.increaseHitcount(1);
+                }
+            }
+        }   
     }
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;

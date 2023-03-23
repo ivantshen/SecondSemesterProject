@@ -34,6 +34,14 @@ public class PlayerBulletScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void setStats(float spd, float dmg, float deathTime, bool multiTarget, bool wallClipping, bool contactDamage){
+        this.bulletDamage = dmg;
+        this.bulletSpeed = spd;
+        this.bulletDeathTime = deathTime;
+        this.multiTarget = multiTarget;
+        this.wallClipping = wallClipping;
+        this.contactDamage = contactDamage;
+    }
     private void OnTriggerEnter2D(Collider2D other){
         if(contactDamage){
         if(other.gameObject.layer==6){
