@@ -50,4 +50,20 @@ public class PlayerBulletScript : MonoBehaviour
         }
         
     }
+    private void OnCollisionEnter2D(Collision2D other){
+        if(contactDamage){
+        if(other.gameObject.layer==6){
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage*cm.getComboDamageMultiplier());
+            cm.increaseHitcount(1);
+            if(multiTarget){
+            bulletDeathTime/=1.25f;
+            }else{
+            Destroy(gameObject); 
+            }
+        }else if(other.gameObject.tag!="Player"&&!wallClipping&&other.gameObject.layer!=7){
+             Destroy(gameObject);
+        }    
+        }
+        
+    }
 }
