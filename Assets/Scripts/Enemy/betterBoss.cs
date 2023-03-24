@@ -107,7 +107,7 @@ public class betterBoss : MonoBehaviour
 
     // phase 1 moves
     IEnumerator phase1MoveChain() {
-        int randomMoveNumber = Random.Range(1,7);
+        int randomMoveNumber = Random.Range(1,9);
         if(canAttack){
         if (randomMoveNumber < 2) {
             StartCoroutine(diagonalSlam());
@@ -142,8 +142,11 @@ public class betterBoss : MonoBehaviour
         canAttack = false;
         rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
+        rb.gravityScale = floatGravity;
+        yield return new WaitForSeconds(0.7f);
         rb.gravityScale = 0;
-        transform.position = new Vector2(-13.6f, 13f);
+        //transform.position = new Vector2(-13.6f, 13f);
+        
             yield return new WaitForSeconds(1f);
 
         canDash = true;
@@ -194,6 +197,8 @@ public class betterBoss : MonoBehaviour
         //untouched = true;
         canAttack = false;
         sr.color = new Color(1f, 1f, 1f, 1);
+        rb.gravityScale = floatGravity;
+        yield return new WaitForSeconds(0.7f);
         rb.gravityScale = 0;
         //transform.position = new Vector2(-13.6f, 13f);
         canFollow = true;
@@ -243,7 +248,11 @@ public class betterBoss : MonoBehaviour
                 allowCollisionDamage = false;
                 collisionTimer = 5f;
                 other.gameObject.GetComponent<HealthP1>().TakeDamage(damageAmount);
-                untouched = false;    
+                    
+            }
+            if(other.gameObject.layer == 8){
+                canDash = false;
+                canFollow = false;
             }
              
         }
