@@ -4475,6 +4475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: shopLocation
       objectReference: {fileID: 0}
+    - target: {fileID: 5817068825672290762, guid: 24f8f1505624b4447bc43264639ac8e8, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5817068825672290763, guid: 24f8f1505624b4447bc43264639ac8e8, type: 3}
       propertyPath: gameObject
       value: 
@@ -5366,7 +5370,7 @@ GameObject:
   - component: {fileID: 1461000090}
   - component: {fileID: 1461000092}
   - component: {fileID: 1461000091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: closeShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5670,8 +5674,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword: {fileID: 3169104707183020312, guid: 3d23c21ba8d8dcd43ac1a0f59b5bddc4, type: 3}
-  spawnLocationOffset: {x: -4, y: 4, z: 0}
-  rotation: -30
+  spawnLocationOffset: {x: -2.5, y: 2, z: 0}
+  rotation: -45
   hitCost: 0
   speed: 10
   damage: 30
