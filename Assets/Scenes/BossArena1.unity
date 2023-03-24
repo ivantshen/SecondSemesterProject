@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b320e48a142f64ba3da0ffad91f631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 100
   monAmt: 0
 --- !u!114 &1273643586
 MonoBehaviour:
@@ -1579,6 +1579,8 @@ MonoBehaviour:
   floatGravity: -40
   slamGravity: 1000
   attack: {fileID: 8215724951910908474, guid: e065ed4f609c4fc4ab2380b04aee1772, type: 3}
+  leftAttack: {fileID: 8215724951910908474, guid: 03d6039ab60d4454ebf45be82f9091cd, type: 3}
+  rightAttack: {fileID: 8215724951910908474, guid: 7390198ba69b86c4d9eb665db9e87b09, type: 3}
   firePoint: {fileID: 1273643582}
 --- !u!1 &1400109485
 GameObject:
@@ -2124,6 +2126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 560554787, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
     - target: {fileID: 4771599244993913110, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
       propertyPath: knockbackScale
       value: 3

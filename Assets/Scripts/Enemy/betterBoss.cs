@@ -28,8 +28,12 @@ public class betterBoss : MonoBehaviour
     private float xPos;
     private float yPos;
     private bool canDash = false;
+    private bool canFollow = false;
+    private bool untouched;
 
     [SerializeField] private GameObject attack;
+    [SerializeField] private GameObject leftAttack;
+    [SerializeField] private GameObject rightAttack;
     [SerializeField] private Transform firePoint;
     // Start is called before the first frame update
     void Start()
@@ -54,6 +58,8 @@ public class betterBoss : MonoBehaviour
             allowMoves = false;
             StartCoroutine(phase1MoveChain());
         }
+
+
         if(canDash){
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
@@ -62,6 +68,21 @@ public class betterBoss : MonoBehaviour
         
         transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(xPos,yPos), moveSpeed/20 * Time.deltaTime);
         }
+
+
+        if(canFollow){
+        //while(untouched){
+            distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed/500 * Time.deltaTime);
+
+        
+        //}
+        }
+        
     }
 
     public void BossTransformation() {
@@ -92,10 +113,10 @@ public class betterBoss : MonoBehaviour
             StartCoroutine(diagonalSlam());
             
         } else if (randomMoveNumber < 6) {
-            StartCoroutine(slam());
+            StartCoroutine(fire());
             
         } else {
-            StartCoroutine(zoteSlam());
+            StartCoroutine(slam());
             
         }
         }
@@ -123,7 +144,7 @@ public class betterBoss : MonoBehaviour
         sr.color = new Color(0,0,0,1);
         rb.gravityScale = 0;
         transform.position = new Vector2(-13.6f, 13f);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
         canDash = true;
         xPos = player.position.x;
@@ -132,7 +153,7 @@ public class betterBoss : MonoBehaviour
        
         yield return new WaitForSeconds(0.2f);
         canDash = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         rb.gravityScale = originalGravity;
         canAttack = true;
     } 
@@ -143,6 +164,7 @@ public class betterBoss : MonoBehaviour
      IEnumerator slam() {
         Debug.Log("slam");
         rb.gravityScale = originalGravity;
+        
         canAttack = false;
         sr.color = new Color(0.5f, 0.5f, 0.5f, 1);
         yield return new WaitForSeconds(0.5f);
@@ -156,18 +178,25 @@ public class betterBoss : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         rb.gravityScale = slamGravity;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
+        Instantiate(leftAttack,firePoint.position,firePoint.rotation);
+        Instantiate(rightAttack,firePoint.position,firePoint.rotation);
+        yield return new WaitForSeconds(0.3f);
+        
         canAttack = true;
+
         //rb.velocity = Vector2.zero;
     }
 
     IEnumerator fire() {
         Debug.Log("fire");
         rb.gravityScale = originalGravity;
+        //untouched = true;
         canAttack = false;
         sr.color = new Color(1f, 1f, 1f, 1);
         rb.gravityScale = 0;
-        transform.position = new Vector2(-13.6f, 13f);
+        //transform.position = new Vector2(-13.6f, 13f);
+        canFollow = true;
         yield return new WaitForSeconds(1f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(0.5f);
@@ -182,6 +211,8 @@ public class betterBoss : MonoBehaviour
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(5f);
         canAttack = true;
+        canFollow = false;
+        //untouched = true;
 
         
     }
@@ -211,7 +242,8 @@ public class betterBoss : MonoBehaviour
             if (other.gameObject) {
                 allowCollisionDamage = false;
                 collisionTimer = 5f;
-                other.gameObject.GetComponent<HealthP1>().TakeDamage(damageAmount);    
+                other.gameObject.GetComponent<HealthP1>().TakeDamage(damageAmount);
+                untouched = false;    
             }
              
         }
