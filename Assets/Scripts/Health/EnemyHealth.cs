@@ -6,7 +6,7 @@ public class EnemyHealth : ParentHealth
 {
     
     
-
+    public static EnemyHealth keyyy;
     
 
     

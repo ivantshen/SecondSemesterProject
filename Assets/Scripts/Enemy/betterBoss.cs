@@ -30,6 +30,8 @@ public class betterBoss : MonoBehaviour
     private bool canDash = false;
     private bool canFollow = false;
     private bool untouched;
+    //private float current;
+    //private float starting;
 
     [SerializeField] private GameObject attack;
     [SerializeField] private GameObject leftAttack;
@@ -71,7 +73,7 @@ public class betterBoss : MonoBehaviour
 
 
         if(canFollow){
-        //while(untouched){
+        
             distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -80,7 +82,7 @@ public class betterBoss : MonoBehaviour
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, moveSpeed/500 * Time.deltaTime);
 
         
-        //}
+        
         }
         
     }
@@ -107,21 +109,27 @@ public class betterBoss : MonoBehaviour
 
     // phase 1 moves
     IEnumerator phase1MoveChain() {
-        int randomMoveNumber = Random.Range(1,9);
+        //current = EnemyHealth.keyyy.getHealth();
+        //starting = EnemyHealth.keyyy.getStart();
+        //if(current > starting/2){
+            //Debug.Log(current + " " + starting);
+        int randomMoveNumber = Random.Range(1,10);
         if(canAttack){
-        if (randomMoveNumber < 2) {
+        if (randomMoveNumber <4) {
             StartCoroutine(diagonalSlam());
             
-        } else if (randomMoveNumber < 6) {
+        } else if (randomMoveNumber < 9) {
             StartCoroutine(fire());
             
         } else {
             StartCoroutine(slam());
             
         }
-        }
+        //}
         yield return new WaitForSeconds(3f);
         allowMoves = true;
+        }
+        
     }
 
     // move 1
@@ -143,18 +151,18 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
         rb.gravityScale = floatGravity;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
         rb.gravityScale = 0;
         //transform.position = new Vector2(-13.6f, 13f);
         
-            yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
 
         canDash = true;
         xPos = player.position.x;
         yPos = player.position.y;
 
        
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         canDash = false;
         yield return new WaitForSeconds(0.3f);
         rb.gravityScale = originalGravity;
@@ -181,7 +189,7 @@ public class betterBoss : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         rb.gravityScale = slamGravity;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.18f);
         Instantiate(leftAttack,firePoint.position,firePoint.rotation);
         Instantiate(rightAttack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(0.3f);
@@ -198,23 +206,23 @@ public class betterBoss : MonoBehaviour
         canAttack = false;
         sr.color = new Color(1f, 1f, 1f, 1);
         rb.gravityScale = floatGravity;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
         rb.gravityScale = 0;
         //transform.position = new Vector2(-13.6f, 13f);
         canFollow = true;
         yield return new WaitForSeconds(1f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         canAttack = true;
         canFollow = false;
         //untouched = true;

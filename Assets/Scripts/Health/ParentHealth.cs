@@ -27,5 +27,12 @@ public class ParentHealth : MonoBehaviour
             
         }
     }
+
+    public float getHealth(){
+        return currentHealth;
+    }
+    public float getStart(){
+        return startingHealth;
+    }
     
 }

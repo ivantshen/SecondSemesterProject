@@ -12,6 +12,8 @@ public class BossProjectile : MonoBehaviour
 
 
     public float speed = 20f;
+    private float xPos;
+    private float yPos;
 
     private float distance;
 
@@ -25,6 +27,7 @@ public class BossProjectile : MonoBehaviour
 
     void Update()
     {
+        
 
         if(bulletDeathTime>0){
             bulletDeathTime-= Time.deltaTime;
@@ -42,11 +45,13 @@ public class BossProjectile : MonoBehaviour
         //
 
         //if(distance < 10){
+
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         //}
 
     }
+    
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
