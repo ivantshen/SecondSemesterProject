@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2713127863684372891}
   - component: {fileID: 2713127863684372890}
   - component: {fileID: 2713127863684372889}
+  - component: {fileID: 1839783440714671828}
   m_Layer: 3
   m_Name: Explosion
   m_TagString: Untagged
@@ -110,3 +111,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
+--- !u!114 &1839783440714671828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2713127863684372888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00a6ba0b303c284d8b63e391445df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeTillDeath: 2

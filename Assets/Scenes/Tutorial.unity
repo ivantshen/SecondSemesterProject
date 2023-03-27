@@ -5674,15 +5674,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword: {fileID: 3169104707183020312, guid: 3d23c21ba8d8dcd43ac1a0f59b5bddc4, type: 3}
-  spawnLocationOffset: {x: -2.5, y: 2, z: 0}
+  spawnLocation: {x: -4, y: 4}
+  spawnLocationOffset: {x: 1, y: 1}
   rotation: -45
-  hitCost: 0
-  speed: 10
-  damage: 30
-  deathTime: 60
+  rotationOffset: 15
+  minHitCost: 1
+  speed: 15
+  damage: 10
+  deathTime: 5
   multiTarget: 0
   wallClipping: 0
   contactDamage: 1
+  summonDuration: 3
 --- !u!1 &1689655921
 GameObject:
   m_ObjectHideFlags: 0
@@ -7659,7 +7662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400681958021486932, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.23
       objectReference: {fileID: 0}
     - target: {fileID: 400681958021486932, guid: 1ec5b7a5279050648b39d9b90c36f827, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7995,7 +7998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8114581778382932501, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.14
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: 8114581778382932501, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
       propertyPath: m_LocalPosition.y

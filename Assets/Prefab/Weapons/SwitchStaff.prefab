@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 8436169248078771824}
   - component: {fileID: 1770267574100016029}
   m_Layer: 7
-  m_Name: RangedWepTest
+  m_Name: SwitchStaff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,4 +488,4 @@ MonoBehaviour:
   - {r: 0.23952653, g: 0, b: 0.8396226, a: 1}
   - {r: 0, g: 0.4439433, b: 0.8679245, a: 1}
   colorIndicator: {fileID: 1071271099}
-  swapCD: 0
+  swapCD: 0.25

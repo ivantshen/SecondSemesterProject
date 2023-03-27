@@ -8,7 +8,7 @@ public class HealthP1 : MonoBehaviour
    
      [SerializeField] private float iFrameTime;
      private bool allowDmg;
-
+    private ComboManager cm;
     public float startingHealth;
     public float currentHealth {get; private set;}
 
@@ -16,6 +16,7 @@ public class HealthP1 : MonoBehaviour
         allowDmg = true;
         currentHealth = startingHealth;
         Physics2D.IgnoreLayerCollision(0,6,false);
+        cm = gameObject.GetComponent<ComboManager>();
     }
 
     public void TakeDamage(float _damage){
@@ -37,6 +38,7 @@ public class HealthP1 : MonoBehaviour
     }
     public void resetHealth(){
         currentHealth = startingHealth;
+        cm.resetHitCount();
     }
     //testing
     void Update(){

@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 2713127863684372888, guid: 525df06627f39614e8bbde120e43d577, type: 3}
-  explosionDamage: 30
-  explosionRadius: 3
-  knockbackForce: 1000
+  explosionDamage: 5
+  explosionRadius: 1
+  knockbackForce: 300
+  wallClip: 0
 --- !u!60 &3169104707183020304
 PolygonCollider2D:
   m_ObjectHideFlags: 0
