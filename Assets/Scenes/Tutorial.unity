@@ -5674,6 +5674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword: {fileID: 3169104707183020312, guid: 3d23c21ba8d8dcd43ac1a0f59b5bddc4, type: 3}
+  swordPortal: {fileID: 5705311106896098305, guid: 3e76d87fea627f54d9fefdd31fdafc0a, type: 3}
   spawnLocation: {x: -4, y: 4}
   spawnLocationOffset: {x: 1, y: 1}
   rotation: -45

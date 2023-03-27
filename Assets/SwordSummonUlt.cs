@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class SwordSummonUlt : MonoBehaviour
 {
     [SerializeField] private GameObject sword;
+    [SerializeField] private GameObject swordPortal;
     [SerializeField] private Vector2 spawnLocation;
     [SerializeField] private Vector2 spawnLocationOffset;
     [SerializeField] private float rotation;
@@ -42,8 +43,10 @@ public class SwordSummonUlt : MonoBehaviour
         float rot = rotation;
         if(!facingRight){
             rot = 180-rotation;
+            Instantiate(swordPortal,playerPos-new Vector2(spawnLocation.x,-spawnLocation.y),Quaternion.identity,null);
         }else{
             rot = rotation;
+            Instantiate(swordPortal,playerPos+spawnLocation,Quaternion.identity,null);
         }
         int numSwords = (cm.getHitCount()/minHitCost)/2; //half the number of swords that can be summoned
         Debug.Log(numSwords);
