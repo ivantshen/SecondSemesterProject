@@ -7,7 +7,7 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private bool unlocked;
     public static Transform lastTouched;
     private GameObject player;
-    private bool spawnPoint;
+    [SerializeField] bool spawnPoint;
     void Start(){
         player = GameObject.FindWithTag("Player");
         if(spawnPoint){
