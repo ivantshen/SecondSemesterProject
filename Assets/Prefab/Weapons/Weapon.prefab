@@ -409,7 +409,7 @@ MonoBehaviour:
   spawnLocationOffset: {x: 1, y: 1}
   rotation: -45
   rotationOffset: 15
-  minHitCost: 1
+  minHitCost: 5
   speed: 15
   damage: 10
   deathTime: 5
