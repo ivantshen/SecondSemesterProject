@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 8114581778382932488}
   - component: {fileID: 8114581778382932490}
   - component: {fileID: 1582769456}
+  - component: {fileID: 1683076893}
   m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
@@ -366,7 +367,19 @@ MonoBehaviour:
     m_ActionId: 1326536c-50e0-4323-bf3c-bd2d4013629d
     m_ActionName: Player/Switch Weapon[/Keyboard/t]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1683076893}
+        m_TargetAssemblyTypeName: SwordSummonUlt, Assembly-CSharp
+        m_MethodName: SwordUlt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3663d414-d379-4910-9f24-124edd325062
     m_ActionName: Player/Activate Weapon Effect[/Keyboard/z]
   - m_PersistentCalls:
@@ -378,3 +391,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1683076893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114581778382932500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f405f3743a84d4245b068e75efe9cf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword: {fileID: 3169104707183020312, guid: 3d23c21ba8d8dcd43ac1a0f59b5bddc4, type: 3}
+  swordPortal: {fileID: 5705311106896098305, guid: 3e76d87fea627f54d9fefdd31fdafc0a, type: 3}
+  spawnLocation: {x: -4, y: 4}
+  spawnLocationOffset: {x: 1, y: 1}
+  rotation: -45
+  rotationOffset: 15
+  minHitCost: 1
+  speed: 15
+  damage: 10
+  deathTime: 5
+  multiTarget: 0
+  wallClipping: 0
+  contactDamage: 1
+  summonDuration: 3

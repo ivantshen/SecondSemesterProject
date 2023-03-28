@@ -5656,37 +5656,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1683076886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8114581778382932500, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-  m_PrefabInstance: {fileID: 8114581778210388216}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1683076893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683076886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f405f3743a84d4245b068e75efe9cf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sword: {fileID: 3169104707183020312, guid: 3d23c21ba8d8dcd43ac1a0f59b5bddc4, type: 3}
-  swordPortal: {fileID: 5705311106896098305, guid: 3e76d87fea627f54d9fefdd31fdafc0a, type: 3}
-  spawnLocation: {x: -4, y: 4}
-  spawnLocationOffset: {x: 1, y: 1}
-  rotation: -45
-  rotationOffset: 15
-  minHitCost: 1
-  speed: 15
-  damage: 10
-  deathTime: 5
-  multiTarget: 0
-  wallClipping: 0
-  contactDamage: 1
-  summonDuration: 3
 --- !u!1 &1689655921
 GameObject:
   m_ObjectHideFlags: 0
@@ -7961,34 +7930,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1683076893}
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwordUlt
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SwordSummonUlt, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582769456, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8114581778382932500, guid: 2d4dd9cafdcf8534d9523646c52de5a5, type: 3}
       propertyPath: m_Name
       value: Weapon

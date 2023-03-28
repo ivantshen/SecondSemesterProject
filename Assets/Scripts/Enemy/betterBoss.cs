@@ -6,6 +6,7 @@ public class betterBoss : MonoBehaviour
 {
     private Rigidbody2D rb; 
     private SpriteRenderer sr;
+    private EnemyHealth eH;
     
     private int currentPhase = 0;
     private bool allowMoves = true;
@@ -44,6 +45,7 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = 0;
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player").transform;
+        eH = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
@@ -60,6 +62,10 @@ public class betterBoss : MonoBehaviour
             allowMoves = false;
             StartCoroutine(phase1MoveChain());
         }
+
+        //if(eH.getHealth() <= eH.getStart()/2){
+            //Debug.Log("it works");
+        //}
 
 
         if(canDash){
@@ -118,7 +124,7 @@ public class betterBoss : MonoBehaviour
         if (randomMoveNumber <4) {
             StartCoroutine(diagonalSlam());
             
-        } else if (randomMoveNumber < 9) {
+        } else if (randomMoveNumber < 7) {
             StartCoroutine(fire());
             
         } else {
@@ -127,8 +133,9 @@ public class betterBoss : MonoBehaviour
         }
         //}
         yield return new WaitForSeconds(3f);
-        allowMoves = true;
+        
         }
+        allowMoves = true;
         
     }
 
@@ -222,7 +229,7 @@ public class betterBoss : MonoBehaviour
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(2f);
         Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         canAttack = true;
         canFollow = false;
         //untouched = true;
