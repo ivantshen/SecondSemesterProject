@@ -7,9 +7,10 @@ public class ComboManager : MonoBehaviour
     public float comboTimeLimit;
     private float comboResetTime;
     private ComboDisplay comboDisplay;
-    private float comboDamageMultiplier;
+    private float comboDamageMultiplier = 1;
     private int comboLevel =0;
     private int hitCount =0;
+    private bool allowComboIncrease = true;
 
     void Start(){
         comboDisplay = GameObject.FindWithTag("ComboUI").GetComponent<ComboDisplay>();
@@ -40,8 +41,13 @@ public class ComboManager : MonoBehaviour
     }
     public void increaseHitcount(int num){
         comboResetTime = comboTimeLimit;
+        if(allowComboIncrease){
         hitCount+= num;
-        checkAndSet();
+        checkAndSet();    
+        }
+    }
+    public void allowCombo(bool trueOrFalse){
+        allowComboIncrease = trueOrFalse;
     }
     private void checkAndSet(){
         if(hitCount>125){

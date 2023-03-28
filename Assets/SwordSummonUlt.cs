@@ -39,6 +39,7 @@ public class SwordSummonUlt : MonoBehaviour
         }
     }
     private IEnumerator swordRain(bool facingRight){
+        cm.allowCombo(false);
         Vector2 playerPos = player.transform.position;
         float rot = rotation;
         if(!facingRight){
@@ -57,6 +58,7 @@ public class SwordSummonUlt : MonoBehaviour
             yield return new WaitForSeconds(summonDuration/numSwords);
         }
         allowAbility = true;
+        cm.allowCombo(true);
     }
     private Vector2 randomSpawnLocation(bool facingRight,Vector2 localPos){
         Vector2 spawn;

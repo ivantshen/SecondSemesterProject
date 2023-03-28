@@ -299,6 +299,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2260e06d-1f13-4af1-9a24-83afdd926d7a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5360cd92-4179-4968-a05c-23365b2e7e40",
                     "path": "<Keyboard>/e",
                     "interactions": "",
