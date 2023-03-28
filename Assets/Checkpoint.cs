@@ -19,7 +19,7 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(!unlocked){
             unlocked = true;
-            lastTouched = other.GameObject.transform;
+            lastTouched = other.gameObject.transform;
         }
     }
     public static GameObject getNearestCheckpoint(){
