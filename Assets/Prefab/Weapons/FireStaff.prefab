@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2735849, g: 0.0757469, b: 0, a: 1}
+  m_Color: {r: 0.4056604, g: 0.0037065623, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 400681958021486923}
   - component: {fileID: 8436169248078771825}
   - component: {fileID: 8436169248078771824}
+  - component: {fileID: 7284442860204699254}
   m_Layer: 7
   m_Name: FireStaff
   m_TagString: Untagged
@@ -458,3 +459,15 @@ MonoBehaviour:
   attack: {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
   firePoint: {fileID: 400681957264820268}
   freezeAmt: 0.5
+--- !u!114 &7284442860204699254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400681958021486933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8840b1fa4ee8d43bb3ed29700f6d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

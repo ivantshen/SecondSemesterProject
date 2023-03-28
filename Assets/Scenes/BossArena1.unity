@@ -2166,7 +2166,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
     - target: {fileID: 4771599244993913110, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
       propertyPath: knockbackScale
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4771599244993913116, guid: 6fa33063e6166e94ab0ac7cd981428f5, type: 3}
       propertyPath: m_Name

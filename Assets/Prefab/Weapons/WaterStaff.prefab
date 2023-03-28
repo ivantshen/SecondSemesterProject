@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.44313726, b: 0.8666667, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2735849, g: 0.0757469, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.15559167, b: 0.27450982, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -214,10 +214,9 @@ GameObject:
   - component: {fileID: 400681958021486923}
   - component: {fileID: 8436169248078771825}
   - component: {fileID: 8436169248078771824}
-  - component: {fileID: 1770267574100016029}
-  - component: {fileID: -6656331848233190648}
+  - component: {fileID: -1902151831520290089}
   m_Layer: 7
-  m_Name: SwitchStaff
+  m_Name: WaterStaff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +424,7 @@ MonoBehaviour:
     m_ActionName: Player/Switch Weapon[/Keyboard/t]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1770267574100016029}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SpellSwap, Assembly-CSharp
         m_MethodName: swapSpell
         m_Mode: 0
@@ -436,7 +435,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_ActionId: 3663d414-d379-4910-9f24-124edd325062
     m_ActionName: Player/Activate Weapon Effect[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
@@ -456,41 +455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6545845c936a394aaaa7cd7d75d0b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 0.5
-  attack: {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
+  attackRate: 2
+  attack: {fileID: 1733842562804451773, guid: b2056edab3b6b224587603bcfd92a94a, type: 3}
   firePoint: {fileID: 400681957264820268}
-  freezeAmt: 2
---- !u!114 &1770267574100016029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400681958021486933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a226e1de16d557a45a08673a63dd8570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 8215724951910908474, guid: 1493dd4825268d0498068dd3497baa07, type: 3}
-  - {fileID: 6500777779477180727, guid: bee9c07474fd58c4dab62f0c93cd96fc, type: 3}
-  - {fileID: 1733842562804451773, guid: b2056edab3b6b224587603bcfd92a94a, type: 3}
-  spellCooldown:
-  - 1
-  - 1.75
-  - 2.5
-  playerFreezeTime:
-  - 0.5
-  - 0.75
-  - 1
-  colors:
-  - {r: 0.8773585, g: 0.4119184, b: 0, a: 1}
-  - {r: 0.23952653, g: 0, b: 0.8396226, a: 1}
-  - {r: 0, g: 0.4439433, b: 0.8679245, a: 1}
-  colorIndicator: {fileID: 1071271099}
-  swapCD: 0.25
---- !u!114 &-6656331848233190648
+  freezeAmt: 1
+--- !u!114 &-1902151831520290089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
