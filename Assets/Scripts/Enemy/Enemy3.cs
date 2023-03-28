@@ -12,10 +12,10 @@ public class Enemy3 : MonoBehaviour
     private GameObject player;
     public GameObject check;
     private float distance;
-    //public float yMin;
-    //public float yMax;
-    //public float xMin;
-    //public float xMax;
+    public float yMin;
+    public float yMax;
+    public float xMin;
+    public float xMax;
 
     //for attacking/shooting
     private bool canAttack = true;
@@ -23,6 +23,7 @@ public class Enemy3 : MonoBehaviour
     [SerializeField] private float attackRate = 0.2f;
     [SerializeField] private GameObject attack;
     [SerializeField] private Transform firePoint;
+    
     
 
     void Start(){
@@ -51,15 +52,15 @@ public class Enemy3 : MonoBehaviour
         
         
 
-        transform.position = new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3));
+        transform.position = new Vector2(Mathf.Clamp(disX, xMin, xMax),Mathf.Clamp(disY, yMin, yMax));
      
     }
 
     void Check(){
         RandomNum();
-        check.transform.position = new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3));
+        check.transform.position = new Vector2(Mathf.Clamp(disX, xMin, xMax),Mathf.Clamp(disY, yMin, yMax));
         if(player){
-        distance = Vector2.Distance(new Vector2(Mathf.Clamp(disX, -18, 8),Mathf.Clamp(disY, 0, 3)), player.transform.position);
+        distance = Vector2.Distance(new Vector2(Mathf.Clamp(disX, xMin, xMax),Mathf.Clamp(disY, yMin, yMax)), player.transform.position);
         }
         if(distance < 3){
             Debug.Log("it doenst work");
@@ -80,8 +81,8 @@ public class Enemy3 : MonoBehaviour
 
     
     void RandomNum(){
-        disX = Random.Range(-18f,-8f);
-        disY = Random.Range(0f,3f);
+        disX = Random.Range(xMin,xMax);
+        disY = Random.Range(yMin,yMax);
     }
     private void OnCollisionStay2D(Collision2D other){
         if(other.gameObject.tag == "Player"){

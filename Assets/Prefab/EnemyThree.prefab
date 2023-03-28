@@ -203,6 +203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeleportTime: 3
   check: {fileID: 845182862}
+  yMin: 0
+  yMax: 5
+  xMin: -4
+  xMax: 5
   attackRate: 0.2
   attack: {fileID: 8215724951910908474, guid: 9d7882f5f54690f4f9112727aa2ea8e2, type: 3}
   firePoint: {fileID: 6384267859886477777}
