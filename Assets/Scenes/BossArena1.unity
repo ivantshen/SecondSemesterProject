@@ -485,6 +485,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &398131256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398131257}
+  m_Layer: 0
+  m_Name: check
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &398131257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398131256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32.07564, y: 19.159494, z: -0.42505533}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &420686842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,6 +1605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2140727052}
   center: {fileID: 1215593818}
+  knockbackForce: 3000
   damageAmount: 20
   moveSpeed: 2000
   floatGravity: -40
@@ -1582,6 +1614,8 @@ MonoBehaviour:
   leftAttack: {fileID: 8215724951910908474, guid: 03d6039ab60d4454ebf45be82f9091cd, type: 3}
   rightAttack: {fileID: 8215724951910908474, guid: 7390198ba69b86c4d9eb665db9e87b09, type: 3}
   firePoint: {fileID: 1273643582}
+  enemy1: {fileID: 1177047457600032744, guid: a5119833b4aa320499bd4eb9a7d46aaf, type: 3}
+  check: {fileID: 398131256}
 --- !u!1 &1400109485
 GameObject:
   m_ObjectHideFlags: 0
