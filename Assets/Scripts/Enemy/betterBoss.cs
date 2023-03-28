@@ -83,7 +83,7 @@ public class betterBoss : MonoBehaviour
         }
 
         if(eH.getHealth() <= eH.getStart()/2){
-            Debug.Log("half health");
+            //Debug.Log("half health");
             currentPhase = 2;
         }
 
@@ -158,6 +158,8 @@ public class betterBoss : MonoBehaviour
 
     IEnumerator phase2MoveChain() {
         if(phaseChange){
+            //phaseChange = false;
+            //canAttack = false;
              transform.position = new Vector2(-13.6f, 13f);
         rb.gravityScale = 0;
         yield return new WaitForSeconds(1f);
@@ -167,17 +169,19 @@ public class betterBoss : MonoBehaviour
         sr.color = new Color(0.1f,0.1f,0.1f,1);
         yield return new WaitForSeconds(0.1f);
         sr.color = new Color(0.3f,0.3f,0.3f,1);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(3f);
         rb.gravityScale = originalGravity;
+        //canAttack = true;
+        //yield return new WaitForSeconds(3f);
         phaseChange = false;
         }
        
-        int randomMoveNumber = Random.Range(1,10);
+        int randomMoveNumber = Random.Range(1,11);
         if(canAttack){
-        if (randomMoveNumber <4) {
+        if (randomMoveNumber <5) {
             StartCoroutine(diagonalSlam2());
             
-        } else if (randomMoveNumber < 5) {
+        } else if (randomMoveNumber < 7) {
             StartCoroutine(fire());
             
         } else {
@@ -197,7 +201,7 @@ public class betterBoss : MonoBehaviour
         Check();
         yield return new WaitForSeconds(1f);
         Instantiate(enemy1,new Vector2(randomXNumber,3f),firePoint.rotation);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(15f);
         canSpawn = true;
         
     }
@@ -243,7 +247,7 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
         rb.gravityScale = floatGravity;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         rb.gravityScale = 0;
         //transform.position = new Vector2(-13.6f, 13f);
         yield return new WaitForSeconds(1f);
@@ -252,7 +256,7 @@ public class betterBoss : MonoBehaviour
         yPos = player.position.y;
         yield return new WaitForSeconds(0.3f);
         canDash = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         canDash = true;
         xPos = player.position.x;
