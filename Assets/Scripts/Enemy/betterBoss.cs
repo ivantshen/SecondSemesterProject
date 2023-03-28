@@ -391,16 +391,14 @@ public class betterBoss : MonoBehaviour
         if (other.gameObject.tag == "Player" && allowCollisionDamage) {
             if (other.gameObject) {
                 allowCollisionDamage = false;
-                collisionTimer = 5f;
+                collisionTimer = 1f;
                 other.gameObject.GetComponent<HealthP1>().TakeDamage(damageAmount);
-                //player.GetComponent<KnockbackManager>().knockback(knockbackForce,(player.transform.position-transform.position).normalized);
+                player.gameObject.GetComponent<KnockbackManager>().knockback(knockbackForce,(other.transform.position-transform.position).normalized);
             }
-            if(other.gameObject.layer == 8){
+        }
+        if(other.gameObject.layer == 8){
                 canDash = false;
                 canFollow = false;
             }
-            
-             
-        }
      }
 }
