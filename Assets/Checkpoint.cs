@@ -11,7 +11,7 @@ public class Checkpoint : MonoBehaviour
     void Start(){
         player = GameObject.FindWithTag("Player");
         if(spawnPoint){
-            lastTouched = transform.position;
+            lastTouched = transform;
         }
     }
     public bool getUnlockedStatus(){
