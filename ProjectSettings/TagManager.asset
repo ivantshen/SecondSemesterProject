@@ -28,8 +28,8 @@ TagManager:
   - Ground
   - Enemy Projectile
   - NEVERCOLLIDE
-  - 
-  - 
+  - CollideWithPlayerOnly
+  - Player
   - 
   - 
   - 
