@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ShopManagerScript : MonoBehaviour
@@ -10,17 +11,26 @@ public class ShopManagerScript : MonoBehaviour
     public int[,] shopItems = new int[6,5];
     public int coins;
     public TextMeshProUGUI CoinsTXT;
-    [SerializeField] private GameObject prefab1;
-    [SerializeField] private GameObject prefab2;
-    [SerializeField] private GameObject prefab3;
-    [SerializeField] private GameObject prefab4;
+    [SerializeField] private GameObject[] prefab;
     //[SerializeField] private Vector2 spawnPosition;
     //[SerializeField] private bool random;
     [SerializeField] private float xPos;
     [SerializeField] private float yPos;
     private Transform player;
-
-    
+    public static ShopManagerScript[] sm;
+    void Awake(){
+        if(sm==null||sm.Length==0){
+            sm = new ShopManagerScript[SceneManager.sceneCountInBuildSettings];
+        }
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        for(int i=0;i<sm.Length;i++){
+            if(sm[i]&&sceneIndex==i){
+                Destroy(this);
+            }
+        }
+        sm[sceneIndex] = this;
+        DontDestroyOnLoad(this);
+    }
     
     void Start()
     {
@@ -69,7 +79,6 @@ public class ShopManagerScript : MonoBehaviour
             CoinsTXT.text = "Coins:" + coins.ToString();
             CurrencyManager.keyy.setMon(coins);
             ButtonRef.GetComponent<buttonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttonInfo>().ItemID].ToString();
-            Debug.Log("Works?");
             shopItems[4, ButtonRef.GetComponent<buttonInfo>().ItemID]--;
 
 
@@ -89,7 +98,6 @@ public class ShopManagerScript : MonoBehaviour
             }
             }
         else{
-            Debug.Log("Doesn't work" + coins + "and" + shopItems[2, ButtonRef.GetComponent<buttonInfo>().ItemID]);
         }
 
 
@@ -105,13 +113,13 @@ public class ShopManagerScript : MonoBehaviour
             player.gameObject.GetComponent<HealthP1>().TakeDamage(-50);
         }
         else if(ID == 2){
-            Instantiate(prefab2, new Vector2(xPos,yPos), Quaternion.identity);
+            Instantiate(prefab[1], new Vector2(xPos,yPos), Quaternion.identity);
         }
         else if(ID == 3){
-            Instantiate(prefab3, new Vector2(xPos,yPos), Quaternion.identity);
+            Instantiate(prefab[2], new Vector2(xPos,yPos), Quaternion.identity);
         }
         else if(ID == 4){
-            Instantiate(prefab4, new Vector2(xPos,yPos), Quaternion.identity);
+            Instantiate(prefab[3], new Vector2(xPos,yPos), Quaternion.identity);
 
         }
     }
