@@ -6,7 +6,7 @@ public class closeShop : MonoBehaviour
 {
     public GameObject gameObject;
     bool active = false;
-    public string shopKey;
+    //public string shopKey;
     private bool test = true;
     
     private void Close(){
@@ -20,6 +20,7 @@ public class closeShop : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other){
         //&& Input.GetKeyDown("g")
         if(other.tag == "Player" ){
+            Debug.Log("inside");
             Close();
         }
         

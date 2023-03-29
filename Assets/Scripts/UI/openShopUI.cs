@@ -6,7 +6,7 @@ public class openShopUI : MonoBehaviour
 {
     public GameObject gameObject;
     bool active = false;
-    public string shopKey;
+    //public string shopKey;
     private bool test = true;
     
     public void open(){

@@ -12,15 +12,19 @@ public class ShopManagerScript : MonoBehaviour
     public TextMeshProUGUI CoinsTXT;
     [SerializeField] private GameObject prefab1;
     [SerializeField] private GameObject prefab2;
+    [SerializeField] private GameObject prefab3;
+    [SerializeField] private GameObject prefab4;
     //[SerializeField] private Vector2 spawnPosition;
     //[SerializeField] private bool random;
     [SerializeField] private float xPos;
     [SerializeField] private float yPos;
+    private Transform player;
 
     
     
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         CoinsTXT = CanvasPersistence.Instance.transform.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>();
         coins = CurrencyManager.keyy.getMon();
         CoinsTXT.text = "Coins:" + coins.ToString();
@@ -32,10 +36,10 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[1,4] = 4;
         
         //Price
-        shopItems[2,1] = 10;
+        shopItems[2,1] = 100;
         shopItems[2,2] = 25;
         shopItems[2,3] = 32;
-        shopItems[2,4] = 47;
+        shopItems[2,4] = 500;
 
         //Quantity
         shopItems[3,1] = 0;
@@ -91,10 +95,17 @@ public class ShopManagerScript : MonoBehaviour
     }
     public void OnSpawnPrefab(int ID){
         if(ID == 1){
-        Instantiate(prefab1, new Vector2(xPos,yPos), Quaternion.identity);
+        //Instantiate(prefab1, new Vector2(xPos,yPos), Quaternion.identity);
+            player.gameObject.GetComponent<HealthP1>().TakeDamage(-50);
         }
         else if(ID == 2){
-        Instantiate(prefab2, new Vector2(xPos,yPos), Quaternion.identity);
+            Instantiate(prefab2, new Vector2(xPos,yPos), Quaternion.identity);
+        }
+        else if(ID == 3){
+            Instantiate(prefab3, new Vector2(xPos,yPos), Quaternion.identity);
+        }
+        else if(ID == 4){
+            Instantiate(prefab4, new Vector2(xPos,yPos), Quaternion.identity);
 
         }
     }
