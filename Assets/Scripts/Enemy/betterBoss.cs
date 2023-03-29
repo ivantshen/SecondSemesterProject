@@ -347,19 +347,13 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = 0;
         //transform.position = new Vector2(-13.6f, 13f);
         canFollow = true;
-        yield return new WaitForSeconds(1f);
-        Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(2f);
-        Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(2f);
-        Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(2f);
-        Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(2f);
-        Instantiate(attack,firePoint.position,firePoint.rotation);
-        yield return new WaitForSeconds(2f);
+        float followCooldown = 5f;
+        while(canFollow && followCooldown > 0){
+        yield return new WaitForSeconds(1f); 
         Instantiate(attack,firePoint.position,firePoint.rotation);
         yield return new WaitForSeconds(1f);
+        followCooldown--;
+        }
         canAttack = true;
         canFollow = false;
         //untouched = true;
@@ -397,7 +391,7 @@ public class betterBoss : MonoBehaviour
             }
         }
         if(other.gameObject.layer == 8){
-                canDash = false;
+                //canDash = false;
                 canFollow = false;
             }
      }
