@@ -5,9 +5,14 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private bool unlocked;
+    public static Transform lastTouched;
     private GameObject player;
+    [SerializeField] bool spawnPoint;
     void Start(){
         player = GameObject.FindWithTag("Player");
+        if(spawnPoint){
+            lastTouched = transform;
+        }
     }
     public bool getUnlockedStatus(){
         return unlocked;
@@ -15,9 +20,10 @@ public class Checkpoint : MonoBehaviour
     public void setUnlockedStatus(bool b){
         unlocked = b;
     }
-    void Update(){
-        if(!unlocked&&Vector2.Distance(player.transform.position,transform.position)<10){
+    private void OnTriggerEnter2D(Collider2D other){
+        if(!unlocked){
             unlocked = true;
+            lastTouched = other.gameObject.transform;
         }
     }
     public static GameObject getNearestCheckpoint(){

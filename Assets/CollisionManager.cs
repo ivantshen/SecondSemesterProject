@@ -10,8 +10,11 @@ public class CollisionManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3,3,true);
         Physics2D.IgnoreLayerCollision(3,9,true);
         Physics2D.IgnoreLayerCollision(3,7,true);
-        for(int i=0;i<11;i++){
+        for(int i=0;i<13;i++){
         Physics2D.IgnoreLayerCollision(10,i,true);    
+        }
+        for(int i=0;i<12;i++){
+        Physics2D.IgnoreLayerCollision(11,i,true);    
         }
         
     }

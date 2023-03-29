@@ -130,8 +130,9 @@ GameObject:
   - component: {fileID: 8114581778382932490}
   - component: {fileID: 1582769456}
   - component: {fileID: 1683076893}
+  - component: {fileID: -8395876966956744016}
   m_Layer: 7
-  m_Name: Weapon
+  m_Name: DimensionCutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
   - 0.5
   - 0.4
   hitsPerSlash: 010000000100000002000000
-  damagePerSlash: 0300000005000000040000000400000004000000
+  damagePerSlash: 030000000500000004000000
   delayBetweenSlash:
   - 0.05
   - 0.05
@@ -411,9 +412,21 @@ MonoBehaviour:
   rotationOffset: 15
   minHitCost: 1
   speed: 15
-  damage: 10
+  damage: 5
   deathTime: 5
   multiTarget: 0
   wallClipping: 0
   contactDamage: 1
   summonDuration: 3
+--- !u!114 &-8395876966956744016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114581778382932500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8840b1fa4ee8d43bb3ed29700f6d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -55,6 +55,7 @@ public class betterBoss : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player").transform;
         eH = GetComponent<EnemyHealth>();
+        Physics2D.IgnoreLayerCollision(6,6,true);
     }
 
     // Update is called once per frame
@@ -247,7 +248,7 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = originalGravity;
         sr.color = new Color(0,0,0,1);
         rb.gravityScale = floatGravity;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         rb.gravityScale = 0;
         //transform.position = new Vector2(-13.6f, 13f);
         yield return new WaitForSeconds(1f);
@@ -390,15 +391,14 @@ public class betterBoss : MonoBehaviour
         if (other.gameObject.tag == "Player" && allowCollisionDamage) {
             if (other.gameObject) {
                 allowCollisionDamage = false;
-                collisionTimer = 5f;
+                collisionTimer = 1f;
                 other.gameObject.GetComponent<HealthP1>().TakeDamage(damageAmount);
-                //player.GetComponent<KnockbackManager>().knockback(knockbackForce,(player.transform.position-transform.position).normalized);
+                player.gameObject.GetComponent<KnockbackManager>().knockback(knockbackForce,(other.transform.position-transform.position).normalized);
             }
-            if(other.gameObject.layer == 8){
+        }
+        if(other.gameObject.layer == 8){
                 canDash = false;
                 canFollow = false;
             }
-             
-        }
      }
 }
