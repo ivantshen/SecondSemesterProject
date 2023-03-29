@@ -20,7 +20,6 @@ public class closeShop : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other){
         //&& Input.GetKeyDown("g")
         if(other.tag == "Player" ){
-            Debug.Log("inside");
             Close();
         }
         

@@ -10,12 +10,13 @@ public class buttonInfo : MonoBehaviour
     public TextMeshProUGUI PriceTxt;
     public TextMeshProUGUI QuantityTxt;
     public TextMeshProUGUI AmountTxt;
-    public GameObject ShopManager;
-
+    public ShopManagerScript ShopManager;
+    void Start(){
+        ShopManager = GameObject.FindWithTag("ShopManager").GetComponent<ShopManagerScript>();
+    }
     void Update(){
-        PriceTxt.text = "Price: $" + ShopManager.GetComponent<ShopManagerScript>().shopItems[2,ItemID].ToString();
-        QuantityTxt.text = ShopManager.GetComponent<ShopManagerScript>().shopItems[3,ItemID].ToString();
-        AmountTxt.text = "Amount left: " + ShopManager.GetComponent<ShopManagerScript>().shopItems[4,ItemID].ToString();
-        
+        PriceTxt.text = "Price: $" + ShopManager.shopItems[2,ItemID].ToString();
+        QuantityTxt.text = ShopManager.shopItems[3,ItemID].ToString();
+        AmountTxt.text = "Amount left: " + ShopManager.shopItems[4,ItemID].ToString();
     }
 }

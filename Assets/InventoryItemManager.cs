@@ -15,7 +15,6 @@ public class InventoryItemManager : MonoBehaviour,IPointerDownHandler,IPointerUp
     private bool inUse = false;
     private WeaponManager wepManage;
     void Start(){
-        this.gameObject.GetComponent<Image>().color = Random.ColorHSV();
         inventorySlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         inventory = GameObject.FindWithTag("InventorySystem").GetComponent<InventoryManager>();
         wepManage = GameObject.FindWithTag("Player").GetComponent<WeaponManager>();

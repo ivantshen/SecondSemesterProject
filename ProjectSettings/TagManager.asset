@@ -17,6 +17,7 @@ TagManager:
   - ComboUI
   - Checkpoint
   - Nonpermanent
+  - ShopManager
   layers:
   - Default
   - TransparentFX
