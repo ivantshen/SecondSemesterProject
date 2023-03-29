@@ -81,6 +81,12 @@ public class ShopManagerScript : MonoBehaviour
             else if(shopItems[1, ButtonRef.GetComponent<buttonInfo>().ItemID] == 2){
                 OnSpawnPrefab(2);
             }
+            else if(shopItems[1, ButtonRef.GetComponent<buttonInfo>().ItemID] == 3){
+                OnSpawnPrefab(3);
+            }
+            else if(shopItems[1, ButtonRef.GetComponent<buttonInfo>().ItemID] == 4){
+                OnSpawnPrefab(4);
+            }
             }
         else{
             Debug.Log("Doesn't work" + coins + "and" + shopItems[2, ButtonRef.GetComponent<buttonInfo>().ItemID]);
