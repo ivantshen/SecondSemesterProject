@@ -20,4 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelDash.unity
     guid: 3cec7c48ce7be3146b9ddd752e258bce
+  - enabled: 1
+    path: Assets/Scenes/LevelEasy1.unity
+    guid: bc0f4bef751281d498025795900375a5
+  - enabled: 1
+    path: Assets/Scenes/LevelEasy2.unity
+    guid: 163993b567a6dcc449328bc0d5409b96
+  - enabled: 1
+    path: Assets/Scenes/LevelEasy3.unity
+    guid: 6c9ee4a4f197cee4d8d1e99108571dfc
+  - enabled: 1
+    path: Assets/Scenes/LevelEasy4.unity
+    guid: dea3be22c6ff5ea43951f81a90e4d33d
   m_configObjects: {}
