@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 1273643589}
   m_Layer: 6
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Nonpermanent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b320e48a142f64ba3da0ffad91f631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 30
   monAmt: 0
 --- !u!114 &1273643586
 MonoBehaviour:

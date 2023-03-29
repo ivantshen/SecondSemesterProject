@@ -87,6 +87,7 @@ public class betterBoss : MonoBehaviour
             //Debug.Log("half health");
             currentPhase = 2;
         }
+        
 
 
         if(canDash){
