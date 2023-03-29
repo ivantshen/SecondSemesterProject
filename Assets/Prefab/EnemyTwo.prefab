@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6665889649702995738}
   m_Layer: 6
   m_Name: EnemyTwo
-  m_TagString: Untagged
+  m_TagString: Nonpermanent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

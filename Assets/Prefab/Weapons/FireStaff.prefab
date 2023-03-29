@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 7284442860204699254}
   m_Layer: 7
   m_Name: FireStaff
-  m_TagString: Untagged
+  m_TagString: Nonpermanent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400681958021486933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b8840b1fa4ee8d43bb3ed29700f6d57, type: 3}
   m_Name: 

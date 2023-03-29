@@ -6,7 +6,7 @@ using TMPro;
 public class CurrencyManager : MonoBehaviour
 {
     public TextMeshProUGUI currencyText;
-    public int currency;
+    [SerializeField] private int currency;
 
     public static CurrencyManager keyy;
 
@@ -33,8 +33,7 @@ public class CurrencyManager : MonoBehaviour
         currency = monAmt;
     }
 
-
-    public void AddXP(int monAmt){
+    public void AddMon(int monAmt){
         currency += monAmt;
         
 

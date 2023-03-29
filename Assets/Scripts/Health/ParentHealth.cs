@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ParentHealth : MonoBehaviour
 {
     public float startingHealth;
     public float currentHealth {get; private set;}
     public int monAmt;
-
+    private int sceneIndex;
     private void Awake(){
         currentHealth = startingHealth;
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void TakeDamage(float _damage){
@@ -17,8 +18,9 @@ public class ParentHealth : MonoBehaviour
         if (currentHealth > 0){
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             if(currentHealth <=0){
+                ScenePersist.scenes[sceneIndex].setPickedUp(gameObject);
                 Destroy(gameObject);
-                CurrencyManager.keyy.AddXP(monAmt);
+                CurrencyManager.keyy.AddMon(monAmt);
 
                 //XPManager.instance.AddXP(monAmt);
             }

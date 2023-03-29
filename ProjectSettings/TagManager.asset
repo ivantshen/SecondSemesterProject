@@ -16,6 +16,7 @@ TagManager:
   - Crumble
   - ComboUI
   - Checkpoint
+  - Nonpermanent
   layers:
   - Default
   - TransparentFX

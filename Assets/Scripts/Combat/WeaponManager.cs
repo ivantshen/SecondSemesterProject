@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class WeaponManager : MonoBehaviour
 {
     public float switchCooldown;
@@ -75,6 +75,8 @@ public class WeaponManager : MonoBehaviour
         if(!inventory.GetComponent<InventoryManager>().getFullStatus()){
             GameObject inventoryItem = Instantiate(inventoryItemTemplate,transform.position,Quaternion.identity,inventory.transform);
             InventoryItemManager itemManager =inventoryItem.GetComponent<InventoryItemManager>();
+            ScenePersist.scenes[SceneManager.GetActiveScene().buildIndex].setPickedUp(weapon);
+            weapon.tag = "Untagged";
             itemManager.setType("Weapon");
             itemManager.setAttachedObject(weapon);
             itemManager.randomizeColor();
