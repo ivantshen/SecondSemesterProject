@@ -10,6 +10,7 @@ public class HealthBarP1 : MonoBehaviour
     [SerializeField] private Image currenthealthBar;
 
     private void Start(){
+        playerHealth = PlayerPersistence.Instance.GetComponent<HealthP1>();
         totalhealthBar.fillAmount = playerHealth.currentHealth / 100;
     }
 

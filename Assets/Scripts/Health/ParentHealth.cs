@@ -18,7 +18,9 @@ public class ParentHealth : MonoBehaviour
         if (currentHealth > 0){
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             if(currentHealth <=0){
-                ScenePersist.scenes[sceneIndex].setPickedUp(gameObject);
+                if(gameObject.tag=="Nonpermanent"){
+                ScenePersist.scenes[sceneIndex].setPickedUp(gameObject);    
+                }
                 Destroy(gameObject);
                 CurrencyManager.keyy.AddMon(monAmt);
 
