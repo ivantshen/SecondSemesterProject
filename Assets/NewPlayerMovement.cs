@@ -55,6 +55,8 @@ public class NewPlayerMovement : MonoBehaviour
     private float fallSpeed = 8f;
     private bool onLadder;
     private bool isClimbing;
+    private bool canKnock = true;
+    
 
 
     // Start is called before the first frame update
@@ -109,6 +111,8 @@ public class NewPlayerMovement : MonoBehaviour
         // finalMovement *= speed * Time.deltaTime;
         // controller.Move(finalMovement);
 
+        if(canKnock){
+
         if (canMove) {
             rb.velocity = new Vector2(horzInput * speed, rb.velocity.y);
         }
@@ -144,7 +148,7 @@ public class NewPlayerMovement : MonoBehaviour
             isClimbing = true;
         }
 
-        
+        }
 
     }
 
@@ -271,6 +275,21 @@ public class NewPlayerMovement : MonoBehaviour
         canMove = false;
         yield return new WaitForSeconds(time);
         canMove = true;
+    }
+
+    IEnumerator Knocked(){
+        canKnock = false;
+        //rb.AddForce(20 * ((transform.position-transform.position).normalized),ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.1f);
+        canKnock = true;
+    }
+
+    //knockback function
+    private void OnCollisionStay2D(Collision2D other) {
+        if(other.gameObject.layer == 6){
+            StartCoroutine(Knocked());
+            rb.AddForce(20 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
+        }
     }
 
 
