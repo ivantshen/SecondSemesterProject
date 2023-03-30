@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Checkpoint : MonoBehaviour
 {
+    private int sceneIndex;
     [SerializeField] private bool unlocked;
-    public static Transform lastTouched;
+    public static Transform[] lastTouched;
     private GameObject player;
     [SerializeField] bool spawnPoint;
     void Start(){
+        if(lastTouched==null||lastTouched.Length==0){
+            lastTouched = new Transform[SceneManager.sceneCountInBuildSettings];
+        }
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
         player = GameObject.FindWithTag("Player");
-        if(spawnPoint){
-            lastTouched = transform;
+        if(spawnPoint&&!lastTouched[sceneIndex]){
+            lastTouched[sceneIndex] = transform;
         }
     }
     public bool getUnlockedStatus(){
@@ -23,7 +28,7 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(!unlocked){
             unlocked = true;
-            lastTouched = this.gameObject.transform;
+            lastTouched[sceneIndex] = this.gameObject.transform;
         }
     }
     public static GameObject getNearestCheckpoint(){

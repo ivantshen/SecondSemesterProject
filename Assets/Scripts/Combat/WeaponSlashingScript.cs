@@ -81,7 +81,10 @@ public class WeaponSlashingScript : MonoBehaviour
         Destroy(newVFX,2);
         enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.transform.position-transform.position).normalized);
         enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage*cm.getComboDamageMultiplier());
-        cm.increaseHitcount(1);
+        if(enemy.GetComponent<EnemyHealth>().getAllowCombo()){
+        cm.increaseHitcount(1);    
+        }
+        
         }
         }
         

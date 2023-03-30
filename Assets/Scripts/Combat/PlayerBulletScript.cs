@@ -46,6 +46,9 @@ public class PlayerBulletScript : MonoBehaviour
         if(contactDamage){
         if(other.gameObject.layer==6){
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage*cm.getComboDamageMultiplier());
+            if(other.gameObject.GetComponent<EnemyHealth>().getAllowCombo()){
+            cm.increaseHitcount(1);    
+            }
             cm.increaseHitcount(1);
             if(multiTarget){
             bulletDeathTime/=1.25f;

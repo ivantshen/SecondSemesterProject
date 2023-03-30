@@ -32,7 +32,9 @@ public class BulletExplosion : MonoBehaviour
                 if(enemy){
                     enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(explosionLocation)-(Vector2)explosionLocation).normalized);
                     enemy.GetComponent<EnemyHealth>().TakeDamage(explosionDamage*cm.getComboDamageMultiplier());
-                    cm.increaseHitcount(1);
+                    if(enemy.GetComponent<EnemyHealth>().getAllowCombo()){
+                    cm.increaseHitcount(1);    
+                    }
                 }
             }
         }   
