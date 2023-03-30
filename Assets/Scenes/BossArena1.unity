@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b320e48a142f64ba3da0ffad91f631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 200
   monAmt: 0
 --- !u!114 &1273643586
 MonoBehaviour:
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2140727052}
   center: {fileID: 1215593818}
-  knockbackForce: 200
+  knockbackForce: 20
   damageAmount: 20
   moveSpeed: 2000
   floatGravity: -40
