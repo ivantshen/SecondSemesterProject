@@ -10,7 +10,7 @@ public class Spike : MonoBehaviour
             if(other.gameObject){
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             other.gameObject.GetComponent<HealthP1>().resetHealth();
-            other.gameObject.transform.position = Checkpoint.lastTouched.position;
+            other.gameObject.transform.position = Checkpoint.lastTouched[SceneManager.GetActiveScene().buildIndex].position;
             }
         }
      }
