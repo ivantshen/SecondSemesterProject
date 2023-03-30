@@ -5,18 +5,13 @@ using UnityEngine;
 public class Enemy2 : MonoBehaviour
 {
     private GameObject player;
-    
-    public Transform EnemyTwo;
     private Rigidbody2D rb;
     public float force;
     public float timeBetweenDash;
-    private float distance;
     private bool canDash = true;
-    private float dashCooldown;
-
-    public Collider2D[] colliderList; 
+    private float dashCooldown =0f;
     void Start(){
-        player = GameObject.FindWithTag("Player");
+        player = PlayerPersistence.Instance;
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -29,8 +24,8 @@ public class Enemy2 : MonoBehaviour
             canDash = true;
         }
         if(Vector2.Distance(player.transform.position,transform.position)<5&&canDash){
-            rb.velocity = (player.transform.position - transform.position).normalized * force;
-            rb.velocity = new Vector2(rb.velocity.x,0f);
+            Vector2 travel = (player.transform.position - transform.position).normalized * force;
+            rb.velocity = new Vector2(travel.x,0f);
             canDash = false;
             dashCooldown = timeBetweenDash;
         }

@@ -16,16 +16,18 @@ public class ShopManagerScript : MonoBehaviour
     //[SerializeField] private bool random;
     [SerializeField] private float xPos;
     [SerializeField] private float yPos;
+    private int sceneIndex;
     private Transform player;
     public static ShopManagerScript[] sm;
     void Awake(){
         if(sm==null||sm.Length==0){
             sm = new ShopManagerScript[SceneManager.sceneCountInBuildSettings];
         }
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
         for(int i=0;i<sm.Length;i++){
             if(sm[i]&&sceneIndex==i){
-                Destroy(this);
+                Destroy(this.gameObject);
+                return;
             }
         }
         sm[sceneIndex] = this;
@@ -34,7 +36,7 @@ public class ShopManagerScript : MonoBehaviour
     
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = PlayerPersistence.Instance.transform;
         CoinsTXT = CanvasPersistence.Instance.transform.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>();
         coins = CurrencyManager.keyy.getMon();
         CoinsTXT.text = "Coins:" + coins.ToString();

@@ -27,7 +27,7 @@ public class Enemy3 : MonoBehaviour
     
 
     void Start(){
-        player = GameObject.FindWithTag("Player");
+        player = PlayerPersistence.Instance;
     }
 
     private IEnumerator Move(){
