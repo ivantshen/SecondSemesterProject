@@ -55,23 +55,4 @@ public class HealthP1 : MonoBehaviour
         //Physics2D.IgnoreLayerCollision(0,6,false);
         allowDmg = true;
     }
-
-    private void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.tag == "Spike"){
-            
-            if(other.gameObject){
-              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-              
-            }
-             
-             
-        }
-     }
-    
-
-    
-    
-     
-
-    
 }
