@@ -49,7 +49,7 @@ public class ShopManagerScript : MonoBehaviour
         
         //Price
         shopItems[2,1] = 100;
-        shopItems[2,2] = 25;
+        shopItems[2,2] = 500;
         shopItems[2,3] = 32;
         shopItems[2,4] = 500;
 
@@ -61,7 +61,7 @@ public class ShopManagerScript : MonoBehaviour
 
         //Amount allowed
         shopItems[4,1] = 4;
-        shopItems[4,2] = 3;
+        shopItems[4,2] = 1;
         shopItems[4,3] = 2;
         shopItems[4,4] = 1;
         
