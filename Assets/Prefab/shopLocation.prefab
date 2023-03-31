@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5817068825672290765}
   - component: {fileID: 5817068825672290764}
   - component: {fileID: 5817068825672290763}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shopLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008153915, y: -0.19410443}
+  m_Offset: {x: -1.6511774, y: 4.673227}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.03699112, y: 0.12157774}
+  m_Size: {x: 3.323038, y: 10.116073}
   m_EdgeRadius: 0
 --- !u!212 &5817068825672290764
 SpriteRenderer:
@@ -125,4 +125,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObject: {fileID: 0}
-  shopKey: 
