@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 7284442860204699254}
   m_Layer: 7
   m_Name: FireStaff
-  m_TagString: Untagged
+  m_TagString: Nonpermanent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

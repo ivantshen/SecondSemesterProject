@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: -1181649011962329930}
   m_Layer: 7
   m_Name: ThunderStaff
-  m_TagString: Untagged
+  m_TagString: Nonpermanent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
