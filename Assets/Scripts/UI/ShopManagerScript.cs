@@ -50,8 +50,8 @@ public class ShopManagerScript : MonoBehaviour
         //Price
         shopItems[2,1] = 100;
         shopItems[2,2] = 500;
-        shopItems[2,3] = 32;
-        shopItems[2,4] = 500;
+        shopItems[2,3] = 500;
+        shopItems[2,4] = 200;
 
         //Quantity
         shopItems[3,1] = 0;
@@ -62,8 +62,8 @@ public class ShopManagerScript : MonoBehaviour
         //Amount allowed
         shopItems[4,1] = 4;
         shopItems[4,2] = 1;
-        shopItems[4,3] = 2;
-        shopItems[4,4] = 1;
+        shopItems[4,3] = 1;
+        shopItems[4,4] = 4;
         
     }
 
@@ -121,8 +121,8 @@ public class ShopManagerScript : MonoBehaviour
             Instantiate(prefab[2], new Vector2(xPos,yPos), Quaternion.identity);
         }
         else if(ID == 4){
-            Instantiate(prefab[3], new Vector2(xPos,yPos), Quaternion.identity);
-
+            //Instantiate(prefab[3], new Vector2(xPos,yPos), Quaternion.identity);
+            player.gameObject.GetComponent<HealthP1>().TakeDamage(-100);
         }
     }
 }
