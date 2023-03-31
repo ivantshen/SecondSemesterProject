@@ -26,10 +26,12 @@ public class Checkpoint : MonoBehaviour
         unlocked = b;
     }
     private void OnTriggerEnter2D(Collider2D other){
+        if(other.tag == "Player"){
         if(!unlocked){
             unlocked = true;
         }
         lastTouched[sceneIndex] = this.gameObject.transform;
+        }
     }
     public static GameObject getNearestCheckpoint(){
         GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
