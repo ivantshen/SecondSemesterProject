@@ -25,7 +25,7 @@ public class HealthP1 : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             StartCoroutine(Invulnerability());
             if(currentHealth <=0){
-                currentHealth = startingHealth;
+                resetHealth();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 transform.position = Checkpoint.lastTouched[SceneManager.GetActiveScene().buildIndex].position;
                 //Physics2D.IgnoreLayerCollision(0,6,false);
@@ -37,7 +37,7 @@ public class HealthP1 : MonoBehaviour
         }
     }
     public void resetHealth(){
-        currentHealth = startingHealth;
+        currentHealth = startingHealth/2;
         cm.resetHitCount();
     }
     //testing
