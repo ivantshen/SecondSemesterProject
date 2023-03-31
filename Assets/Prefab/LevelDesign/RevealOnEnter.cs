@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class RevealOnEnter : MonoBehaviour
 {
     [SerializeField] private GameObject[] thingsToReveal;
@@ -8,6 +9,7 @@ public class RevealOnEnter : MonoBehaviour
     [SerializeField] private float[] revealDelays;
     private SpriteRenderer[] thingSprites;
     private bool reveal = false;
+    [SerializeField] private bool revealForever = false;
     [SerializeField] private float destroyTimer;
     void Start(){
         thingSprites = new SpriteRenderer[thingsToReveal.Length];
@@ -34,6 +36,13 @@ public class RevealOnEnter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.tag=="Player"){
         reveal = true;    
+        }
+        if(revealForever){
+            for(int i=0;i<thingsToReveal.Length;i++){
+                if(thingsToReveal[i].tag=="Nonpermanent"){
+                    ScenePersist.scenes[SceneManager.GetActiveScene().buildIndex].setPickedUp(thingsToReveal[i]);
+                }
+            }
         }
     }
 }
