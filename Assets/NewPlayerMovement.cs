@@ -288,7 +288,7 @@ public class NewPlayerMovement : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.layer == 6){
             StartCoroutine(Knocked());
-            rb.AddForce(10 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
+            rb.AddForce(5 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
             //Debug.Log("ugh");
         }
     }

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+  m_Color: {r: 0, g: 0.68884516, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: -8395876966956744016}
   m_Layer: 7
   m_Name: DimensionCutter
-  m_TagString: Untagged
+  m_TagString: Nonpermanent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,25 +167,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcc982d701937243ba822ab1728408d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 300
+  knockbackForce: 150
   hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
   firePoint: {fileID: 8114581778027879277}
   attackRange: 2
   slash:
-  - {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
-  - {fileID: 7244730657643320325, guid: cec7bfa78d154fd40adc99be05de793e, type: 3}
-  - {fileID: 1621385963438294746, guid: 4ac1ba3290b83974ba4ee04d6645e547, type: 3}
+  - {fileID: 7616153144696666589, guid: 38c8f8ddf5f60f5478e38f8538413922, type: 3}
+  - {fileID: 7244730657643320325, guid: ba6031a6938ec0144b42d34ea7fd095e, type: 3}
+  - {fileID: 1621385963438294746, guid: ccb3bc0ca1a515d4ea2700483c19193d, type: 3}
+  - {fileID: 1621385963438294746, guid: ccb3bc0ca1a515d4ea2700483c19193d, type: 3}
   slashRate:
-  - 0.5
-  - 0.5
   - 0.4
-  hitsPerSlash: 010000000100000002000000
-  damagePerSlash: 030000000500000004000000
+  - 0.4
+  - 0.3
+  - 0.3
+  hitsPerSlash: 01000000010000000200000002000000
+  damagePerSlash: 05000000080000000600000006000000
   delayBetweenSlash:
   - 0.05
   - 0.05
-  - 0.05
-  timeToComboReset: 0.75
+  - 0.07
+  - 0.07
+  timeToComboReset: 1.25
   player: {fileID: 0}
   freezeAmt: 0.2
 --- !u!60 &8114581778382932489

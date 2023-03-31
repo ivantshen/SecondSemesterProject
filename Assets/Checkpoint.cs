@@ -28,8 +28,8 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(!unlocked){
             unlocked = true;
-            lastTouched[sceneIndex] = this.gameObject.transform;
         }
+        lastTouched[sceneIndex] = this.gameObject.transform;
     }
     public static GameObject getNearestCheckpoint(){
         GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
