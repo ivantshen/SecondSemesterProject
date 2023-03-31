@@ -8479,8 +8479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049cd059835e9db47ad484613d89171f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 6
-  travelLocation: {x: 34, y: 0, z: 0}
+  sceneIndex: 4
+  travelLocation: {x: -17.2, y: 75, z: 0}
 --- !u!58 &842592946
 CircleCollider2D:
   m_ObjectHideFlags: 0
