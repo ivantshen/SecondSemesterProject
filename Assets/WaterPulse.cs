@@ -29,7 +29,9 @@ public class WaterPulse : MonoBehaviour
                 if(enemy){
                     enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.ClosestPoint(transform.position)-(Vector2)transform.position).normalized);
                     enemy.GetComponent<EnemyHealth>().TakeDamage(pulseDamage*cm.getComboDamageMultiplier());
-                    cm.increaseHitcount(1);
+                    if(enemy.GetComponent<EnemyHealth>().getAllowCombo()){
+                    cm.increaseHitcount(1);    
+                    }
                 }
             }
         }
