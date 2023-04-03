@@ -33,10 +33,14 @@ public class ComboManager : MonoBehaviour
     }
     public void resetHitCount(){
         hitCount = 0;
+        comboLevel = 1;
+        comboDamageMultiplier = 1;
         checkAndSet();
     }
     public void decreaseHitCount(int num){
-        hitCount-= num;
+        if(hitCount>0){
+        hitCount-= num;    
+        }
         checkAndSet();
     }
     public void increaseHitcount(int num){
