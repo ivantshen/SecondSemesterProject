@@ -33,9 +33,8 @@ public class ComboManager : MonoBehaviour
     }
     public void resetHitCount(){
         hitCount = 0;
-        comboLevel = 1;
-        comboDamageMultiplier = 1;
         checkAndSet();
+        comboDisplay.resetComboText();
     }
     public void decreaseHitCount(int num){
         if(hitCount>0){

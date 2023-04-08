@@ -34,7 +34,6 @@ public class ComboDisplay : MonoBehaviour
         if(hitCount<126){
         sliders[5].value = hitCount;    
         }
-        resetAboveLevel(level);
         }else{
         tm.color = new Color(255,255,255,1);
         }
@@ -46,11 +45,6 @@ public class ComboDisplay : MonoBehaviour
         StartCoroutine(increaseSize(multiplier,2.25f,2.3f));
         }
         previousLevel = level;
-    }
-    private void resetAboveLevel(int comboLvl){
-        for(int i=comboLvl;i<sliders.Length;i++){
-            sliders[i].value = sliders[i].minValue;
-        }
     }
     public void resetComboText(){
         tm.text = "";
