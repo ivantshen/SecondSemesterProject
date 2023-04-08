@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6665889649702995717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.14, y: 11.72, z: 0.041135713}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.14, y: 13.604, z: 0.041135713}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 40
   monAmt: 40
+  allowComboInc: 1
 --- !u!58 &6665889649702995713
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -85,9 +86,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0067609786, y: -0.122663595}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.086614415
 --- !u!114 &6665889649702995712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +144,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+  m_Sprite: {fileID: 8740521016902485778, guid: 7be043c3b72768345bd8bda8237aa21d, type: 3}
+  m_Color: {r: 0.6039216, g: 0, b: 0.5292222, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,9 +167,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTwo: {fileID: 6665889649702995715}
   force: 50
   timeBetweenDash: 2
-  colliderList:
-  - {fileID: 0}
-  - {fileID: 0}
