@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicWeapon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2242571544509782372, guid: 16e8940bab31f4549ac99ff4f3eabcb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2242571544509782373, guid: 16e8940bab31f4549ac99ff4f3eabcb6, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -5473,6 +5477,14 @@ PrefabInstance:
     - target: {fileID: 4725724415653447403, guid: cb39936bb9321b84ab307ebddf420b7c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725724415846891578, guid: cb39936bb9321b84ab307ebddf420b7c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 34.4873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725724415846891578, guid: cb39936bb9321b84ab307ebddf420b7c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -433.5644
       objectReference: {fileID: 0}
     - target: {fileID: 4753003902910479168, guid: cb39936bb9321b84ab307ebddf420b7c, type: 3}
       propertyPath: m_AnchorMax.y
