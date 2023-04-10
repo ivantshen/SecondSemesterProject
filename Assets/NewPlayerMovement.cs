@@ -279,8 +279,11 @@ public class NewPlayerMovement : MonoBehaviour
 
     IEnumerator Knocked(){
         canKnock = false;
-        //rb.AddForce(20 * ((transform.position-transform.position).normalized),ForceMode2D.Impulse);
+        canMove = false;
+        rb.velocity = new Vector2(0,0);
+        rb.AddForce(20 * ((transform.position-transform.position).normalized),ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
+        canMove = true;
         canKnock = true;
     }
 
