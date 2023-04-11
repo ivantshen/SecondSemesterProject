@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5907621400296655189}
-  - component: {fileID: 5907621400296655191}
   - component: {fileID: 5907621400296655177}
   - component: {fileID: 5907621400296655176}
   - component: {fileID: 5907621400296655178}
   - component: {fileID: 2405167938494916208}
   - component: {fileID: 3034024403992707568}
+  - component: {fileID: 587272123}
   m_Layer: 7
   m_Name: RangedWeapon
   m_TagString: Nonpermanent
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5907621400296655188}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.02, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39,35 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5907621400296655191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907621400296655188}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dcc982d701937243ba822ab1728408d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockbackForce: 300
-  hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
-  firePoint: {fileID: 5907621400784885805}
-  attackRange: 3
-  slash:
-  - {fileID: 7616153144696666589, guid: 3df96d76a3b25e84ea385175bbf11244, type: 3}
-  slashRate:
-  - 0.3
-  hitsPerSlash: 01000000
-  damagePerSlash: 05000000
-  delayBetweenSlash:
-  - 0.05
-  - 0.05
-  - 0.05
-  timeToComboReset: 0.75
-  player: {fileID: 0}
-  freezeAmt: 0.2
 --- !u!60 &5907621400296655177
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -173,7 +144,7 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5907621400296655191}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponSlashingScript, Assembly-CSharp
         m_MethodName: slashAttack
         m_Mode: 0
@@ -284,6 +255,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8840b1fa4ee8d43bb3ed29700f6d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &587272123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907621400296655188}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a23cc2df3c11d4791459c0df88e8ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackForce: 300
+  hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
+  firePoint: {fileID: 5907621400784885805}
+  attackRange: 1
+  slash:
+  - {fileID: 7616153144696666589, guid: 3df96d76a3b25e84ea385175bbf11244, type: 3}
+  slashRate:
+  - 0.3
+  hitsPerSlash: 01000000
+  damagePerSlash: 05000000
+  delayBetweenSlash:
+  - 0.5
+  timeToComboReset: 0.75
+  player: {fileID: 0}
+  freezeAmt: 0.2
 --- !u!1 &5907621400570647855
 GameObject:
   m_ObjectHideFlags: 0
