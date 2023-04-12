@@ -11633,6 +11633,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1498604220 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8619489006182095200, guid: 0140edcccd0f6e24999747a30c7af4ff, type: 3}
+  m_PrefabInstance: {fileID: 1066535371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1525787634
 GameObject:
   m_ObjectHideFlags: 0
@@ -17433,6 +17438,7 @@ GameObject:
   - component: {fileID: 6073486702208778655}
   - component: {fileID: 6073486702208778656}
   - component: {fileID: 6073486702208778657}
+  - component: {fileID: 6073486702208778658}
   m_Layer: 7
   m_Name: WaterStaff (1)
   m_TagString: Nonpermanent
@@ -17652,7 +17658,7 @@ MonoBehaviour:
   reloadTime: 2
   firePoint: {fileID: 0}
   maxRotation: 45
-  rotateSpeed: 45
+  rotateSpeed: 180
   rotateLeftKey: q
   rotateRightKey: e
 --- !u!61 &6073486702208778657
@@ -17681,3 +17687,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26573944, y: 1.4339094}
   m_EdgeRadius: 0
+--- !u!1818360609 &6073486702208778658
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654189012725460667}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 0
+  m_IsContraintActive: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 1498604220}
+    weight: 1
