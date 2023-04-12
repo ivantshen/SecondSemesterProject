@@ -10081,6 +10081,7 @@ MonoBehaviour:
     m_Bits: 4096
   firePoint: {fileID: 1285773476}
   slash: {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
+  enemy: {fileID: 1829612098}
 --- !u!4 &1829612102
 Transform:
   m_ObjectHideFlags: 0
@@ -10090,7 +10091,7 @@ Transform:
   m_GameObject: {fileID: 1829612098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.29, y: 0.63, z: -0.23773476}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 558308655}

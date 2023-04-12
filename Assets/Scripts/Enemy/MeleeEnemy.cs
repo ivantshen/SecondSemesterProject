@@ -15,6 +15,7 @@ public class MeleeEnemy : MonoBehaviour
     private bool canAttack = true;
     private float cooldownTimer = Mathf.Infinity;
     private GameObject player;
+    [SerializeField] GameObject enemy;
 
     private void Start(){
         player = PlayerPersistence.Instance;
@@ -29,6 +30,9 @@ public class MeleeEnemy : MonoBehaviour
             StartCoroutine(Slash());
             }
         }
+        }
+        if(transform.localScale.x < 0){
+            //transform.rotation = new Vector2(0,180f);
         }
     }
 
@@ -48,11 +52,11 @@ public class MeleeEnemy : MonoBehaviour
 
     private IEnumerator Slash(){
         canAttack = false;
-        GameObject newSlash = Instantiate(slash,firePoint.position,firePoint.rotation,null);
-        Collider2D[] playerIn = Physics2D.OverlapCircleAll(firePoint.position,3,playerLayer);
-        if(playerIn[0] == player){
-            Debug.Log("works");
-        }
+        GameObject newSlash = Instantiate(slash,firePoint.position,enemy.transform.rotation,null);
+        //Collider2D[] playerIn = Physics2D.OverlapCircleAll(firePoint.position,2,playerLayer);
+        //if(playerIn[0] == player){
+        //    Debug.Log("works");
+        //}
         
 
         Destroy(newSlash,0.25f);
