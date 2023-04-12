@@ -10079,8 +10079,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 4096
-  firePoint: {fileID: 0}
-  slash: {fileID: 0}
+  firePoint: {fileID: 1285773476}
+  slash: {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
 --- !u!4 &1829612102
 Transform:
   m_ObjectHideFlags: 0
