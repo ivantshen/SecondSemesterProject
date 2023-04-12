@@ -113,6 +113,7 @@ public class RebindingDisplay : MonoBehaviour
 
         startRebindAttackObject.SetActive(true);
         waitingForInputObject.SetActive(false);
+        Debug.Log(bindingAttackDisplayNameText.text);
     }
 
     // collect
