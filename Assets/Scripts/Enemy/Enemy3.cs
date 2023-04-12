@@ -63,7 +63,6 @@ public class Enemy3 : MonoBehaviour
         distance = Vector2.Distance(new Vector2(Mathf.Clamp(disX, xMin, xMax),Mathf.Clamp(disY, yMin, yMax)), player.transform.position);
         }
         if(distance < 3){
-            Debug.Log("it doenst work");
             Check();
         }
 
@@ -76,7 +75,6 @@ public class Enemy3 : MonoBehaviour
             //attackCooldown+= attackRate;
             //nAttack = false;   
        // } 
-       Debug.Log("Fire");
     }
 
     
