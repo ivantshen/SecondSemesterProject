@@ -18,6 +18,7 @@ public class Bow : MonoBehaviour
     private float chargeValue = 0;
     private float reloadCD = 0;
     private float fireAngle = 0;
+    private bool flipped = false;
     private Transform player;
     void Start(){
         player = PlayerPersistence.Instance.transform;
@@ -32,6 +33,7 @@ public class Bow : MonoBehaviour
         if(fireAngle>180){
             fireAngle = fireAngle-360;
         }
+        transform.eulerAngles = new Vector3(0,player.eulerAngles.z,transform.eulerAngles.z);
         if(Input.GetKey(rotateLeftKey)&&fireAngle<maxRotation){
             transform.RotateAround(player.position,Vector3.forward,rotateSpeed*Time.deltaTime);
         }else if(Input.GetKey(rotateRightKey)&&fireAngle>-maxRotation){

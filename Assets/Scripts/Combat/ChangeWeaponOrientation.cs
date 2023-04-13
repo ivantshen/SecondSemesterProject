@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChangeWeaponOrientation : MonoBehaviour
 {
     public Transform spriteToManipulate;
-    public SpriteRenderer sprite;
+    public SpriteRenderer[] sprite;
     public Vector3 storedPos;
     public float storedZRot;
     public int storedSortingOrder;
@@ -14,7 +14,9 @@ public class ChangeWeaponOrientation : MonoBehaviour
     public int originSortingOrder;
     public void SetOrientationStored(){
             spriteToManipulate.localPosition = storedPos;
-            sprite.sortingOrder = storedSortingOrder;
+            foreach(SpriteRenderer s in sprite){
+            s.sortingOrder = storedSortingOrder;    
+            }
             if(transform.rotation==Quaternion.identity){
             spriteToManipulate.rotation = Quaternion.Euler(0,0,storedZRot);
             }else{
@@ -24,7 +26,9 @@ public class ChangeWeaponOrientation : MonoBehaviour
     }
     public void SetOrientationOriginal(){
         spriteToManipulate.localPosition = originalPos;
-        sprite.sortingOrder = originSortingOrder;
+        foreach(SpriteRenderer s in sprite){
+            s.sortingOrder = originSortingOrder;    
+            }
         if(transform.rotation==Quaternion.identity){
             spriteToManipulate.rotation = Quaternion.Euler(0,0,originZRot);
             }else{

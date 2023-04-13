@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteToManipulate: {fileID: 4582869392276323029}
-  sprite: {fileID: 4582869392276323031}
+  sprite:
+  - {fileID: 4582869392276323031}
   storedPos: {x: -0.25, y: -0.44, z: 0}
   storedZRot: -70
   storedSortingOrder: 2
