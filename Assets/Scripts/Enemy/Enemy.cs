@@ -7,11 +7,16 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
     public float speed;
+    private Vector3 startPos;
+    private Vector3 targetPos;
+    public Vector3 moveOffset;
 
     private float distance;
 
     void Start(){
         player = GameObject.FindWithTag("Player");
+        startPos = transform.position;
+        targetPos = startPos;
     }
     // Update is called once per frame
     void Update()
@@ -24,12 +29,23 @@ public class Enemy : MonoBehaviour
 
         
         //
-
+        
         if(distance < 10){
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
         else{
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+
+                if(transform.position == targetPos){
+                if(targetPos == startPos){
+                    targetPos = startPos + moveOffset;
+            
+             }
+             else{
+                 targetPos = startPos;
+             }
+                }
                 transform.rotation = Quaternion.Euler(0f,0f,0f);
         }
     }
