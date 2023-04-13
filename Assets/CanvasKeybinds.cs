@@ -6,14 +6,28 @@ using UnityEngine.InputSystem;
 public class CanvasKeybinds : MonoBehaviour
 {
     [SerializeField] private GameObject inventory;
+    [SerializeField] private GameObject hotkeyMenu;
+
     private bool inventoryClosed = false; 
+    private bool hotkeyMenuClosed = false;
+
     public void openInventory(InputAction.CallbackContext context){
         if(context.performed){
-        inventory.SetActive(inventoryClosed);
-        inventoryClosed = !inventoryClosed;    
+            inventory.SetActive(inventoryClosed);
+            inventoryClosed = !inventoryClosed;    
         }
     }
     public GameObject getInventoryGameObject(){
         return inventory;
+    }
+
+    public void openHotkeyMenu(InputAction.CallbackContext context){
+        if(context.performed){
+            hotkeyMenu.SetActive(hotkeyMenuClosed);
+            hotkeyMenuClosed = !hotkeyMenuClosed;    
+        }
+    }
+    public GameObject getHotkeyMenuGameObject(){
+        return hotkeyMenu;
     }
 }

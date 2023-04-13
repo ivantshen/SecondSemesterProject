@@ -34,6 +34,9 @@ public class RebindingDisplay : MonoBehaviour
 
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
+
+    // PlayerInput
+
     // rebinds start here
     // jump
     public void StartJumpRebinding() {
