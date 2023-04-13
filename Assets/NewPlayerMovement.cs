@@ -281,7 +281,7 @@ public class NewPlayerMovement : MonoBehaviour
         canKnock = false;
         canMove = false;
         rb.velocity = new Vector2(0,0);
-        rb.AddForce(20 * ((transform.position-transform.position).normalized),ForceMode2D.Impulse);
+        rb.AddForce(50 * ((transform.position-transform.position).normalized),ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
         canMove = true;
         canKnock = true;
