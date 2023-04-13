@@ -112,7 +112,7 @@ public class ShopManagerScript : MonoBehaviour
     public void OnSpawnPrefab(int ID){
         if(ID == 1){
         //Instantiate(prefab1, new Vector2(xPos,yPos), Quaternion.identity);
-            player.gameObject.GetComponent<HealthP1>().TakeDamage(-50);
+            //player.gameObject.GetComponent<HealthP1>().TakeDamage(-50);
         }
         else if(ID == 2){
             Instantiate(prefab[1], new Vector2(xPos,yPos), Quaternion.identity);
@@ -122,7 +122,7 @@ public class ShopManagerScript : MonoBehaviour
         }
         else if(ID == 4){
             //Instantiate(prefab[3], new Vector2(xPos,yPos), Quaternion.identity);
-            player.gameObject.GetComponent<HealthP1>().TakeDamage(-100);
+            //player.gameObject.GetComponent<HealthP1>().TakeDamage(-100);
         }
     }
 }

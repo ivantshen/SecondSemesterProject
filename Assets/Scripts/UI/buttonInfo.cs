@@ -16,7 +16,7 @@ public class buttonInfo : MonoBehaviour
     void Awake(){
         thisButton = gameObject.GetComponent<Button>();
         ShopManager = ShopManagerScript.sm[SceneManager.GetActiveScene().buildIndex];
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        
         thisButton.onClick.AddListener(ShopManager.Buy);
     }
     
