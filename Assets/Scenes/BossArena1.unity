@@ -1742,7 +1742,15 @@ PrefabInstance:
     - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5907621400296655191, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
+      objectReference: {fileID: 1507948769}
+    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: slashAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RangedWeaponScript, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655188, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_Name
       value: RangedWeapon
@@ -2555,6 +2563,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1507948769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
+  m_PrefabInstance: {fileID: 977753506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a23cc2df3c11d4791459c0df88e8ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1510968441
 GameObject:
   m_ObjectHideFlags: 0
