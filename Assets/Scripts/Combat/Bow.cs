@@ -13,14 +13,20 @@ public class Bow : MonoBehaviour
     [SerializeField] private float rotateSpeed;
     [SerializeField] private string rotateLeftKey;
     [SerializeField] private string rotateRightKey;
+    [SerializeField] private LineRenderer[] lines;
+    [SerializeField] private Transform centerPoint;
     private bool allowFire = true;
+    private bool allowArrowLoad = true;
     private bool keyHeld = false;
     private float chargeValue = 0;
     private float reloadCD = 0;
     private float fireAngle = 0;
     private bool flipped = false;
+    private GameObject currentArrow;
     private Transform player;
+    private Vector2 centerPointOriginalPos;
     void Start(){
+        centerPointOriginalPos = new Vector2(0,0.075f);
         player = PlayerPersistence.Instance.transform;
     }
     // Update is called once per frame
@@ -33,7 +39,7 @@ public class Bow : MonoBehaviour
         if(fireAngle>180){
             fireAngle = fireAngle-360;
         }
-        transform.eulerAngles = new Vector3(0,player.eulerAngles.z,transform.eulerAngles.z);
+        transform.localEulerAngles = new Vector3(0,player.localEulerAngles.y,transform.localEulerAngles.z);
         if(Input.GetKey(rotateLeftKey)&&fireAngle<maxRotation){
             transform.RotateAround(player.position,Vector3.forward,rotateSpeed*Time.deltaTime);
         }else if(Input.GetKey(rotateRightKey)&&fireAngle>-maxRotation){
@@ -46,8 +52,14 @@ public class Bow : MonoBehaviour
         }
         if(allowFire){
         if(keyHeld){
+            if(allowArrowLoad){
+                allowArrowLoad = false;
+                currentArrow = Instantiate(arrow,firePoint.position,Quaternion.Euler(0,0,fireAngle),centerPoint);
+                currentArrow.transform.localPosition = new Vector2(0,1f);
+            }
             if(chargeValue<1){
-            chargeValue+= Time.deltaTime/chargeTime;    
+            chargeValue+= Time.deltaTime/chargeTime;
+            centerPoint.localPosition = new Vector2(0,(-0.3f*chargeValue));
             }else{
             chargeValue = 1;
             }
@@ -58,12 +70,14 @@ public class Bow : MonoBehaviour
                 fire();
             }
         }
+        }else{
+            centerPoint.localPosition = Vector2.MoveTowards(centerPoint.localPosition,centerPointOriginalPos,15*Time.deltaTime);
         }
         
     }
     private void fire(){
-        GameObject a = Instantiate(arrow,firePoint.position,Quaternion.Euler(0,0,fireAngle),null);
-
+        currentArrow.GetComponent<Arrow>().assignStatsAndFire(chargeValue,(currentArrow.transform.position-player.position).normalized);
+        allowArrowLoad = true;
         chargeValue=0;
     }
 }
