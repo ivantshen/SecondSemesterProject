@@ -68,17 +68,17 @@ public class Arrow : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other){
         if(awake){
+        dying = true;    
+        awake = false;
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        Destroy(rb);
+        Destroy(collisionCollider);
         if(other.gameObject.layer==6){
             other.gameObject.GetComponent<KnockbackManager>().knockback(finalForce,(other.transform.position-transform.position).normalized);
             transform.parent = other.transform;
             rb.velocity = Vector2.zero;
         }
-        
-        dying = true;    
-        awake = false;
         }
         
     }
