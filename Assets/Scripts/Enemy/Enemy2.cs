@@ -31,10 +31,7 @@ public class Enemy2 : MonoBehaviour
         }
         if(Vector2.Distance(player.transform.position,transform.position)<5&&canDash){
             
-            Vector2 travel = (player.transform.position - transform.position).normalized * force;
-            rb.velocity = new Vector2(travel.x,0f);
-            canDash = false;
-            dashCooldown = timeBetweenDash;
+            StartCoroutine(Dash());
             //sr.color = new Color(154,0,135,255);
         }
         if (rb.velocity.x > 0) {
@@ -44,6 +41,18 @@ public class Enemy2 : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 180, 0);
             
         }
+    }
+
+    IEnumerator Dash(){
+        canDash = false;
+        sr.color = new Color(255,0,0,1);
+        yield return new WaitForSeconds(1f);
+        Vector2 travel = (player.transform.position - transform.position).normalized * force;
+            rb.velocity = new Vector2(travel.x,0f);
+        canDash = false;
+            dashCooldown = timeBetweenDash;
+        sr.color = new Color(1f,1f,1f,1);
+        //canDash = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other){

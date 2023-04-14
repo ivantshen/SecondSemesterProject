@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6665889649702995715}
   - component: {fileID: 6665889649702995743}
+  - component: {fileID: 6665889649702995738}
   - component: {fileID: 6665889649702995742}
   - component: {fileID: 6665889649702995713}
   - component: {fileID: 6665889649702995712}
   - component: {fileID: 6665889649702995741}
-  - component: {fileID: 6665889649702995738}
   m_Layer: 6
   m_Name: EnemyTwo
   m_TagString: Nonpermanent
@@ -49,15 +49,29 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 35
+  m_Mass: 50
   m_LinearDrag: 10
   m_AngularDrag: 0.007
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6665889649702995738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665889649702995717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 90
+  timeBetweenDash: 2
 --- !u!114 &6665889649702995742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,17 +169,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6665889649702995738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6665889649702995717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 50
-  timeBetweenDash: 2
