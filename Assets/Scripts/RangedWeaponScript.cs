@@ -9,6 +9,8 @@ public class RangedWeaponScript : MonoBehaviour
     public float knockbackForce;
     public GameObject hitEffect;
     public Transform firePoint;
+    public Transform firePoint2;
+    public Transform firePoint3;
     private float timeBetweenAttacks;
     public float attackRange;
     private bool resetPosition;
@@ -72,6 +74,8 @@ public class RangedWeaponScript : MonoBehaviour
     IEnumerator delayedSlash(float delay,int slashDamage){
         yield return new WaitForSeconds(delay);
         Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
+        Collider2D[] enemies2ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
+        Collider2D[] enemies3ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
 
         foreach (Collider2D enemy in enemiesToDmg)
         {
@@ -83,9 +87,9 @@ public class RangedWeaponScript : MonoBehaviour
         if(enemy.GetComponent<EnemyHealth>().getAllowCombo()){
         cm.increaseHitcount(1);    
         }
-        
         }
         }
+
         
     }
     //void OnDrawGizmosSelected() {
