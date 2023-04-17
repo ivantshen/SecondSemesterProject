@@ -30,7 +30,7 @@ public class Enemy2 : MonoBehaviour
             reactionTime -= Time.deltaTime;
         }
         if(Vector2.Distance(player.transform.position,transform.position)<5&&canDash){
-            
+            canDash = false;
             StartCoroutine(Dash());
             //sr.color = new Color(154,0,135,255);
         }
@@ -44,13 +44,14 @@ public class Enemy2 : MonoBehaviour
     }
 
     IEnumerator Dash(){
-        canDash = false;
+        //canDash = false;
+        dashCooldown = timeBetweenDash;
         sr.color = new Color(255,0,0,1);
         yield return new WaitForSeconds(1f);
         Vector2 travel = (player.transform.position - transform.position).normalized * force;
-            rb.velocity = new Vector2(travel.x,0f);
-        canDash = false;
-            dashCooldown = timeBetweenDash;
+        rb.velocity = new Vector2(travel.x,0f);
+        //canDash = false;
+            
         sr.color = new Color(1f,1f,1f,1);
         //canDash = true;
     }
