@@ -10019,7 +10019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1829612099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13089,7 +13089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655188, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655189, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_RootOrder
@@ -13195,18 +13195,6 @@ PrefabInstance:
     - target: {fileID: 6665889649702995717, guid: 91297436388f3da4881b4dc6f709b3fa, type: 3}
       propertyPath: m_Name
       value: EnemyTwo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665889649702995741, guid: 91297436388f3da4881b4dc6f709b3fa, type: 3}
-      propertyPath: m_Color.b
-      value: 0.8160377
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665889649702995741, guid: 91297436388f3da4881b4dc6f709b3fa, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8286285
-      objectReference: {fileID: 0}
-    - target: {fileID: 6665889649702995741, guid: 91297436388f3da4881b4dc6f709b3fa, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91297436388f3da4881b4dc6f709b3fa, type: 3}
