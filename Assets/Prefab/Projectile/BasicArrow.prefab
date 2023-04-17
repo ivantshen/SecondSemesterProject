@@ -311,8 +311,7 @@ MonoBehaviour:
   piercing: 0
   percentDamageLossPerTargetHit: 0
   numTargets: 0
-  timeTillDeath: 3
-  collisionCollider: {fileID: 1335147229}
+  timeTillDeath: 5
 --- !u!61 &1335147229
 BoxCollider2D:
   m_ObjectHideFlags: 0
