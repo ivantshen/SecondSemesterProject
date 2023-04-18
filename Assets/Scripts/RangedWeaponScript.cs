@@ -73,9 +73,10 @@ public class RangedWeaponScript : MonoBehaviour
     }
     IEnumerator delayedSlash(float delay,int slashDamage){
         yield return new WaitForSeconds(delay);
-        Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
-        Collider2D[] enemies2ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
-        Collider2D[] enemies3ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
+        Vector2 range = new Vector2(attackRange,0);
+        Collider2D[] enemiesToDmg = Physics2D.OverlapCapsuleAll(firePoint.position,range,CapsuleDirection2D.Horizontal,targetLayer);
+        //Collider2D[] enemies2ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
+        //Collider2D[] enemies3ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
 
         foreach (Collider2D enemy in enemiesToDmg)
         {
@@ -89,6 +90,7 @@ public class RangedWeaponScript : MonoBehaviour
         }
         }
         }
+        
 
         
     }

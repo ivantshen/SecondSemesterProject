@@ -1985,22 +1985,6 @@ PrefabInstance:
       objectReference: {fileID: 560554773}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5119833b4aa320499bd4eb9a7d46aaf, type: 3}
---- !u!114 &415197755 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-  m_PrefabInstance: {fileID: 5684423083054281642}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9a23cc2df3c11d4791459c0df88e8ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &415197761 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5907621400296655189, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-  m_PrefabInstance: {fileID: 5684423083054281642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &420686842
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,37 +6703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc59eaa7e947a94c87a985eb95f1660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1139078927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1139078928}
-  m_Layer: 0
-  m_Name: Firepoint2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1139078928
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1139078927}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.62, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 415197761}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1166689724
 GameObject:
   m_ObjectHideFlags: 0
@@ -9807,37 +9760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc59eaa7e947a94c87a985eb95f1660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1776779357
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1776779358}
-  m_Layer: 0
-  m_Name: Firepoint3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1776779358
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776779357}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.27, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 415197761}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778690304
 GameObject:
   m_ObjectHideFlags: 0
@@ -13162,48 +13084,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: firePoint2
-      value: 
-      objectReference: {fileID: 1139078928}
-    - target: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: firePoint3
-      value: 
-      objectReference: {fileID: 1776779358}
-    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
-      value: 96ec7764-1a43-4eb7-9e3d-96d93f849146
-      objectReference: {fileID: 0}
-    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
-      value: Player/Open Menu[/Keyboard/escape]
-      objectReference: {fileID: 0}
-    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 415197755}
-    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: slashAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 2405167938494916208, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: RangedWeaponScript, Assembly-CSharp
+      propertyPath: attackRange
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655188, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_Name
       value: RangedWeapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907621400296655188, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655189, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_RootOrder
@@ -13249,10 +13135,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5907621400296655191, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 560554775}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
 --- !u!1001 &6665889649376608750
