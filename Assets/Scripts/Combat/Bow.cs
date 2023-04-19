@@ -21,7 +21,6 @@ public class Bow : MonoBehaviour
     private float chargeValue = 0;
     private float reloadCD = 0;
     private float fireAngle = 0;
-    private bool flipped = false;
     private GameObject currentArrow;
     private Transform player;
     private Vector2 centerPointOriginalPos;
