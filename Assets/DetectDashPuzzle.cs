@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class DetectDashPuzzle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] public NewPlayerMovement player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        // if (player.IsDashing()) {
+        //     Debug.Log("ok");
+        // }
     }
+    
 }
