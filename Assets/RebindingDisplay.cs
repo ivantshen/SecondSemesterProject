@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class RebindingDisplay : MonoBehaviour
 {
+
     // variables
     [SerializeField] private InputActionReference jumpAction = null;
     [SerializeField] private InputActionReference dashAction = null;
@@ -35,7 +36,7 @@ public class RebindingDisplay : MonoBehaviour
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
 
-    
+
 
     // rebinds start here
     // jump

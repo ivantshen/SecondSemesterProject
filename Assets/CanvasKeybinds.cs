@@ -27,12 +27,15 @@ public class CanvasKeybinds : MonoBehaviour
             hotkeyMenu.SetActive(hotkeyMenuClosed);
             hotkeyMenuClosed = !hotkeyMenuClosed;    
 
+            
             inputManager.actions.Disable();
-
             if (hotkeyMenuClosed) {
                 inputManager.actions.Enable();
+                Debug.Log("enabled");
             }
-        }
+        }   
+
+        
     }
     public GameObject getHotkeyMenuGameObject(){
         return hotkeyMenu;
