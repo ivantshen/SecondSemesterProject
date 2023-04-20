@@ -74,6 +74,9 @@ public class RebindingDisplay : MonoBehaviour
         startRebindDashObject.SetActive(false);
         waitingForInputObject.SetActive(true);
 
+        dashAction.action.Disable();
+
+
         rebindingOperation = dashAction.action.PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
             .OnMatchWaitForAnother(0.1f)
@@ -92,6 +95,10 @@ public class RebindingDisplay : MonoBehaviour
 
         startRebindDashObject.SetActive(true);
         waitingForInputObject.SetActive(false);
+
+        dashAction.action.Enable();
+
+        
     }
 
     // attack
