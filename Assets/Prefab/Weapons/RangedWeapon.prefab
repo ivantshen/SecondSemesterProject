@@ -341,15 +341,15 @@ MonoBehaviour:
   firePoint: {fileID: 5907621400784885805}
   firePoint2: {fileID: 1139078928}
   firePoint3: {fileID: 1776779358}
-  attackRange: 1
+  attackRange: 8
   slash:
   - {fileID: 7616153144696666589, guid: 3df96d76a3b25e84ea385175bbf11244, type: 3}
   slashRate:
   - 0.3
   hitsPerSlash: 01000000
-  damagePerSlash: 05000000
+  damagePerSlash: 02000000
   delayBetweenSlash:
-  - 0.5
+  - 0.05
   timeToComboReset: 0.75
   player: {fileID: 0}
   freezeAmt: 0.2
@@ -460,8 +460,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5907621400784885804}
-  m_LocalRotation: {x: -0, y: -0, z: 0.21643952, w: 0.97629607}
-  m_LocalPosition: {x: 1.779532, y: -0.01968019, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.779532, y: 0, z: 0}
   m_LocalScale: {x: 2.1489472, y: 0.82050884, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

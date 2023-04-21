@@ -13083,18 +13083,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: attackRange
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: slash.Array.data[0]
-      value: 
-      objectReference: {fileID: 7616153144696666589, guid: 3df96d76a3b25e84ea385175bbf11244, type: 3}
-    - target: {fileID: 587272123, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: delayBetweenSlash.Array.data[0]
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655188, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_Name
       value: RangedWeapon
@@ -13141,26 +13129,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907621400296655189, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907621400784885805, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907621400784885805, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907621400784885805, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907621400784885805, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907621400784885805, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
-      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
