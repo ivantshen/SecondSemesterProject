@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "716113434028",
+    "firebase_url": "https://irises-leaderboard-default-rtdb.firebaseio.com",
+    "project_id": "irises-leaderboard",
+    "storage_bucket": "irises-leaderboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716113434028:android:9f14e4db07466f6de21609",
+        "android_client_info": {
+          "package_name": "com.LuPer5.Irises"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716113434028-2ckfjubbmcfa8ob4regdnof60jivfthu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO6f5OX0m3vgok_fkCdvvFNW_0M4opRkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716113434028-2ckfjubbmcfa8ob4regdnof60jivfthu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
