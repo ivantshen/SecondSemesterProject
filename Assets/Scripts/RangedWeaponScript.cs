@@ -73,8 +73,9 @@ public class RangedWeaponScript : MonoBehaviour
     }
     IEnumerator delayedSlash(float delay,int slashDamage){
         yield return new WaitForSeconds(delay);
-        Vector2 range = new Vector2(1,attackRange);
-        Collider2D[] enemiesToDmg = Physics2D.OverlapCapsuleAll(firePoint.position,range,CapsuleDirection2D.Horizontal,targetLayer);
+        Vector2 range = new Vector2(attackRange,2);
+        Collider2D[] enemiesToDmg = Physics2D.OverlapBoxAll(firePoint.position,range,0f,targetLayer);
+        //Collider2D[] enemiesToDmg = Physics2D.OverlapCapsuleAll(firePoint.position,range,CapsuleDirection2D.Horizontal,targetLayer);
         //Collider2D[] enemiesToDmg = Physics2D.OverlapCircleAll(firePoint.position,attackRange,targetLayer);
         //Collider2D[] enemies3ToDmg = Physics2D.OverlapCircleAll(firePoint2.position,attackRange,targetLayer);
 
