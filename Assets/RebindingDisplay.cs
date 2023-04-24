@@ -71,11 +71,11 @@ public class RebindingDisplay : MonoBehaviour
 
     // dash
     public void StartDashRebinding() {
+        dashAction.action.Disable();
         startRebindDashObject.SetActive(false);
         waitingForInputObject.SetActive(true);
 
-        dashAction.action.Disable();
-
+    
 
         rebindingOperation = dashAction.action.PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
@@ -92,12 +92,14 @@ public class RebindingDisplay : MonoBehaviour
             InputControlPath.HumanReadableStringOptions.OmitDevice);
 
         rebindingOperation.Dispose();
+        
 
         startRebindDashObject.SetActive(true);
         waitingForInputObject.SetActive(false);
 
+    
         dashAction.action.Enable();
-
+        
         
     }
 
@@ -105,6 +107,7 @@ public class RebindingDisplay : MonoBehaviour
     public void StartAttackRebinding() {
         startRebindAttackObject.SetActive(false);
         waitingForInputObject.SetActive(true);
+        attackAction.action.Disable();
 
         rebindingOperation = attackAction.action.PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
@@ -124,7 +127,7 @@ public class RebindingDisplay : MonoBehaviour
 
         startRebindAttackObject.SetActive(true);
         waitingForInputObject.SetActive(false);
-        Debug.Log(bindingAttackDisplayNameText.text);
+        attackAction.action.Enable();
     }
 
     // collect
