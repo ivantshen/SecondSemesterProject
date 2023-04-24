@@ -84,7 +84,7 @@ public class RangedWeaponScript : MonoBehaviour
         if(enemy){
         GameObject newVFX = Instantiate(hitEffect,enemy.ClosestPoint(transform.position),enemy.transform.rotation) as GameObject;
         Destroy(newVFX,2);
-        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce,(enemy.transform.position-transform.position).normalized);
+        enemy.GetComponent<KnockbackManager>().knockback(knockbackForce/1.3f,(enemy.transform.position-transform.position).normalized);
         enemy.GetComponent<EnemyHealth>().TakeDamage(slashDamage*cm.getComboDamageMultiplier());
         if(enemy.GetComponent<EnemyHealth>().getAllowCombo()){
         cm.increaseHitcount(1);    
