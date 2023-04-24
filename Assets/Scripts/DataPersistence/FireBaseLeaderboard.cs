@@ -2,34 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
-using Firebase.Database;
-using Firebase.Auth;
+using Firebase.Firestore;
+using Firebase.Extensions;
 
-public class FireBaseLeaderboard : MonoBehaviour
+public struct FireBaseLeaderboard : MonoBehaviour
 {
-    public static FireBaseLeaderboard Instance;
-    public DependencyStatus dependencyStatus;
-    public FirebaseAuth auth;
-    public FirebaseUser user;
-    public DatabaseReference DBreference;
-    public Credential cd;
+    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+    DocumentReference docRef;
     // Start is called before the first frame update
     void Start()
     {
-    if(Instance){
-        Destroy(this);
     }
-        auth = FirebaseAuth.DefaultInstance;
-        user = auth.CurrentUser;   
-        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
-        Instance = this;
-        DontDestroyOnLoad(this);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void addScore(string name, int score){
+        docRef = db.Collection("Scores").Document(name);
+        docRef.SetAsync(score, SetOptions.MergeAll);
     }
 }
