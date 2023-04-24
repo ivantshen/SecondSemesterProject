@@ -31,6 +31,7 @@ public class CanvasKeybinds : MonoBehaviour
             inputManager.actions.Disable();
             if (hotkeyMenuClosed) {
                 inputManager.actions.Enable();
+                Debug.Log("Enabled");
             } 
         }   
     }
