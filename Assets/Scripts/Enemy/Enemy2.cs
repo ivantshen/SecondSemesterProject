@@ -29,7 +29,7 @@ public class Enemy2 : MonoBehaviour
         if(reactionTime > 0){
             reactionTime -= Time.deltaTime;
         }
-        if(Vector2.Distance(player.transform.position,transform.position)<5&&canDash){
+        if(Vector2.Distance(player.transform.position,transform.position)<7&&canDash){
             canDash = false;
             StartCoroutine(Dash());
             //sr.color = new Color(154,0,135,255);
