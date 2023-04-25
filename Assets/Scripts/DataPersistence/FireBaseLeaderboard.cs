@@ -7,18 +7,20 @@ using Firebase.Extensions;
 
 public class FireBaseLeaderboard : MonoBehaviour
 {
+    private FirebaseApp app;
     private FirebaseFirestore db;
     private DocumentReference docRef;
     // Start is called before the first frame update
     void Start()
     {
-        db = FirebaseFirestore.DefaultInstance;
-        addScore("test",10);
+        app = FirebaseApp.Create();
+        db = FirebaseFirestore.GetInstance(app);
+        addScore("test1",15);
     }
     public void addScore(string name, int score){
-        docRef = db.Collection("Scores").Document(name);
+        docRef = db.Collection("Scores").Document("userscores");
         Dictionary<string,int> data = new Dictionary<string,int>{
-            {"Score",score}
+            {name,score}
             };
         docRef.SetAsync(data, SetOptions.MergeAll);
     }
