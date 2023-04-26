@@ -4,12 +4,11 @@ using UnityEngine;
 using Firebase;
 using Firebase.Firestore;
 using Firebase.Extensions;
-
 public class FireBaseLeaderboard : MonoBehaviour
 {
     private FirebaseApp app;
     private FirebaseFirestore db;
-    private DocumentReference docRef;
+    private int uid;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +17,20 @@ public class FireBaseLeaderboard : MonoBehaviour
         addScore("test1",15);
     }
     public void addScore(string name, int score){
-        docRef = db.Collection("Scores").Document("userscores");
-        Dictionary<string,int> data = new Dictionary<string,int>{
-            {name,score}
+        DocumentReference docRef = db.Collection("Scores").Document(name);
+        Dictionary<string,object> data = new Dictionary<string,object>{
+            {"Name",name},
+            {"Score",score}
             };
         docRef.SetAsync(data, SetOptions.MergeAll);
+    }
+    public void displayTop(){
+        DocumentReference docRef = db.Collection("Scores").Document("userscores");
+        docRef.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+            DocumentSnapshot snap = task.Result;
+            if(snap.Exists){
+                Dictionary<string,object> scores = snap.ToDictionary();
+            }
+        });
     }
 }
