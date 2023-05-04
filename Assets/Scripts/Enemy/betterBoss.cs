@@ -288,7 +288,7 @@ public class betterBoss : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         
         rb.gravityScale = 0f;
-        transform.position = new Vector2(player.position.x, 13f);
+        transform.position = new Vector2(player.position.x + 0.1f, 13f);
         yield return new WaitForSeconds(0.3f);
 
         rb.gravityScale = slamGravity;
@@ -312,7 +312,7 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = floatGravity;
         yield return new WaitForSeconds(0.8f);
         rb.gravityScale = 0f;
-        transform.position = new Vector2(player.position.x, 13f);
+        transform.position = new Vector2(player.position.x + 0.1f, 13f);
         yield return new WaitForSeconds(0.3f);
         rb.gravityScale = slamGravity * 1.3f;
         yield return new WaitForSeconds(0.18f);
@@ -324,7 +324,7 @@ public class betterBoss : MonoBehaviour
         rb.gravityScale = floatGravity;
         yield return new WaitForSeconds(0.8f);
         rb.gravityScale = 0f;
-        transform.position = new Vector2(player.position.x, 13f);
+        transform.position = new Vector2(player.position.x + 0.1f, 13f);
         yield return new WaitForSeconds(0.3f);
         rb.gravityScale = slamGravity * 1.3f;
         yield return new WaitForSeconds(0.18f);
