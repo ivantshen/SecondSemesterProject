@@ -10,7 +10,7 @@ public class FireBaseLeaderboard : MonoBehaviour
     private FirebaseFirestore db;
     private string name = "";
     private int score = 0;
-    private FireBaseLeaderboard Instance;
+    public static FireBaseLeaderboard Instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +45,15 @@ public class FireBaseLeaderboard : MonoBehaviour
                 place++;
             }
         });
+    }
+    public List<string> getNames(){
+        List<string> names = new List<string>();
+        Query query = db.Collection("Scores");
+        query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
+            foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
+                //names.Add(doc.getId());
+            }
+        });
+        return names;
     }
 }
