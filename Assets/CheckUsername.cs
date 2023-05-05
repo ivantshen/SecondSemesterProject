@@ -19,9 +19,13 @@ public class CheckUsername : MonoBehaviour
     public void check(){
         string name = field.text;
         if(!string.IsNullOrEmpty(name)){
-            fblb.assignName(name);
-            nameCanvas.SetActive(false);
+            StartCoroutine(fblb.checkName(name,this));
         }
+    }
+    public void activate(string name){
+        fblb.assignName(name);
+        nameCanvas.SetActive(false);    
+        fblb.changeScore(0);
     }
     private IEnumerator assign(){
         yield return new WaitForSeconds(0.5f);

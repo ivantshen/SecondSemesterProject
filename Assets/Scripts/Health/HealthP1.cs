@@ -8,6 +8,7 @@ public class HealthP1 : MonoBehaviour
    
      [SerializeField] private float iFrameTime;
      private bool allowDmg;
+    private FireBaseLeaderboard fblb;
     private ComboManager cm;
     public float startingHealth;
     public float currentHealth {get; private set;}
@@ -17,6 +18,7 @@ public class HealthP1 : MonoBehaviour
         currentHealth = startingHealth;
         Physics2D.IgnoreLayerCollision(0,6,false);
         cm = gameObject.GetComponent<ComboManager>();
+        fblb = FireBaseLeaderboard.Instance();
     }
 
     public void TakeDamage(float _damage){
@@ -25,6 +27,7 @@ public class HealthP1 : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth - _damage,0 , startingHealth);
             StartCoroutine(Invulnerability());
             if(currentHealth <=0){
+                fblb.addDeaths(1);
                 resetHealth();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 transform.position = Checkpoint.lastTouched[SceneManager.GetActiveScene().buildIndex].position;

@@ -10,6 +10,7 @@ public class FireBaseLeaderboard : MonoBehaviour
     private FirebaseFirestore db;
     private string name = "";
     private int score = 0;
+    private int deaths = 0;
     public static FireBaseLeaderboard Instance;
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,27 @@ public class FireBaseLeaderboard : MonoBehaviour
     }
     public void assignName(string aaa){
         name = aaa;
+        Debug.Log(name);
     }
-    public void addScore(int amt){
+    public void changeScore(int amt){
         score +=amt;
         DocumentReference docRef = db.Collection("Scores").Document(name);
         Dictionary<string,object> data = new Dictionary<string,object>{
             {"Name",name},
-            {"Score",score}
+            {"Score",score},
+            {"Deaths",deaths}
+            };
+        docRef.SetAsync(data, SetOptions.MergeAll);
+    }
+    public void addDeaths(int amt){
+        if(amt>=0){
+            deaths+=amt;
+        }
+        DocumentReference docRef = db.Collection("Scores").Document(name);
+        Dictionary<string,object> data = new Dictionary<string,object>{
+            {"Name",name},
+            {"Score",score},
+            {"Deaths",deaths}
             };
         docRef.SetAsync(data, SetOptions.MergeAll);
     }
@@ -46,14 +61,20 @@ public class FireBaseLeaderboard : MonoBehaviour
             }
         });
     }
-    public List<string> getNames(){
-        List<string> names = new List<string>();
-        Query query = db.Collection("Scores");
+    public IEnumerator checkName(string name,CheckUsername script){
+        bool check = false;
+        yield return new WaitForSeconds(0.05f);
+        Query query = db.Collection("Scores").OrderByDescending("Score");
         query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
             foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
-                //names.Add(doc.getId());
+                Dictionary<string,object> sc = doc.ToDictionary();
+                if(name==doc.Id){
+                    check = true;
+                }
+            }
+            if(!check){
+            script.activate(name);    
             }
         });
-        return names;
     }
 }
