@@ -48,12 +48,22 @@ public class Enemy2 : MonoBehaviour
         dashCooldown = timeBetweenDash;
         sr.color = new Color(255,0,0,1);
         yield return new WaitForSeconds(1f);
-        Vector2 travel = (player.transform.position - transform.position).normalized * force;
-        rb.velocity = new Vector2(travel.x,0f);
+        if(player.transform.position.x > transform.position.x){
+        //transform.position = new Vector2(this.transform.position.x + Time.deltaTime * force * 2f,this.transform.position.y);
+        rb.velocity = new Vector2(force,0f);
+        sr.color = new Color(1f,1f,1f,1);
+        //transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else {
+        transform.position = new Vector2(this.transform.position.x - Time.deltaTime * force * 2f,this.transform.position.y);
+        //transform.eulerAngles = new Vector3(0, 0, 0);
+        //Vector2 travel = (player.transform.position - transform.position).normalized * force;
+        rb.velocity = new Vector2(-force,0f);
         //canDash = false;
             
         sr.color = new Color(1f,1f,1f,1);
         //canDash = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other){
