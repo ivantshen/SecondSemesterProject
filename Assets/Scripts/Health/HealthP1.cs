@@ -18,7 +18,7 @@ public class HealthP1 : MonoBehaviour
         currentHealth = startingHealth;
         Physics2D.IgnoreLayerCollision(0,6,false);
         cm = gameObject.GetComponent<ComboManager>();
-        fblb = FireBaseLeaderboard.Instance();
+        fblb = FireBaseLeaderboard.Instance;
     }
 
     public void TakeDamage(float _damage){
