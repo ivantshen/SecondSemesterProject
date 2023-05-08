@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class RebindingDisplay : MonoBehaviour
 {
-
     // variables
     [SerializeField] private InputActionReference jumpAction = null;
     [SerializeField] private InputActionReference dashAction = null;
@@ -36,11 +35,10 @@ public class RebindingDisplay : MonoBehaviour
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
 
-
-
     // rebinds start here
     // jump
     public void StartJumpRebinding() {
+        jumpAction.action.Disable();
         startRebindJumpObject.SetActive(false);
         waitingForInputObject.SetActive(true);
 
@@ -59,12 +57,12 @@ public class RebindingDisplay : MonoBehaviour
         bindingJumpDisplayNameText.text = InputControlPath.ToHumanReadableString(
             jumpAction.action.bindings[0].effectivePath,
             InputControlPath.HumanReadableStringOptions.OmitDevice);
-
+        jumpAction.action.Enable();
         rebindingOperation.Dispose();
 
         startRebindJumpObject.SetActive(true);
         waitingForInputObject.SetActive(false);
-
+        
         //playerController.PlayerInput.SwitchCurrentActionMap("Player");
 
     }
