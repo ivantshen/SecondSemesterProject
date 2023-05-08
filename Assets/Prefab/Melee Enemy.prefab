@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 30
   monAmt: 30
+  scoreBoard: 40
   allowComboInc: 1
 --- !u!114 &6699883427361677994
 MonoBehaviour:

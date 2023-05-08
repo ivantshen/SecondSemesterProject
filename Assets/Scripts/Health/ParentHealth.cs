@@ -8,9 +8,14 @@ public class ParentHealth : MonoBehaviour
     public float currentHealth {get; private set;}
     public int monAmt;
     private int sceneIndex;
+    [SerializeField] private int scoreBoard;
+    private FireBaseLeaderboard lb;
+
     private void Awake(){
         currentHealth = startingHealth;
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        lb = FireBaseLeaderboard.Instance;
+
     }
 
     public void TakeDamage(float _damage){
@@ -23,7 +28,9 @@ public class ParentHealth : MonoBehaviour
                 }
                 Destroy(gameObject);
                 CurrencyManager.keyy.AddMon(monAmt);
-
+                //if(this.layer == 6){
+                    lb.changeScore(scoreBoard);
+                //}
                 //XPManager.instance.AddXP(monAmt);
             }
         }

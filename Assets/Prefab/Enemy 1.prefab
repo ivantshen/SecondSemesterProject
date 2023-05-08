@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 20
   monAmt: 35
+  scoreBoard: 20
   allowComboInc: 1
 --- !u!58 &1177047457600032745
 CircleCollider2D:
