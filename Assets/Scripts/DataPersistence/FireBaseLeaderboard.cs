@@ -22,7 +22,6 @@ public class FireBaseLeaderboard : MonoBehaviour
         DontDestroyOnLoad(Instance);
         app = FirebaseApp.Create();
         db = FirebaseFirestore.GetInstance(app);
-        displayTop();
     }
     public void assignName(string aaa){
         name = aaa;
@@ -50,14 +49,17 @@ public class FireBaseLeaderboard : MonoBehaviour
             };
         docRef.SetAsync(data, SetOptions.MergeAll);
     }
-    public void displayTop(){
-        Query query = db.Collection("Scores").OrderByDescending("Score").Limit(10);
+    public void displayTop(LeaderboardCanvas s){
+        string temp = "";
+        Query query = db.Collection("Scores").OrderByDescending("Score").Limit(50);
         query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
             int place = 1;
             foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
                 Dictionary<string,object> sc = doc.ToDictionary();
                 Debug.Log(place+"| Name: " + sc["Name"] + " | Score: " + sc["Score"]);
+                temp+= place+". Score: " +sc["Score"]+  " | Name: " +sc["Name"] +" | Deaths: " +sc["Deaths"]+"\n";
                 place++;
+                s.setLeaderboardText(temp);
             }
         });
     }
