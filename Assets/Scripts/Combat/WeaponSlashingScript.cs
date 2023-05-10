@@ -57,7 +57,7 @@ public class WeaponSlashingScript : MonoBehaviour
             cm = transform.parent.GetComponent<ComboManager>();
         }
         player.SendMessage("FreezeInputs",freezeAmt);
-        GameObject newSlash = Instantiate(slash[slashNum],firePoint.position,player.rotation,null);
+        GameObject newSlash = Instantiate(slash[slashNum],firePoint.position,transform.rotation,null);
         Destroy(newSlash,0.25f);
         for(int i=0;i<hitsPerSlash[slashNum];i++){
         StartCoroutine(delayedSlash(delayBetweenSlash[slashNum]*(i+1),damagePerSlash[slashNum]));    

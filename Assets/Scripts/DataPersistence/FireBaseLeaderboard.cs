@@ -8,9 +8,9 @@ public class FireBaseLeaderboard : MonoBehaviour
 {
     private FirebaseApp app;
     private FirebaseFirestore db;
-    private string name = "";
-    private int score = 0;
-    private int deaths = 0;
+    private static string name = "";
+    private static int score = 0;
+    private static int deaths = 0;
     public static FireBaseLeaderboard Instance;
     // Start is called before the first frame update
     void Start()
@@ -64,19 +64,17 @@ public class FireBaseLeaderboard : MonoBehaviour
         });
     }
     public IEnumerator checkName(string name,CheckUsername script){
-        bool check = false;
+        bool check = true;
         yield return new WaitForSeconds(0.05f);
         Query query = db.Collection("Scores").OrderByDescending("Score");
         query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
             foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
                 Dictionary<string,object> sc = doc.ToDictionary();
                 if(name==doc.Id){
-                    check = true;
+                    check = false;
                 }
             }
-            if(!check){
-            script.activate(name);    
-            }
+            script.activate(name,check);   
         });
     }
 }
