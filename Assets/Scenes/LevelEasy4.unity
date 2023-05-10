@@ -18494,6 +18494,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 96ec7764-1a43-4eb7-9e3d-96d93f849146
     m_ActionName: Player/Open Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f197734-5d8c-4111-b20d-154942e89d02
+    m_ActionName: Player/Open Leaderboard[/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -18512,8 +18516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 6520184861867379412, guid: 0810dbbecdc9b1d4ea19d513f249ef7b, type: 3}
-  chargeTime: 1.5
-  reloadTime: 0.75
+  chargeTime: 1.25
+  reloadTime: 0.25
   firePoint: {fileID: 2654189012273872834}
   maxRotation: 135
   rotateSpeed: 180

@@ -5,9 +5,18 @@ using UnityEngine;
 public class HealCircle : MonoBehaviour
 {
     [SerializeField] float healRate;
+    [SerializeField] float outsideRadius;
+    [SerializeField] bool healOrDmg;
     void OnTriggerStay2D(Collider2D other){
-        if(other.tag=="Player"){
-            PlayerPersistence.Instance.GetComponent<HealthP1>().TakeDamage(-healRate*Time.deltaTime);
+        if(healOrDmg){
+            if(Vector2.Distance(other.transform.position,transform.position)>outsideRadius&&other.tag=="Player"){
+                PlayerPersistence.Instance.GetComponent<HealthP1>().TakeDamage(-healRate*Time.deltaTime);
+            }
+        }else{
+             if(Vector2.Distance(other.transform.position,transform.position)>outsideRadius&&other.tag=="Player"){
+                PlayerPersistence.Instance.GetComponent<HealthP1>().TakeDamage(healRate*Time.deltaTime);
+            }
         }
+        
     }
 }

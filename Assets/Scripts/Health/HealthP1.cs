@@ -59,4 +59,10 @@ public class HealthP1 : MonoBehaviour
         //Physics2D.IgnoreLayerCollision(0,6,false);
         allowDmg = true;
     }
+    public float getHealth(){
+        return currentHealth;
+    }
+    public float getStart(){
+        return startingHealth;
+    }
 }
