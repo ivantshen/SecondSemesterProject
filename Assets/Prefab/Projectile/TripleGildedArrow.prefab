@@ -110,7 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264348901640161919}
-  m_LocalRotation: {x: 0, y: 0, z: -0.01745245, w: 0.99984777}
+  m_LocalRotation: {x: 0, y: 0, z: -0.026176924, w: 0.99965733}
   m_LocalPosition: {x: 0.075, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -120,7 +120,7 @@ Transform:
   - {fileID: 2104658861144310580}
   m_Father: {fileID: 4086751527023671845}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3}
 --- !u!114 &3760044175511553113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,15 +136,15 @@ MonoBehaviour:
   minimumDamage: 1
   maximumDamage: 3
   arrowMinimumForce: 45
-  arrowMaximumForce: 300
+  arrowMaximumForce: 200
   minimumKnockback: 30
-  maximumKnockback: 175
+  maximumKnockback: 125
   piercing: 0
   percentDamageLossPerTargetHit: 0
   numTargets: 0
-  timeTillDeath: 6
-  minFallSpeed: 5
-  maxFallSpeed: 15
+  timeTillDeath: 3
+  minFallSpeed: 3
+  maxFallSpeed: 8
 --- !u!68 &5473992542326520437
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056899778887312872}
-  m_LocalRotation: {x: 0, y: 0, z: 0.01745245, w: 0.99984777}
+  m_LocalRotation: {x: 0, y: 0, z: 0.026176924, w: 0.99965733}
   m_LocalPosition: {x: -0.075, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -226,7 +226,7 @@ Transform:
   - {fileID: 2622796264677403742}
   m_Father: {fileID: 4086751527023671845}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3}
 --- !u!114 &8191435784937209738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,15 +242,15 @@ MonoBehaviour:
   minimumDamage: 1
   maximumDamage: 3
   arrowMinimumForce: 45
-  arrowMaximumForce: 300
+  arrowMaximumForce: 200
   minimumKnockback: 30
-  maximumKnockback: 175
+  maximumKnockback: 125
   piercing: 0
   percentDamageLossPerTargetHit: 0
   numTargets: 0
-  timeTillDeath: 6
-  minFallSpeed: 5
-  maxFallSpeed: 15
+  timeTillDeath: 3
+  minFallSpeed: 3
+  maxFallSpeed: 8
 --- !u!68 &8678304242705654500
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -348,15 +348,15 @@ MonoBehaviour:
   minimumDamage: 2
   maximumDamage: 8
   arrowMinimumForce: 40
-  arrowMaximumForce: 325
+  arrowMaximumForce: 225
   minimumKnockback: 30
-  maximumKnockback: 250
+  maximumKnockback: 175
   piercing: 0
   percentDamageLossPerTargetHit: 0
   numTargets: 0
-  timeTillDeath: 6
-  minFallSpeed: 5
-  maxFallSpeed: 15
+  timeTillDeath: 3
+  minFallSpeed: 3
+  maxFallSpeed: 10
 --- !u!68 &6781893544786649599
 EdgeCollider2D:
   m_ObjectHideFlags: 0

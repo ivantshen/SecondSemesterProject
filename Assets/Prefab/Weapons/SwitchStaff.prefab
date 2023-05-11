@@ -440,6 +440,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3663d414-d379-4910-9f24-124edd325062
     m_ActionName: Player/Activate Weapon Effect[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96ec7764-1a43-4eb7-9e3d-96d93f849146
+    m_ActionName: Player/Open Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f197734-5d8c-4111-b20d-154942e89d02
+    m_ActionName: Player/Open Leaderboard[/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -490,7 +498,7 @@ MonoBehaviour:
   - {r: 0.23952653, g: 0, b: 0.8396226, a: 1}
   - {r: 0, g: 0.4439433, b: 0.8679245, a: 1}
   colorIndicator: {fileID: 1071271099}
-  swapCD: 0.25
+  swapCD: 0.5
 --- !u!114 &-6656331848233190648
 MonoBehaviour:
   m_ObjectHideFlags: 0

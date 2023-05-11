@@ -302,17 +302,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumDamage: 3
-  maximumDamage: 15
+  maximumDamage: 12
   arrowMinimumForce: 50
-  arrowMaximumForce: 300
+  arrowMaximumForce: 175
   minimumKnockback: 30
-  maximumKnockback: 300
+  maximumKnockback: 150
   piercing: 0
   percentDamageLossPerTargetHit: 0
   numTargets: 0
   timeTillDeath: 5
-  minFallSpeed: 5
-  maxFallSpeed: 15
+  minFallSpeed: 3
+  maxFallSpeed: 7
 --- !u!68 &1335147230
 EdgeCollider2D:
   m_ObjectHideFlags: 0
