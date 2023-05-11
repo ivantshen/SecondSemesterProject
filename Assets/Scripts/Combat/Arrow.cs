@@ -73,6 +73,7 @@ public class Arrow : MonoBehaviour
                 dying = true;    
                 awake = false;
                 Destroy(rb);
+                Destroy(col);
                 transform.parent = other.transform;
                 other.gameObject.GetComponent<KnockbackManager>().knockback(finalForce,(other.transform.position-transform.position).normalized);
             }

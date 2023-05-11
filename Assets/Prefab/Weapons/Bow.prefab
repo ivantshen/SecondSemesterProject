@@ -80,7 +80,7 @@ MonoBehaviour:
   - {fileID: 389948345222388965}
   - {fileID: 2431043489833714215}
   - {fileID: 2431043488881280454}
-  storedPos: {x: 0, y: 1, z: 0}
+  storedPos: {x: 0, y: -0.25, z: 0}
   storedZRot: -30
   storedSortingOrder: -1
   originalPos: {x: 0, y: 0, z: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389948344406147219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0397727a50a4e2a458b9fea1310c6046, type: 3}
   m_Name: 

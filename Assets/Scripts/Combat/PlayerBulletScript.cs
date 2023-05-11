@@ -13,6 +13,7 @@ public class PlayerBulletScript : MonoBehaviour
     [SerializeField] bool contactDamage = true;
     private Transform player;
     private ComboManager cm;
+    [SerializeField] private bool colliderOrTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class PlayerBulletScript : MonoBehaviour
         this.contactDamage = contactDamage;
     }
     private void OnTriggerEnter2D(Collider2D other){
-        if(contactDamage){
+        if(contactDamage&&!colliderOrTrigger){
         if(other.gameObject.layer==6){
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage*cm.getComboDamageMultiplier());
             if(other.gameObject.GetComponent<EnemyHealth>().getAllowCombo()){
@@ -62,7 +63,7 @@ public class PlayerBulletScript : MonoBehaviour
         
     }
     private void OnCollisionEnter2D(Collision2D other){
-        if(contactDamage){
+        if(contactDamage&&colliderOrTrigger){
         if(other.gameObject.layer==6){
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage*cm.getComboDamageMultiplier());
             cm.increaseHitcount(1);
