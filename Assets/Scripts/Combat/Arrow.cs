@@ -66,7 +66,9 @@ public class Arrow : MonoBehaviour
         if(awake){
         if(other.gameObject.layer==6){
             other.GetComponent<EnemyHealth>().TakeDamage(finalDamage*cm.getComboDamageMultiplier());
-            cm.increaseHitcount(1);
+            if(other.GetComponent<EnemyHealth>().getAllowCombo()){
+            cm.increaseHitcount(1);    
+            }
             if(allowPosStop){
                 dying = true;    
                 awake = false;

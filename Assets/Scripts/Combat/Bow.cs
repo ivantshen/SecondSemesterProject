@@ -15,6 +15,7 @@ public class Bow : MonoBehaviour
     [SerializeField] private string rotateRightKey;
     [SerializeField] private LineRenderer[] lines;
     [SerializeField] private Transform centerPoint;
+    [SerializeField] private int extraArrows;
     private bool allowFire = true;
     private bool allowArrowLoad = true;
     private bool keyHeld = false;
@@ -75,7 +76,15 @@ public class Bow : MonoBehaviour
         
     }
     private void fire(){
-        currentArrow.GetComponent<Arrow>().assignStatsAndFire(chargeValue,(currentArrow.transform.position-player.position).normalized);
+        if(extraArrows<=0){
+        currentArrow.GetComponent<Arrow>().assignStatsAndFire(chargeValue,(currentArrow.transform.position-player.position).normalized);    
+        }else{
+        for(int i=0;i<=extraArrows;i++){
+            GameObject ar = currentArrow.transform.GetChild(0).gameObject;
+            ar.GetComponent<Arrow>().assignStatsAndFire(chargeValue,(ar.transform.position-player.position).normalized);
+            ar.transform.parent = null;
+        }
+        }
         allowArrowLoad = true;
         chargeValue=0;
     }

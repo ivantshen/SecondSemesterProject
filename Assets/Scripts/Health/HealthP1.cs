@@ -29,7 +29,7 @@ public class HealthP1 : MonoBehaviour
             if(currentHealth <=0){
                 fblb.addDeaths(1);
                 fblb.changeScore(-100);
-                resetHealth(.3f);
+                resetHealth(.75f);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 transform.position = Checkpoint.lastTouched[SceneManager.GetActiveScene().buildIndex].position;
                 //Physics2D.IgnoreLayerCollision(0,6,false);

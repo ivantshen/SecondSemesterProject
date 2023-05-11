@@ -275,6 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 1
   monAmt: 0
+  scoreBoard: 0
+  allowComboInc: 0
 --- !u!114 &-7607977047249316501
 MonoBehaviour:
   m_ObjectHideFlags: 0

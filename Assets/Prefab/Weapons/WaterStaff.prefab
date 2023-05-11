@@ -439,6 +439,14 @@ MonoBehaviour:
         m_CallState: 0
     m_ActionId: 3663d414-d379-4910-9f24-124edd325062
     m_ActionName: Player/Activate Weapon Effect[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96ec7764-1a43-4eb7-9e3d-96d93f849146
+    m_ActionName: Player/Open Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f197734-5d8c-4111-b20d-154942e89d02
+    m_ActionName: Player/Open Leaderboard[/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -456,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6545845c936a394aaaa7cd7d75d0b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 2
+  attackRate: 1.75
   attack: {fileID: 1733842562804451773, guid: b2056edab3b6b224587603bcfd92a94a, type: 3}
   firePoint: {fileID: 400681957264820268}
   freezeAmt: 1

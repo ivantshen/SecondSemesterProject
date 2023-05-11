@@ -20,8 +20,9 @@ public class GateSwitch : MonoBehaviour
     void Start()
     {
         gateStartPosition = gate.transform.position;
-        originZRot = transform.rotation.z;
+        originZRot = transform.eulerAngles.z;
         cam = Camera.main;
+        Debug.Log(originZRot);
     }
 
     // Update is called once per frame
