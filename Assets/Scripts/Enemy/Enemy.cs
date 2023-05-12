@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public Vector3 moveOffset;
 
     private float distance;
+    private bool hitPlayer = false;
 
     void Start(){
         player = GameObject.FindWithTag("Player");
@@ -28,11 +29,21 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         
-        //
+        // 
         
         if(distance < 10){
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            if(hitPlayer){
+                if(player.transform.position.x > this.transform.position.x){
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position - this.transform.position, speed * 2 * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                }
+                else{
+                transform.position = Vector2.MoveTowards(this.transform.position, this.transform.position + player.transform.position, speed * 2 * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                }
+            }
         }
         else{
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
@@ -50,8 +61,16 @@ public class Enemy : MonoBehaviour
         }
     }
     }
+
+    private IEnumerator moveAway(){
+        hitPlayer = true;
+        yield return new WaitForSeconds(1f);
+        hitPlayer = false;
+    }
+
     private void OnCollisionStay2D(Collision2D other){
         if(other.gameObject.tag == "Player"){
+            StartCoroutine(moveAway());
             if(other.gameObject){
             other.gameObject.GetComponent<HealthP1>().TakeDamage(10);    
             }

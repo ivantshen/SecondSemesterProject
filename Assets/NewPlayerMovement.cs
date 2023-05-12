@@ -280,9 +280,7 @@ public class NewPlayerMovement : MonoBehaviour
     IEnumerator Knocked(){
         canKnock = false;
         canMove = false;
-        rb.velocity = new Vector2(0,0);
-        rb.AddForce(50 * ((transform.position-transform.position).normalized),ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         canKnock = true;
     }
@@ -290,8 +288,11 @@ public class NewPlayerMovement : MonoBehaviour
     //knockback function
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.layer == 6){
-            StartCoroutine(Knocked());
+            //StartCoroutine(Knocked());
+            if(canKnock){
             rb.AddForce(5 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
+            StartCoroutine(Knocked());
+            }
             //Debug.Log("ugh");
         }
     }
