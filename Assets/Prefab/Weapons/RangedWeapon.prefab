@@ -307,6 +307,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 96ec7764-1a43-4eb7-9e3d-96d93f849146
     m_ActionName: Player/Open Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f197734-5d8c-4111-b20d-154942e89d02
+    m_ActionName: Player/Open Leaderboard[/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
