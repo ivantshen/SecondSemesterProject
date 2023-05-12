@@ -104,7 +104,8 @@ MonoBehaviour:
   explosion: {fileID: 2713127863684372888, guid: 82b42e5004f47e740a27e833d8a46340, type: 3}
   explosionDamage: 3
   explosionRadius: 1.2
-  knockbackForce: 250
+  knockbackForce: 175
+  wallClip: 0
 --- !u!114 &128529585990153014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   multiTarget: 0
   wallClipping: 0
   contactDamage: 1
+  colliderOrTrigger: 0
 --- !u!50 &8105774901608533788
 Rigidbody2D:
   serializedVersion: 4

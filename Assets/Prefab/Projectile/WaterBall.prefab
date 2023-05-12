@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseDamage: 2
   pulseRadius: 1.6
-  knockbackForce: 250
+  knockbackForce: 200
   cdValue: 1
 --- !u!114 &2433685938403930821
 MonoBehaviour:
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseDamage: 5
   pulseRadius: 0.6
-  knockbackForce: 750
+  knockbackForce: 500
   cdValue: 1
 --- !u!114 &-7097054273572864354
 MonoBehaviour:
@@ -139,6 +139,7 @@ MonoBehaviour:
   multiTarget: 1
   wallClipping: 1
   contactDamage: 0
+  colliderOrTrigger: 0
 --- !u!1 &1733842562938539423
 GameObject:
   m_ObjectHideFlags: 0
