@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 public class CheckUsername : MonoBehaviour
 {
     [SerializeField] private Button button;
@@ -29,6 +30,10 @@ public class CheckUsername : MonoBehaviour
     public void check(){
         string name = field.text;
         bool hasBadWord = false;
+        if(name.Any(ch => ! char.IsLetterOrDigit(ch))){
+            errorMessage.text ="Special characters are not allowed in usernames!";
+            return;
+        }
         foreach(string line in profaneWords){
             if(name.Contains(line)){
                 Debug.Log("Word: " + line + " Username: " + name);

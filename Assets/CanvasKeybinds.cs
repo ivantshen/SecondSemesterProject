@@ -41,7 +41,10 @@ public class CanvasKeybinds : MonoBehaviour
             } 
         }   
     }
-
+    public void setHotkeyMenuState(bool tOrF){
+        hotkeyMenu.SetActive(tOrF);
+        hotkeyMenuClosed = !tOrF;
+    }
     public GameObject getHotkeyMenuGameObject(){
         return hotkeyMenu;
     }

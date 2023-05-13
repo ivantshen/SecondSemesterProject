@@ -6,7 +6,6 @@ using Firebase.Firestore;
 using Firebase.Extensions;
 public class FireBaseLeaderboard : MonoBehaviour
 {
-    private FirebaseApp app;
     private FirebaseFirestore db;
     private static string name = "";
     private static int score = 0;
@@ -20,8 +19,7 @@ public class FireBaseLeaderboard : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(Instance);
-        app = FirebaseApp.Create();
-        db = FirebaseFirestore.GetInstance(app);
+        db = FirebaseFirestore.DefaultInstance;
     }
     public void assignName(string aaa){
         name = aaa;
