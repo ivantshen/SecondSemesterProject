@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcc982d701937243ba822ab1728408d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 300
+  knockbackForce: 150
   hitEffect: {fileID: 6037868851228895419, guid: 3eeb07f6cfcf10d4a94eb3ec0eb99f11, type: 3}
   firePoint: {fileID: 4582869392758863832}
   attackRange: 2
@@ -275,6 +275,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1f445c08-d886-4307-b17b-faf1cab8cd8f
     m_ActionName: Menu/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96ec7764-1a43-4eb7-9e3d-96d93f849146
+    m_ActionName: Player/Open Menu[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f197734-5d8c-4111-b20d-154942e89d02
+    m_ActionName: Player/Open Leaderboard[/Keyboard/backslash]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

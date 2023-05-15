@@ -167,7 +167,7 @@ public class MeleeEnemy : MonoBehaviour
         foreach (Collider2D Player in playerToDmg){
         if(Player){
             Debug.Log("works");
-            Player.gameObject.GetComponent<HealthP1>().TakeDamage(10);
+            Player.gameObject.GetComponent<HealthP1>().TakeDamage(damage);
                 //Player.GetComponent<EnemyHealth>().TakeDamage(10);
         }
         }
