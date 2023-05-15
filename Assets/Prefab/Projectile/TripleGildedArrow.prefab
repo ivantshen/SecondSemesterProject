@@ -350,7 +350,7 @@ MonoBehaviour:
   arrowMinimumForce: 40
   arrowMaximumForce: 225
   minimumKnockback: 30
-  maximumKnockback: 175
+  maximumKnockback: 150
   piercing: 0
   percentDamageLossPerTargetHit: 0
   numTargets: 0

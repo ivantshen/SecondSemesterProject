@@ -104,7 +104,7 @@ MonoBehaviour:
   explosion: {fileID: 2713127863684372888, guid: 82b42e5004f47e740a27e833d8a46340, type: 3}
   explosionDamage: 3
   explosionRadius: 1.2
-  knockbackForce: 175
+  knockbackForce: 150
   wallClip: 0
 --- !u!114 &128529585990153014
 MonoBehaviour:

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6ec8fdd236e9469f24ec40d51ba72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 0.25
   range: 3.36
   colliderDistance: 0.79
   damage: 30
@@ -148,7 +148,7 @@ MonoBehaviour:
   enemy: {fileID: 6699883427361677999}
   leftEdge: -8
   rightEdge: 0
-  speed: 2
+  speed: 4
 --- !u!61 &6699883427361677993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b320e48a142f64ba3da0ffad91f631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 70
   monAmt: 30
-  scoreBoard: 40
+  scoreBoard: 60
   allowComboInc: 1
 --- !u!114 &6699883427361677994
 MonoBehaviour:
