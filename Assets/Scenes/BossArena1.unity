@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4073149378677946453, guid: 0140edcccd0f6e24999747a30c7af4ff, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4073149378827061812, guid: 0140edcccd0f6e24999747a30c7af4ff, type: 3}
       propertyPath: m_LocalScale.x
@@ -3187,11 +3187,11 @@ PrefabInstance:
     - target: {fileID: 1078243590396174706, guid: 04ee470c9b64b1945bff81d9fe7a8b52, type: 3}
       propertyPath: prefab.Array.data[1]
       value: 
-      objectReference: {fileID: 4582869391997937313, guid: 39f2db781fb5a4e4a8a58299e1ad8d00, type: 3}
+      objectReference: {fileID: 5907621400296655188, guid: f1095fe5fddbfba409c2498c39c8321c, type: 3}
     - target: {fileID: 1078243590396174706, guid: 04ee470c9b64b1945bff81d9fe7a8b52, type: 3}
       propertyPath: prefab.Array.data[2]
       value: 
-      objectReference: {fileID: 400681958021486933, guid: 553254d3bf927c5428ec155028c4954b, type: 3}
+      objectReference: {fileID: 389948344406147219, guid: cce5bb3f4f1093f428ae20c552af6357, type: 3}
     - target: {fileID: 1078243590396174706, guid: 04ee470c9b64b1945bff81d9fe7a8b52, type: 3}
       propertyPath: prefab.Array.data[3]
       value: 
