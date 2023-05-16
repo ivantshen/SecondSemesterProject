@@ -10273,7 +10273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1047363625}
   breakSoundEffect: {fileID: 1047363630}
-  respawn: 1
+  respawn: 0
 --- !u!61 &1047363628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13548,7 +13548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1307883588}
   breakSoundEffect: {fileID: 1307883593}
-  respawn: 1
+  respawn: 0
 --- !u!61 &1307883591
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11599,6 +11599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1124751209}
   breakSoundEffect: {fileID: 1124751211}
+  respawn: 0
 --- !u!61 &1124751213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15668,6 +15669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1483433581}
   breakSoundEffect: {fileID: 1483433583}
+  respawn: 0
 --- !u!61 &1483433585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18274,6 +18276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1789032997}
   breakSoundEffect: {fileID: 1789033002}
+  respawn: 1
 --- !u!82 &1789033002
 AudioSource:
   m_ObjectHideFlags: 0
