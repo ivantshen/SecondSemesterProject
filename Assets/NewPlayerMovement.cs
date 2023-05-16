@@ -160,13 +160,13 @@ public class NewPlayerMovement : MonoBehaviour
         //     jumpBufferCounter -= Time.deltaTime;
         // }
 
-        if (context.performed && coyoteTimeCounter > 0f) {
+        if (canMove&&context.performed && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpBufferCounter = 0f;
             inAir = true;
         }
 
-        if (context.canceled && rb.velocity.y > 0f) {
+        if (canMove&&context.canceled && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.8f);
             coyoteTimeCounter = 0f;
         }
@@ -277,11 +277,11 @@ public class NewPlayerMovement : MonoBehaviour
         canMove = true;
     }
 
-    IEnumerator Knocked(){
-        canKnock = false;
+    IEnumerator Knocked(Collision2D other){
         canMove = false;
+        rb.AddForce(8 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
-        rb.velocity = new Vector2(0,0);
+        //rb.velocity = new Vector2(0,0);
         yield return new WaitForSeconds(0.01f);
         canMove = true;
         canKnock = true;
@@ -292,8 +292,8 @@ public class NewPlayerMovement : MonoBehaviour
         if(other.gameObject.layer == 6){
             //StartCoroutine(Knocked());
             if(canKnock){
-            rb.AddForce(8 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
-            StartCoroutine(Knocked());
+            canKnock = false;
+            StartCoroutine(Knocked(other));
             }
             //Debug.Log("ugh");
         }
