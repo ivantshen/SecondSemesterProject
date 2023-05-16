@@ -1390,7 +1390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &449456184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4073149378677946453, guid: 0140edcccd0f6e24999747a30c7af4ff, type: 3}
       propertyPath: orthographic size
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4073149378827061812, guid: 0140edcccd0f6e24999747a30c7af4ff, type: 3}
       propertyPath: m_LocalScale.x
