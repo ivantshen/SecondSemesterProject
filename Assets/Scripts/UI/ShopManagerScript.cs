@@ -60,7 +60,7 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[3,4] = 0;
 
         //Amount allowed
-        shopItems[4,1] = 1;
+        shopItems[4,1] = 2;
         shopItems[4,2] = 1;
         shopItems[4,3] = 1;
         shopItems[4,4] = 1;
@@ -121,7 +121,7 @@ public class ShopManagerScript : MonoBehaviour
             Instantiate(prefab[2], new Vector2(xPos,yPos), Quaternion.identity);
         }
         else if(ID == 4){
-            //Instantiate(prefab[3], new Vector2(xPos,yPos), Quaternion.identity);
+            Instantiate(prefab[3], new Vector2(xPos,yPos), Quaternion.identity);
             //player.gameObject.GetComponent<HealthP1>().TakeDamage(-100);
         }
     }

@@ -11628,7 +11628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 3
-  travelLocation: {x: -83, y: 3.8, z: 0}
+  travelLocation: {x: -77, y: 17, z: 0}
 --- !u!58 &1139901224
 CircleCollider2D:
   m_ObjectHideFlags: 0
