@@ -70,8 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe10d62324f4f4249a84d5ef0d116ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 40
-  timeBetweenDash: 2
+  force: 45
+  timeBetweenDash: 1.5
 --- !u!114 &6665889649702995742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 40
   monAmt: 40
-  scoreBoard: 30
+  scoreBoard: 35
   allowComboInc: 1
 --- !u!114 &6665889649702995712
 MonoBehaviour:

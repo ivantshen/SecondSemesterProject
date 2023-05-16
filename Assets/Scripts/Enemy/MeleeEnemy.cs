@@ -8,7 +8,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float colliderDistance;
     [SerializeField] private int damage;
-    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Collider2D boxCollider;
     [SerializeField] private LayerMask playerLayer;
     public Transform firePoint;
     public GameObject slash;
