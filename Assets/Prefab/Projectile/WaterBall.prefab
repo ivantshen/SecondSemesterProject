@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseDamage: 2
   pulseRadius: 1.6
-  knockbackForce: 200
+  knockbackForce: 300
   cdValue: 1
 --- !u!114 &2433685938403930821
 MonoBehaviour:

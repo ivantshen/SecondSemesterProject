@@ -7718,6 +7718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 801489390}
   breakSoundEffect: {fileID: 801489395}
+  respawn: 1
 --- !u!61 &801489393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10272,6 +10273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1047363625}
   breakSoundEffect: {fileID: 1047363630}
+  respawn: 1
 --- !u!61 &1047363628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12062,6 +12064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1181246977}
   breakSoundEffect: {fileID: 1181246982}
+  respawn: 0
 --- !u!61 &1181246980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13545,6 +13548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1307883588}
   breakSoundEffect: {fileID: 1307883593}
+  respawn: 1
 --- !u!61 &1307883591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18640,6 +18644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1789032997}
   breakSoundEffect: {fileID: 1789033002}
+  respawn: 1
 --- !u!82 &1789033002
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18785,6 +18790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 1792084270}
   breakSoundEffect: {fileID: 1792084275}
+  respawn: 1
 --- !u!61 &1792084273
 BoxCollider2D:
   m_ObjectHideFlags: 0

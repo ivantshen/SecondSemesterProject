@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackeable: 1
-  knockbackScale: 1
+  knockbackScale: 1.5
 --- !u!50 &1177047457600032738
 Rigidbody2D:
   serializedVersion: 4
