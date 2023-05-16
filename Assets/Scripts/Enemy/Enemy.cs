@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private bool hitPlayer = false;
 
     void Start(){
-        player = GameObject.FindWithTag("Player");
+        player = PlayerPersistence.Instance;
         startPos = transform.position;
         targetPos = startPos;
     }

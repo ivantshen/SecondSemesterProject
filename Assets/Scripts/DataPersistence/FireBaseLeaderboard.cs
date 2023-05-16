@@ -49,7 +49,7 @@ public class FireBaseLeaderboard : MonoBehaviour
     }
     public void displayTop(LeaderboardCanvas s){
         string temp = "";
-        Query query = db.Collection("Scores").OrderByDescending("Score").Limit(50);
+        Query query = db.Collection("Scores").OrderByDescending("Score").Limit(100);
         query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
             int place = 1;
             foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
