@@ -179,7 +179,7 @@ MonoBehaviour:
   - 0.5
   - 0.4
   hitsPerSlash: 010000000100000002000000
-  damagePerSlash: 030000000500000004000000
+  damagePerSlash: 030000000400000003000000
   delayBetweenSlash:
   - 0.05
   - 0.05

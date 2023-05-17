@@ -63,11 +63,11 @@ MonoBehaviour:
   - {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
   - {fileID: 7616153144696666589, guid: a3e8e701bb3d0a14488eb5232eafe89b, type: 3}
   slashRate:
-  - 0.5
-  - 0.5
+  - 0.35
+  - 0.35
   - 0.5
   hitsPerSlash: 010000000100000002000000
-  damagePerSlash: 030000000300000003000000
+  damagePerSlash: 030000000300000004000000
   delayBetweenSlash:
   - 0.05
   - 0.05
