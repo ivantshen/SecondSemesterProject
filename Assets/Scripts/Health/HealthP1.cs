@@ -59,6 +59,9 @@ public class HealthP1 : MonoBehaviour
         //Physics2D.IgnoreLayerCollision(0,6,false);
         allowDmg = true;
     }
+    public bool getIFrameState(){
+        return allowDmg;
+    }
     public float getHealth(){
         return currentHealth;
     }

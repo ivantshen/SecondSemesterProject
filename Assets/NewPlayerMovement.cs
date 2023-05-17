@@ -56,7 +56,7 @@ public class NewPlayerMovement : MonoBehaviour
     private bool onLadder;
     private bool isClimbing;
     private bool canKnock = true;
-    
+    private HealthP1 health;
 
 
     // Start is called before the first frame update
@@ -65,7 +65,7 @@ public class NewPlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // GetComponent looks for the component in the inspector
         dashTrail = GetComponent<TrailRenderer>();
         dashTrail.emitting = false;
-
+        health = gameObject.GetComponent<HealthP1>();
         // playerInput = GetComponent<PlayerInput>();
     }
 
@@ -289,7 +289,7 @@ public class NewPlayerMovement : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.layer == 6){
             //StartCoroutine(Knocked());
-            if(canKnock){
+            if(health.getIFrameState()&&canKnock){
             canKnock = false;
             StartCoroutine(Knocked(other));
             }
