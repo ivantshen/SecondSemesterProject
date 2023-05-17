@@ -257,8 +257,9 @@ public class betterBoss : MonoBehaviour
         yPos = player.position.y;
         yield return new WaitForSeconds(0.3f);
         canDash = false;
-        yield return new WaitForSeconds(2f);
-
+        yield return new WaitForSeconds(1f);
+        rb.gravityScale = floatGravity;
+        yield return new WaitForSeconds(0.5f);
         canDash = true;
         xPos = player.position.x;
         yPos = player.position.y;
