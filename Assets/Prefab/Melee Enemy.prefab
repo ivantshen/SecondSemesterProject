@@ -137,7 +137,7 @@ MonoBehaviour:
   attackCooldown: 0.75
   range: 3.36
   colliderDistance: 0.79
-  damage: 30
+  damage: 20
   boxCollider: {fileID: 2158289044035296020}
   playerLayer:
     serializedVersion: 2
@@ -148,7 +148,7 @@ MonoBehaviour:
   enemy: {fileID: 6699883427361677999}
   leftEdge: -8
   rightEdge: 0
-  speed: 3.5
+  speed: 3
 --- !u!114 &6699883427361677998
 MonoBehaviour:
   m_ObjectHideFlags: 0
