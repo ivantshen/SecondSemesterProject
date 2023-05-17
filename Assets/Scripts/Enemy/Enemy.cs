@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private Vector3 startPos;
     private Vector3 targetPos;
     public Vector3 moveOffset;
+    //private Vector3 zeroPoint;
 
     private float distance;
     private bool hitPlayer = false;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
         player = PlayerPersistence.Instance;
         startPos = transform.position;
         targetPos = startPos;
+        //zeroPoint = new Vector3(0,0,0);
     }
     // Update is called once per frame
     void Update()
@@ -35,6 +37,7 @@ public class Enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
             if(hitPlayer){
+                if(transform.position.x > 0){
                 if(player.transform.position.x > this.transform.position.x){
                 transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position - this.transform.position, speed * 2 * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(Vector3.forward * angle);
@@ -42,6 +45,16 @@ public class Enemy : MonoBehaviour
                 else{
                 transform.position = Vector2.MoveTowards(this.transform.position, this.transform.position + player.transform.position, speed * 2 * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                }
+                }else{
+                    if(player.transform.position.x < this.transform.position.x){
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position - this.transform.position, speed * 2 * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                }
+                else{
+                transform.position = Vector2.MoveTowards(this.transform.position, this.transform.position + player.transform.position, speed * 2 * Time.deltaTime);
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                }
                 }
             }
         }
