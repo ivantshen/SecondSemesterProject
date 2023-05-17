@@ -10,6 +10,7 @@ public class FireBaseLeaderboard : MonoBehaviour
     private static string name = "";
     private static int score = 0;
     private static int deaths = 0;
+    private static int yoshis = 0;
     public static FireBaseLeaderboard Instance;
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,25 @@ public class FireBaseLeaderboard : MonoBehaviour
         name = aaa;
         Debug.Log(name);
     }
+    public void increaseYoshiCount(int amt){
+        yoshis+=amt;
+        DocumentReference docRef = db.Collection("Scores").Document(name);
+        Dictionary<string,object> data = new Dictionary<string,object>{
+            {"Name",name},
+            {"Score",score},
+            {"Deaths",deaths},
+            {"Yoshis",yoshis}
+            };
+        docRef.SetAsync(data, SetOptions.MergeAll);
+    }
     public void changeScore(int amt){
         score +=amt;
         DocumentReference docRef = db.Collection("Scores").Document(name);
         Dictionary<string,object> data = new Dictionary<string,object>{
             {"Name",name},
             {"Score",score},
-            {"Deaths",deaths}
+            {"Deaths",deaths},
+            {"Yoshis",yoshis}
             };
         docRef.SetAsync(data, SetOptions.MergeAll);
     }
@@ -43,22 +56,30 @@ public class FireBaseLeaderboard : MonoBehaviour
         Dictionary<string,object> data = new Dictionary<string,object>{
             {"Name",name},
             {"Score",score},
-            {"Deaths",deaths}
+            {"Deaths",deaths},
+            {"Yoshis",yoshis}
             };
         docRef.SetAsync(data, SetOptions.MergeAll);
     }
     public void displayTop(LeaderboardCanvas s){
-        string temp = "";
+        string names = "";
+        string scores = "";
+        string deaths ="";
+        string yoshis = "";
         Query query = db.Collection("Scores").OrderByDescending("Score").Limit(100);
         query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
             int place = 1;
             foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
                 Dictionary<string,object> sc = doc.ToDictionary();
-                Debug.Log(place+"| Name: " + sc["Name"] + " | Score: " + sc["Score"]);
-                temp+= place+". Score: " +sc["Score"]+  " | Name: " +sc["Name"] +" | Deaths: " +sc["Deaths"]+"\n";
+                names+= place + ". Name: " + sc["Name"] +"\n";
+                scores += "|Score: " + sc["Score"] + "\n";
+                deaths += "|Deaths: " + sc["Deaths"] +"\n";
+                yoshis +="|Yoshis Found: " + sc["Yoshis"]+"\n";    
+                
                 place++;
-                s.setLeaderboardText(temp);
+                s.setLeaderboardText(names,scores,deaths,yoshis);
             }
+            
         });
     }
     public IEnumerator checkName(string name,CheckUsername script){
