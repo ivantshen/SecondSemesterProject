@@ -280,9 +280,7 @@ public class NewPlayerMovement : MonoBehaviour
     IEnumerator Knocked(Collision2D other){
         canMove = false;
         rb.AddForce(8 * ((transform.position-other.transform.position).normalized),ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.2f);
-        //rb.velocity = new Vector2(0,0);
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.05f);
         canMove = true;
         canKnock = true;
     }
