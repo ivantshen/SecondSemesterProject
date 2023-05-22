@@ -18,6 +18,7 @@ public class YoshiCollectible : MonoBehaviour
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         ScenePersist.scenes[sceneIndex].setPickedUp(gameObject);
         FireBaseLeaderboard.Instance.increaseYoshiCount(1);
+        FireBaseLeaderboard.Instance.changeScore(150);
         Destroy(gameObject);
     }
 }

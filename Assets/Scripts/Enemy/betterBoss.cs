@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class betterBoss : MonoBehaviour
 {
     private Rigidbody2D rb; 
@@ -113,7 +114,6 @@ public class betterBoss : MonoBehaviour
         }
         
     }
-
     public void BossTransformation() {
         StartCoroutine(getHuge());
         
@@ -202,7 +202,7 @@ public class betterBoss : MonoBehaviour
         Check();
         yield return new WaitForSeconds(1f);
         Instantiate(enemy1,new Vector2(randomXNumber,3f),firePoint.rotation);
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(25f);
         canSpawn = true;
         
     }

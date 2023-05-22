@@ -66,7 +66,7 @@ public class FireBaseLeaderboard : MonoBehaviour
         string scores = "";
         string deaths ="";
         string yoshis = "";
-        Query query = db.Collection("Scores").OrderByDescending("Score").Limit(100);
+        Query query = db.Collection("Scores").OrderByDescending("Score").Limit(1000);
         query.GetSnapshotAsync().ContinueWithOnMainThread((querySnapshotTask) => {
             int place = 1;
             foreach(DocumentSnapshot doc in querySnapshotTask.Result.Documents){
@@ -77,9 +77,9 @@ public class FireBaseLeaderboard : MonoBehaviour
                 yoshis +="|Yoshis Found: " + sc["Yoshis"]+"\n";    
                 
                 place++;
-                s.setLeaderboardText(names,scores,deaths,yoshis);
+                Debug.Log(place);
             }
-            
+            s.setLeaderboardText(names,scores,deaths,yoshis);
         });
     }
     public IEnumerator checkName(string name,CheckUsername script){

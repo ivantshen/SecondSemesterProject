@@ -8,6 +8,7 @@ public class ParentHealth : MonoBehaviour
     public float currentHealth {get; private set;}
     public int monAmt;
     private int sceneIndex;
+    [SerializeField] private bool boss = false;
     [SerializeField] private int scoreBoard;
     private FireBaseLeaderboard lb;
 
@@ -26,11 +27,17 @@ public class ParentHealth : MonoBehaviour
                 if(gameObject.tag=="Nonpermanent"){
                 ScenePersist.scenes[sceneIndex].setPickedUp(gameObject);    
                 }
-                Destroy(gameObject);
+                
+                
                 CurrencyManager.keyy.AddMon(monAmt);
                 //if(this.layer == 6){
                     lb.changeScore(scoreBoard);
                 //}
+                if(boss){
+                    SceneManager.LoadScene(9);
+                }else{
+                    Destroy(gameObject);
+                }
                 //XPManager.instance.AddXP(monAmt);
             }
         }

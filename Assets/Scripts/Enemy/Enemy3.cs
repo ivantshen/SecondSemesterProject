@@ -82,14 +82,6 @@ public class Enemy3 : MonoBehaviour
         disX = Random.Range(xMin,xMax);
         disY = Random.Range(yMin,yMax);
     }
-    private void OnCollisionStay2D(Collision2D other){
-        if(other.gameObject.tag == "Player"){
-            if(other.gameObject){
-            other.gameObject.GetComponent<HealthP1>().TakeDamage(20);    
-            }
-             
-        }
-     }
 
     // Update is called once per frame
     void Update()

@@ -28,7 +28,7 @@ public class HealthP1 : MonoBehaviour
             StartCoroutine(Invulnerability());
             if(currentHealth <=0){
                 fblb.addDeaths(1);
-                fblb.changeScore(-50);
+                fblb.changeScore(-25);
                 resetHealth(.75f);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 transform.position = Checkpoint.lastTouched[SceneManager.GetActiveScene().buildIndex].position;
